@@ -1,0 +1,72 @@
+[
+  {
+    "label": "Anthracite Coal",
+    "value": 0,
+    "unit": "tons"
+  },
+  {
+    "label": "Bituminous Coal",
+    "value": 0,
+    "unit": "tons"
+  },
+  {
+    "label": "Lignite Coal",
+    "value": 0,
+    "unit": "tons"
+  },
+  {
+    "label": "Coal coke",
+    "value": 0,
+    "unit": "tons"
+  },
+  {
+    "label": "Agricultural by-products",
+    "value": 0,
+    "unit": "tons"
+  },
+  {
+    "label": "Wood",
+    "value": 0,
+    "unit": "tons"
+  },
+  {
+    "label": "Natural gas",
+    "value": 0,
+    "unit": "m³"
+  },
+  {
+    "label": "Propane gas",
+    "value": 0,
+    "unit": "m³"
+  },
+  {
+    "label": "Butane gas",
+    "value": 0,
+    "unit": "m³"
+  },
+  {
+    "label": "Ethane gas",
+    "value": 0,
+    "unit": "m³"
+  },
+  {
+    "label": "Kerosene",
+    "value": 0,
+    "unit": "litres"
+  },
+  {
+    "label": "Used oil",
+    "value": 0,
+    "unit": "litres"
+  },
+  {
+    "label": "Biodiesel",
+    "value": 0,
+    "unit": "litres"
+  },
+  {
+    "label": "Ethanol",
+    "value": 0,
+    "unit": "litres"
+  }
+]

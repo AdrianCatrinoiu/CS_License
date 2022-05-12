@@ -1,0 +1,32 @@
+.directory {
+  height: 100%;
+  .wrap {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+
+    .landLogo {
+      width: 100%;
+      float: left;
+      height: 100%;
+      display: flex;
+      z-index: -1;
+      flex-direction: column;
+      padding-bottom: 5rem;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-size: auto;
+      background-color: rgba(255, 255, 255, 0);
+    }
+  }
+}
+@media only screen and (max-width: 700px) {
+  .landLogo {
+    block-size: 50%;
+  }
+  img {
+    width: 70%;
+    height: 70%;
+  }
+}
