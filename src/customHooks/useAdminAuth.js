@@ -4,19 +4,19 @@ import { useNavigate } from "react-router";
 import { checkUserIsAdmin } from "../utils";
 
 const mapState = ({ user }) => ({
-  currentUser: user.currentUser,
+  user: user.user,
 });
 
 const useAdminAuth = (props) => {
-  const { currentUser } = useSelector(mapState);
+  const { user } = useSelector(mapState);
   const navigate = useNavigate();
   useEffect(() => {
-    if (!checkUserIsAdmin(currentUser)) {
+    if (!checkUserIsAdmin(user)) {
       navigate("/");
     }
-  }, [currentUser]);
+  }, [user]);
 
-  return currentUser;
+  return user;
 };
 
 export default useAdminAuth;

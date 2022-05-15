@@ -3,21 +3,21 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const mapState = ({ user }) => ({
-  currentUser: user.currentUser,
+  user: user.user,
 });
 
 const useAuth = (props) => {
-  const { currentUser } = useSelector(mapState);
+  const { user } = useSelector(mapState);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!currentUser) {
+    if (!user) {
       navigate("/login");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser]);
+  }, [user]);
 
-  return currentUser;
+  return user;
 };
 
 export default useAuth;

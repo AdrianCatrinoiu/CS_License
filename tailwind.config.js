@@ -5,7 +5,8 @@ module.exports = {
       // that is animation class
       animation: {
         bounce_fade_out_5s: "bounce_fadeOut_5 5s ease-in-out",
-        fadeOut: "fadeOut 1s infinite ease-in-out",
+        fadeOut: "fadeOut 1s ease-in-out",
+        fadeIn: "fadeIn 1s ease-in-out",
       },
 
       // that is actual animation
@@ -34,6 +35,10 @@ module.exports = {
         fadeOut: {
           "0%": { opacity: 1 },
           "100%": { opacity: 0 },
+        },
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
         },
       }),
     },

@@ -5,23 +5,52 @@ import Autocomplete from "@mui/material/Autocomplete";
 import IconButton from "@mui/material/IconButton";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const FormUnitSelect = ({
+const FormTransportationSelect = ({
   id,
   label,
   selectLabel,
-  unitLabel,
+  vehiclesLabel,
+  fuelLabel,
   updateUnit,
   deleteUnit,
   unitList,
 }) => {
-  const [unit, setUnit] = useState(unitList[0]);
-  const handleUnitChange = (event, value) => {
-    updateUnit(id, value.label, value.value, value.unit);
-    setUnit(value);
+  const [vehicleType, setVehicleType] = useState(unitList[0]);
+
+  const handleVehicleTypeChange = (event, value) => {
+    updateUnit(
+      id,
+      value,
+      vehicleType.vehicles,
+      vehicleType.fuel,
+      vehicleType.fuelUnit,
+      vehicleType.type
+    );
+    setVehicleType(value);
   };
-  const handleValueChange = (event, value) => {
-    updateUnit(id, unit.label, event.target.value, unit.unit);
+
+  const handleVehiclesChange = (event, value) => {
+    updateUnit(
+      id,
+      vehicleType.vehicleType,
+      value,
+      vehicleType.fuel,
+      vehicleType.fuelUnit,
+      vehicleType.type
+    );
   };
+
+  const handleFuelChange = (event, value) => {
+    updateUnit(
+      id,
+      vehicleType.vehicleType,
+      vehicleType.vehicles,
+      value,
+      vehicleType.fuelUnit,
+      vehicleType.type
+    );
+  };
+
   return (
     <div className="flex flex-col w-[80%]  justify-center items-center my-8">
       <div className="w-1/3 min-w-[200px] px-[24px] border-[1px] border-black border-opacity-[0.23] rounded-[4px]">
@@ -39,10 +68,10 @@ const FormUnitSelect = ({
             <Autocomplete
               disablePortal
               disableClearable
-              id="combo-box-demo"
               options={unitList}
-              value={unit}
-              onChange={handleUnitChange}
+              value={vehicleType}
+              groupBy={(option) => option.type}
+              onChange={handleVehicleTypeChange}
               sx={{
                 "& .css-1in441m": {
                   fontSize: 12,
@@ -58,7 +87,31 @@ const FormUnitSelect = ({
             />
           </div>
           <TextField
-            label={unitLabel}
+            label={vehiclesLabel}
+            id="outlined-start-adornment"
+            sx={{
+              m: 3,
+              width: "100%",
+              fontSize: 24,
+            }}
+            InputLabelProps={{ style: { fontSize: 16 } }}
+            InputProps={{
+              style: { fontSize: 16 },
+              startAdornment: (
+                <InputAdornment
+                  sx={{
+                    "& .MuiInputAdornment-root": {
+                      fontSize: 16,
+                    },
+                  }}
+                  position="start"
+                ></InputAdornment>
+              ),
+            }}
+            onBlur={handleVehiclesChange}
+          />
+          <TextField
+            label={fuelLabel}
             id="outlined-start-adornment"
             sx={{
               m: 3,
@@ -77,11 +130,11 @@ const FormUnitSelect = ({
                   }}
                   position="start"
                 >
-                  {unit.unit}
+                  {vehicleType.fuelUnit}
                 </InputAdornment>
               ),
             }}
-            onBlur={handleValueChange}
+            onBlur={handleFuelChange}
           />
         </div>
       </div>
@@ -89,4 +142,4 @@ const FormUnitSelect = ({
   );
 };
 
-export default FormUnitSelect;
+export default FormTransportationSelect;

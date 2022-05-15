@@ -1,0 +1,94 @@
+[
+  {
+    "label": "Agriculture, forestry, fishing",
+    "value": "agriculture"
+  },
+  {
+    "label": "Extraction industry",
+    "value": "extraction"
+  },
+  {
+    "label": "Manufacturing industry",
+    "value": "manufacturing"
+  },
+  {
+    "label": "Production and supply of electricity and heat, gas, hot water and air conditioning",
+    "value": "energy"
+  },
+  {
+    "label": "Water distribution",
+    "value": "water"
+  },
+  {
+    "label": "Sanitation, waste management, decontamination activities",
+    "value": "sanitation"
+  },
+  {
+    "label": "Construction",
+    "value": "construction"
+  },
+  {
+    "label": "Wholesale and retail",
+    "value": "sales"
+  },
+  {
+    "label": "Trade repair of motor vehicles and motorcycles",
+    "value": "vehicles"
+  },
+  {
+    "label": "Transport and storage",
+    "value": "transport"
+  },
+  {
+    "label": "Hotels and restaurants",
+    "value": "restaurants"
+  },
+  {
+    "label": "Information and communications",
+    "value": "communications"
+  },
+  {
+    "label": "Financial intermediation and insurance",
+    "value": "insurance"
+  },
+  {
+    "label": "Real estate",
+    "value": "realEstate"
+  },
+  {
+    "label": "Professional, scientific and technical activities",
+    "value": "proffesions"
+  },
+  {
+    "label": "Administrative and support service activities",
+    "value": "administration"
+  },
+  {
+    "label": "Public administration and defense",
+    "value": "publicAdministration"
+  },
+  {
+    "label": "Health and social work",
+    "value": "health"
+  },
+  {
+    "label": "Entertainment, cultural and recreational activities",
+    "value": "entertainment"
+  },
+  {
+    "label": "Other service activities",
+    "value": "other"
+  },
+  {
+    "label": "Activities of private households as employers of domestic personnel",
+    "value": "householdEmployers"
+  },
+  {
+    "label": "Activities of private households for the production of goods and services for own consumption",
+    "value": "householdProduction"
+  },
+  {
+    "label": "Activities of extraterritorial organizations",
+    "value": "organizations"
+  }
+]

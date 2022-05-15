@@ -4,14 +4,14 @@ import UserProfile from "./../UserProfile";
 import "./styles.scss";
 
 const mapState = ({ user }) => ({
-  currentUser: user.currentUser,
+  user: user.user,
 });
 
 const VerticalNav = ({ children }) => {
-  const { currentUser } = useSelector(mapState);
+  const { user } = useSelector(mapState);
 
   const configUserProfile = {
-    currentUser,
+    user,
   };
 
   return (

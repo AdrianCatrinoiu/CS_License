@@ -1,28 +1,67 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import FormUnitSelect from "../../forms/FormUnitSelect";
 import refrigerantsUnits from "../../utils/constants/refrigerantsUnits.json";
 import NavigationIcon from "@mui/icons-material/Navigation";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  userFormAddStart,
+  userFormDeleteStart,
+  userFormUpdateStart,
+} from "../../redux/User/user.actions";
 
-const StepRefrigerants = () => {
-  const [refrigerantsUnitList, setRefrigerantsUnitList] = useState([]);
+const mapState = ({ user }) => ({
+  userForm: user.userForm,
+});
+
+const StepRefrigerants = ({ userId }) => {
+  const { userForm } = useSelector(mapState);
+  const [refrigerantsUnitList, setRefrigerantsUnitList] = useState(
+    userForm.stepRefrigerants
+  );
+  const dispatch = useDispatch();
+
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest",
+    });
+  };
+
+  useEffect(() => {
+    setRefrigerantsUnitList(userForm.stepRefrigerants);
+  }, [userForm.stepRefrigerants]);
 
   const addUnit = () => {
-    setRefrigerantsUnitList([
-      ...refrigerantsUnitList,
-      { id: new Date().getTime(), label: "", value: 0, unit: "" },
-    ]);
+    dispatch(
+      userFormAddStart(userId, {
+        step: "stepRefrigerants",
+        data: {
+          id: new Date().getTime(),
+          label: "",
+          value: 0,
+          unit: "",
+        },
+      })
+    );
+    setTimeout(() => {
+      scrollToBottom();
+    }, 300);
   };
+
   const updateUnit = (id, label, value, unit) => {
-    setRefrigerantsUnitList(
-      refrigerantsUnitList.map((refrigerantUnit) => {
-        if (refrigerantUnit.id === id) {
-          refrigerantUnit.label = label;
-          refrigerantUnit.value = value;
-          refrigerantUnit.unit = unit;
-        }
-        return refrigerantUnit;
+    dispatch(
+      userFormUpdateStart(userId, {
+        step: "stepRefrigerants",
+        data: {
+          id,
+          label,
+          value,
+          unit,
+        },
       })
     );
   };
@@ -32,13 +71,19 @@ const StepRefrigerants = () => {
         return refrigerantUnit.id !== id;
       })
     );
+    refrigerantsUnitList.filter((refrigerantUnit) => {
+      dispatch(
+        userFormDeleteStart(userId, {
+          step: "stepRefrigerants",
+          data: { id },
+        })
+      );
+      return refrigerantUnit.id !== id;
+    });
   };
-  useEffect(() => {
-    console.log("refrigerantsUnitList:", refrigerantsUnitList);
-  }, [refrigerantsUnitList]);
 
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center h-2/3">
+    <div className="flex flex-col w-[80%] justify-center items-center h-2/3  animate-fadeIn">
       <p className="mb-16 text-[24px]">Does your company use refrigerants?</p>
       {refrigerantsUnitList.length === 0 && (
         <>
@@ -51,6 +96,7 @@ const StepRefrigerants = () => {
       <div className="overflow-scroll flex flex-col w-full items-center">
         {refrigerantsUnitList.map((unit, index) => (
           <FormUnitSelect
+            key={unit.id}
             id={unit.id}
             selectLabel="Refrigerant"
             unitLabel="Unit"
@@ -60,6 +106,7 @@ const StepRefrigerants = () => {
             unitList={refrigerantsUnits}
           />
         ))}
+        <div ref={messagesEndRef} />
       </div>
       <div className="my-8">
         <Fab

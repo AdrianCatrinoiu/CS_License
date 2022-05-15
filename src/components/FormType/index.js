@@ -7,9 +7,14 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import StepHeating from "../StepHeating";
 import StepRefrigerants from "../StepRefrigerants";
 import StepTransportation from "../StepTransportation";
+import { useSelector } from "react-redux";
+
+const mapState = ({ user }) => ({
+  user: user.user,
+});
 
 const FormType = ({ formStep, setFormStep }) => {
-  console.log("formstep", formStep);
+  const { user } = useSelector(mapState);
   return (
     <div className=" h-full w-full">
       <div className="h-full flex flex-row justify-center">
@@ -29,12 +34,12 @@ const FormType = ({ formStep, setFormStep }) => {
         )}
 
         <div className="flex flex-col justify-center items-center w-full">
-          {formStep === 0 && <StepYear />}
-          {formStep === 1 && <StepCAEN />}
-          {formStep === 2 && <StepElectricity />}
-          {formStep === 3 && <StepHeating />}
-          {formStep === 4 && <StepRefrigerants />}
-          {formStep === 5 && <StepTransportation />}
+          {formStep === 0 && <StepYear userId={user.id} />}
+          {formStep === 1 && <StepCAEN userId={user.id} />}
+          {formStep === 2 && <StepElectricity userId={user.id} />}
+          {formStep === 3 && <StepHeating userId={user.id} />}
+          {formStep === 4 && <StepRefrigerants userId={user.id} />}
+          {formStep === 5 && <StepTransportation userId={user.id} />}
         </div>
       </div>
     </div>

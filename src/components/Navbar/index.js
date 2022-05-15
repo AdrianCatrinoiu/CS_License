@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { signOutUserStart } from "../../redux/User/user.actions";
 const mapState = (state) => ({
-  currentUser: state.user.currentUser,
+  user: state.user.user,
 });
 
 const Navbar = (props) => {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector(mapState);
+  const { user } = useSelector(mapState);
 
   const signOut = () => {
     dispatch(signOutUserStart());
@@ -37,7 +37,7 @@ const Navbar = (props) => {
         </div>
         <div className="w-1/3 h-full  flex flex-col justify-center self-end items-end">
           <div className="flex flex-row items-center justify-center mr-12">
-            {currentUser && (
+            {user && (
               <>
                 <div className="w-48 h-20 flex justify-center items-center hover:shadow-2xl text-center rounded-md hover:translate-y-1  hover:bg-lime-500  duration-300 mr-4">
                   <Link
@@ -60,7 +60,7 @@ const Navbar = (props) => {
           </div>
 
           <div className="flex flex-row items-center mr-20">
-            {!currentUser && (
+            {!user && (
               <>
                 <div className="w-48 h-20 flex justify-center items-center hover:shadow-2xl text-center rounded-md hover:translate-y-1  hover:bg-green-800  duration-300 mr-4">
                   <Link

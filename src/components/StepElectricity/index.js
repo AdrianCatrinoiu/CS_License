@@ -1,29 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import { CountryDropdown } from "react-country-region-selector";
+import { useDispatch, useSelector } from "react-redux";
+import { userFormUpdateStart } from "../../redux/User/user.actions";
 
-const StepElectricity = () => {
-  const [renewable, setRenewable] = useState(0);
-  const [nonRenewable, setNonRenewable] = useState(0);
-  const [country, setCountry] = useState("");
+const mapState = ({ user }) => ({
+  userForm: user.userForm,
+});
+
+const StepElectricity = ({ userId }) => {
+  const { userForm } = useSelector(mapState);
+  const [renewable, setRenewable] = useState(
+    userForm.stepElectricity.renewable
+  );
+  const [nonRenewable, setNonRenewable] = useState(
+    userForm.stepElectricity.nonRenewable
+  );
+  const [country, setCountry] = useState(userForm.stepElectricity.country);
+  const dispatch = useDispatch();
 
   const handleRenewableChange = (event) => {
     setRenewable(event.target.value);
-    console.log("mwh:", event.target.value);
   };
   const handleNonRenewableChange = (event) => {
     setNonRenewable(event.target.value);
-    console.log("mwh:", event.target.value);
   };
 
+  useEffect(() => {
+    dispatch(
+      userFormUpdateStart(userId, {
+        step: "stepElectricity",
+        data: {
+          renewable: renewable,
+          nonRenewable: nonRenewable,
+          country: country,
+        },
+      })
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [renewable, nonRenewable, country]);
+
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center h-2/3">
+    <div className="flex flex-col w-[80%] justify-center items-center h-2/3  animate-fadeIn">
       <p className="mb-16 text-[24px]">
         Choose how much heating your company used during the selected year:
       </p>
       <TextField
-        autoFocus
         label="Non-renewable electricity used"
         id="outlined-start-adornment"
         sx={{
@@ -31,15 +54,15 @@ const StepElectricity = () => {
           width: "20%",
           fontSize: 24,
         }}
+        defaultValue={nonRenewable}
         InputLabelProps={{ style: { fontSize: 16 } }}
         InputProps={{
           style: { fontSize: 16 },
           startAdornment: <InputAdornment position="start">Mwh</InputAdornment>,
         }}
-        onChange={handleNonRenewableChange}
+        onBlur={handleNonRenewableChange}
       />
       <TextField
-        autoFocus
         label="Renewable electricity used"
         id="outlined-start-adornment"
         sx={{
@@ -47,12 +70,13 @@ const StepElectricity = () => {
           width: "20%",
           fontSize: 24,
         }}
+        defaultValue={renewable}
         InputLabelProps={{ style: { fontSize: 16 } }}
         InputProps={{
           style: { fontSize: 16 },
           startAdornment: <InputAdornment position="start">Mwh</InputAdornment>,
         }}
-        onChange={handleRenewableChange}
+        onBlur={handleRenewableChange}
       />
       <div className="w-1/5 ">
         <CountryDropdown

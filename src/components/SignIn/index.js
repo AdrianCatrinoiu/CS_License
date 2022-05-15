@@ -7,13 +7,13 @@ import FormInput from "../../forms/FormInput";
 import Button from "../../forms/Button";
 
 const mapState = ({ user }) => ({
-  currentUser: user.currentUser,
+  user: user.user,
 });
 
 const SignIn = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { currentUser } = useSelector(mapState);
+  const { user } = useSelector(mapState);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,12 +23,12 @@ const SignIn = (props) => {
   };
   //at sign-in
   useEffect(() => {
-    if (currentUser) {
+    if (user) {
       resetForm();
       navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser]);
+  }, [user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

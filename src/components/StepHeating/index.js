@@ -1,47 +1,80 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import FormUnitSelect from "../../forms/FormUnitSelect";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import heatingUnits from "../../utils/constants/heatingUnits.json";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  userFormAddStart,
+  userFormDeleteStart,
+  userFormUpdateStart,
+} from "../../redux/User/user.actions";
 
-const StepHeating = () => {
-  const [heatingUnitList, setHeatingUnitList] = useState([]);
+const mapState = ({ user }) => ({
+  userForm: user.userForm,
+});
 
-  const addUnit = () => {
-    setHeatingUnitList([
-      ...heatingUnitList,
-      { id: new Date().getTime(), label: "", value: 0, unit: "" },
-    ]);
-  };
+const StepHeating = ({ userId }) => {
+  const { userForm } = useSelector(mapState);
+  const [heatingUnitList, setHeatingUnitList] = useState(userForm.stepHeating);
+  const dispatch = useDispatch();
 
-  const updateUnit = (id, label, value, unit) => {
-    setHeatingUnitList(
-      heatingUnitList.map((heatingUnit) => {
-        if (heatingUnit.id === id) {
-          heatingUnit.label = label;
-          heatingUnit.value = value;
-          heatingUnit.unit = unit;
-        }
-        return heatingUnit;
-      })
-    );
-  };
-
-  const deleteUnit = (id) => {
-    setHeatingUnitList(
-      heatingUnitList.filter((heatingUnit) => {
-        return heatingUnit.id !== id;
-      })
-    );
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "nearest",
+    });
   };
 
   useEffect(() => {
-    console.log("heatingUnitList:", heatingUnitList);
-  }, [heatingUnitList]);
+    setHeatingUnitList(userForm.stepHeating);
+  }, [userForm.stepHeating]);
+
+  const addUnit = () => {
+    dispatch(
+      userFormAddStart(userId, {
+        step: "stepHeating",
+        data: { id: new Date().getTime(), label: "", value: 0, unit: "" },
+      })
+    );
+    setTimeout(() => {
+      scrollToBottom();
+    }, 300);
+  };
+
+  const updateUnit = (id, label, value, unit) => {
+    heatingUnitList.map((heatingUnit) => {
+      if (heatingUnit.id === id) {
+        dispatch(
+          userFormUpdateStart(userId, {
+            step: "stepHeating",
+            data: { id, label, value, unit },
+          })
+        );
+      }
+      return heatingUnit;
+    });
+  };
+
+  const deleteUnit = (id) => {
+    heatingUnitList.filter((heatingUnit) => {
+      dispatch(
+        userFormDeleteStart(userId, {
+          step: "stepHeating",
+          data: { id },
+        })
+      );
+      return heatingUnit.id !== id;
+    });
+  };
+
+  useEffect(() => {}, [heatingUnitList]);
 
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center h-2/3">
+    <div className="flex flex-col w-[80%] justify-center items-center h-2/3  animate-fadeIn">
       <p className="mb-16 text-[24px]">Does your company burn fuels?</p>
       {heatingUnitList.length === 0 && (
         <>
@@ -54,6 +87,7 @@ const StepHeating = () => {
       <div className="overflow-scroll flex flex-col w-full items-center">
         {heatingUnitList.map((unit, index) => (
           <FormUnitSelect
+            key={unit.id}
             id={unit.id}
             selectLabel="Material"
             unitLabel="Unit"
@@ -63,6 +97,7 @@ const StepHeating = () => {
             unitList={heatingUnits}
           />
         ))}
+        <div ref={messagesEndRef} />
       </div>
 
       <div className="my-8">

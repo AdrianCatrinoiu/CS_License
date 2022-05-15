@@ -7,14 +7,14 @@ import FormInput from "../../forms/FormInput";
 import Button from "../../forms/Button";
 
 const mapState = ({ user }) => ({
-  currentUser: user.currentUser,
+  user: user.user,
   userErr: user.userErr,
 });
 
 const SignUp = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { currentUser, userErr } = useSelector(mapState);
+  const { user, userErr } = useSelector(mapState);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -32,12 +32,12 @@ const SignUp = (props) => {
     setErrors([]);
   };
   useEffect(() => {
-    if (currentUser) {
+    if (user) {
       reset();
       navigate("/");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser]);
+  }, [user]);
   useEffect(() => {
     if (Array.isArray(userErr) && userErr.length > 0) {
       setErrors(userErr);

@@ -3,8 +3,8 @@ import "./styles.scss";
 import userIMG from "../../assets/user.png";
 
 const UserProfile = (props) => {
-  const { currentUser } = props;
-  const { first_name, last_name } = currentUser;
+  const { user } = props;
+  const { first_name, last_name } = user;
   return (
     <div className="userProfile">
       <ul>
