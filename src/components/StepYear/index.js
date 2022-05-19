@@ -20,12 +20,14 @@ const StepYear = ({ userId }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center h-2/3  animate-fadeIn">
-      <p className="mb-24 text-[24px]">Choose the year for your estimation:</p>
+    <div className="flex flex-col max-w-[600px] items-center h-2/3 animate-fadeIn bg-white pt-8 rounded-3xl min-h-[600px]">
+      <p className="mb-24 text-[24px] text-center">
+        Choose the year for your estimation:
+      </p>
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <Grid item xs={12} md={6} className="flex items-center justify-center">
           <YearPicker
-            className="w-1/3"
+            className="w-1/3 min-w-[400px] "
             date={moment(new Date(year.toString()))}
             isDateDisabled={() => false}
             minDate={minDate}

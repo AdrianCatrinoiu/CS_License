@@ -55,3 +55,11 @@ export const userFormDeleteSuccess = (deleteData) => ({
   type: userTypes.USER_FORM_DELETE_SUCCESS,
   payload: { deleteData },
 });
+export const userFormCalculateStart = (userId, formData) => ({
+  type: userTypes.USER_FORM_CALCULATE_START,
+  payload: { userId, formData },
+});
+export const userFormCalculateSuccess = (emissions) => ({
+  type: userTypes.USER_FORM_CALCULATE_SUCCESS,
+  payload: { emissions },
+});

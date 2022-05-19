@@ -20,6 +20,21 @@
     "unit": "tons"
   },
   {
+    "label": "Municipal solid waste",
+    "value": 0,
+    "unit": "tons"
+  },
+  {
+    "label": "Plastics",
+    "value": 0,
+    "unit": "tons"
+  },
+  {
+    "label": "Tires",
+    "value": 0,
+    "unit": "tons"
+  },
+  {
     "label": "Agricultural by-products",
     "value": 0,
     "unit": "tons"
@@ -40,17 +55,37 @@
     "unit": "m³"
   },
   {
-    "label": "Butane gas",
+    "label": "Asphalt and Road oil",
     "value": 0,
-    "unit": "m³"
+    "unit": "litres"
   },
   {
-    "label": "Ethane gas",
+    "label": "Butane",
     "value": 0,
-    "unit": "m³"
+    "unit": "litres"
+  },
+  {
+    "label": "Crude oil",
+    "value": 0,
+    "unit": "litres"
+  },
+  {
+    "label": "Ethane",
+    "value": 0,
+    "unit": "litres"
   },
   {
     "label": "Kerosene",
+    "value": 0,
+    "unit": "litres"
+  },
+  {
+    "label": "Lubricants",
+    "value": 0,
+    "unit": "litres"
+  },
+  {
+    "label": "Propane",
     "value": 0,
     "unit": "litres"
   },

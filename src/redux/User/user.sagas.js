@@ -5,6 +5,7 @@ import {
   signOutUserSuccess,
   userError,
   userFormAddSuccess,
+  userFormCalculateSuccess,
   userFormDeleteSuccess,
   userFormUpdateSuccess,
 } from "./user.actions";
@@ -78,7 +79,8 @@ export function* signUpUser({
       path: "/api/auth/register",
       data: { email, password, firstName, lastName, formData },
     });
-
+    console.log(data.data);
+    console.log(data.data.user);
     if (data.status === 201) {
       yield put(
         signInSuccessAction({
@@ -157,6 +159,26 @@ export function* userFormDeleteStart() {
   yield takeLatest(userTypes.USER_FORM_DELETE_START, userFormDelete);
 }
 
+export function* userFormCalculate({ payload: { userId, formData } }) {
+  try {
+    const token = localStorage.getItem("accessToken");
+    const data = yield call(axiosCall, {
+      method: "POST",
+      path: "/api/form/calculate",
+      token: token,
+      data: { userId, formData },
+    });
+    console.log(data.data);
+    if (data.status === 200) {
+      yield put(userFormCalculateSuccess(data.data));
+    }
+  } catch (e) {}
+}
+
+export function* userFormCalculateStart() {
+  yield takeLatest(userTypes.USER_FORM_CALCULATE_START, userFormCalculate);
+}
+
 export default function* userSagas() {
   yield all([
     call(onEmailSignInStart),
@@ -166,5 +188,6 @@ export default function* userSagas() {
     call(userFormAddStart),
     call(userFormUpdateStart),
     call(userFormDeleteStart),
+    call(userFormCalculateStart),
   ]);
 }

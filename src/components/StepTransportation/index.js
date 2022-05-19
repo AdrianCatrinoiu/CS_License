@@ -7,15 +7,17 @@ import FormTransportationSelect from "../../forms/FormTransportationSelect";
 import { useDispatch, useSelector } from "react-redux";
 import {
   userFormAddStart,
+  userFormCalculateStart,
   userFormDeleteStart,
   userFormUpdateStart,
 } from "../../redux/User/user.actions";
+import Button from "@mui/material/Button";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
 });
 
-const StepTransportation = ({ userId }) => {
+const StepTransportation = ({ userId, setFormStep }) => {
   const { userForm } = useSelector(mapState);
   const [transportationList, setTransportationList] = useState(
     userForm.stepTransportation
@@ -56,11 +58,10 @@ const StepTransportation = ({ userId }) => {
     }, 300);
   };
 
-  const updateUnit = (id, vehicleType, vehicles, fuel, fuelUnit, type) => {
+  const updateUnit = (id, label, vehicles, fuel, fuelUnit, type) => {
     transportationList.map((transportation) => {
       if (transportation.id === id) {
-        if (vehicleType === null) {
-          console.log("ici");
+        if (label === null) {
           dispatch(
             userFormUpdateStart(userId, {
               step: "stepTransportation",
@@ -75,11 +76,10 @@ const StepTransportation = ({ userId }) => {
             })
           );
         } else {
-          console.log("colo");
           dispatch(
             userFormUpdateStart(userId, {
               step: "stepTransportation",
-              data: { id, vehicleType, vehicles, fuel, fuelUnit, type },
+              data: { id, label, vehicles, fuel, fuelUnit, type },
             })
           );
         }
@@ -101,10 +101,24 @@ const StepTransportation = ({ userId }) => {
   };
 
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center h-2/3  animate-fadeIn">
-      <p className="mb-16 text-[24px]">
+    <div className="flex flex-col w-[80%] items-center h-2/3  animate-fadeIn  max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[640px]">
+      <p className="mb-12 text-[24px] text-center">
         Choose the transportation types that your company and employees use:
       </p>
+      <div className="absolute  flex justify-center items-center  top-1/2 right-[10%] rounded-full bg-gray-200  cursor-pointer  hover:bg-lime-500  duration-300">
+        <Button
+          variant="contained"
+          color="success"
+          className="h-[48px] w-[96px]"
+          onClick={() => {
+            setFormStep(6);
+            dispatch(userFormCalculateStart(userId, userForm));
+          }}
+        >
+          Calculate
+        </Button>
+      </div>
+
       {transportationList.length === 0 && (
         <>
           <div className="animate-bounce flex justify-center items-center">
@@ -112,7 +126,7 @@ const StepTransportation = ({ userId }) => {
           </div>
         </>
       )}
-      <div className="overflow-auto scroll-mb-[1200px] max-h-full flex flex-col w-full items-center">
+      <div className="overflow-auto scroll-mb-[1200px] flex flex-col w-full items-center min-h-[415px]">
         {transportationList.map((unit, index) => (
           <FormTransportationSelect
             key={unit.id}
@@ -124,6 +138,7 @@ const StepTransportation = ({ userId }) => {
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
             unitList={transportationTypes}
+            unit={unit}
           />
         ))}
         <div ref={messagesEndRef} />

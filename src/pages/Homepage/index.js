@@ -6,7 +6,7 @@ import "./styles.scss";
 const Homepage = () => {
   return (
     <HomePageLayout>
-      <section className="homepage">
+      <section className="h-full bg-white">
         <Directory />
       </section>
     </HomePageLayout>

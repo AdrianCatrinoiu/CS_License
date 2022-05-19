@@ -7,7 +7,7 @@ const FormPage = () => {
   return (
     <WithAuth>
       <MainLayout>
-        <div className=" h-[calc(100vh-7rem)] w-[calc(100%+2rem)]">
+        <div className=" h-[calc(100vh-7rem)] w-full ">
           <Form />
         </div>
       </MainLayout>

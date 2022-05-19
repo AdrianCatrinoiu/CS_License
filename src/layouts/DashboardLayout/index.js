@@ -33,7 +33,7 @@ const DashBoardLayout = (props) => {
         </div>
         <div className="content">{props.children}</div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

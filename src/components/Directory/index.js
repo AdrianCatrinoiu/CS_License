@@ -1,36 +1,31 @@
 import React from "react";
-import About from "../../assets/about.jpg";
-import Nortec from "../../assets/nortecnoir_logo.png";
-import { Link } from "react-router-dom";
+import Logo from "../../assets/logo.svg";
+import SignIn from "../SignIn";
+
 import "./styles.scss";
+
 const Directory = (props) => {
   return (
-    <div className="h-full">
-      <div className=" inline-block h-full w-full">
-        <div className="w-full float-left h-full flex -z-[1] flex-col pb-20 justify-center items-center bg-cover">
-          <img src={Nortec} alt="Nortec"></img>
-        </div>
-        <div
-          className="w-1/2 float-left h-full flex flex-col bg-center bg-no-repeat bg-cover justify-center items-center"
-          style={{ backgroundImage: `url(${About})` }}
-        >
-          <div className="w-48 h-16 shadow-2xl text-center justify-center rounded-md transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-800  duration-300 ">
-            <Link to="/about">
-              <p className="w-full h-full text-center py-2 justify-center">
-                About
+    <div className="h-full w-full bg-[url('./assets/background.svg')]  sm:bg-[length:1500px] md:bg-[length:1800px] lg:bg-[length:2000px] xl:bg-[length:2300px] 2xl:bg-[length:2500px] bg-[length:800px] bg-no-repeat bg-bottom">
+      <div className="flex flex-col items-center h-full pt-[10%]">
+        <div className="transition ease-in duration-500 w-[80%] max-w-[1000px] h-[40%] p-6 my-16  sm:divide-x-2 rounded-xl flex sm:flex-row flex-col items-center ">
+          <div className="p-6 sm:w-1/2 flex flex-col ">
+            <div className="flex flex-row items-center mb-10">
+              <img
+                className="w-32 h-32 mr-4"
+                src={Logo}
+                alt="Nortec Noir Logo"
+              />
+              <p className=" xl:text-[26px] 2xl:text-[32px] 3xl:text-[36px] font-MontserratBold">
+                Nortec noir
               </p>
-            </Link>
+            </div>
+            <p className=" xl:text-[18px] 2xl:text-[32px] text-gray-500 font-MontserratBold leading-tight">
+              Carbon footprint assessment for companies using GHG standards for
+              measurement
+            </p>
           </div>
-        </div>
-        <div
-          className="w-1/2 float-left h-full flex flex-col bg-center bg-no-repeat bg-cover justify-center items-center"
-          style={{ backgroundImage: `url(${About})` }}
-        >
-          <div className="w-48 h-16 shadow-lg rounded-md transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-800  duration-300 ">
-            <Link to="/form">
-              <p className="w-full h-full text-center py-2 center">Calculate</p>
-            </Link>
-          </div>
+          <SignIn />
         </div>
       </div>
     </div>

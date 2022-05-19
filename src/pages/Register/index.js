@@ -1,13 +1,13 @@
 import React from "react";
 import SignUp from "../../components/SignUp";
-import MainLayout from "../../layouts/MainLayout";
+import HomePageLayout from "../../layouts/HomePageLayout";
 import "./styles.scss";
 
 const Register = (props) => {
   return (
-    <MainLayout>
+    <HomePageLayout>
       <SignUp />
-    </MainLayout>
+    </HomePageLayout>
   );
 };
 

@@ -23,7 +23,10 @@ const InfoCard = ({ title, text, position, image }) => {
       {position === "left" ? (
         <>
           <div className="p-6 w-1/2">
-            <h1 className="text-4xl font-bold text-gray-600 mb-4">{title}</h1>
+            {title && (
+              <h1 className="text-4xl font-bold text-gray-600 mb-4">{title}</h1>
+            )}
+
             <p>{text}</p>
           </div>
           <div className="p-6 w-1/2">

@@ -13,10 +13,18 @@ const userFormInitialState = {
   stepTransportation: [],
 };
 
+const userEmissionsInitialState = {
+  electricity: { CO2: 0, CH4: 0, N2O: 0 },
+  heating: { CO2: 0, CH4: 0, N2O: 0 },
+  refrigerants: { CO2: 0, CH4: 0, N2O: 0 },
+  transportation: { CO2: 0, CH4: 0, N2O: 0 },
+};
+
 const INITIAL_STATE = {
   user: null,
   userErr: [],
   userForm: userFormInitialState,
+  emissions: userEmissionsInitialState,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -27,6 +35,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         user: action.payload,
         userErr: [],
         userForm: action.payload.formData,
+        emissions: action.payload.emissions,
       };
     case userTypes.SIGN_OUT_USER_SUCCESS:
       return {
@@ -60,13 +69,19 @@ const userReducer = (state = INITIAL_STATE, action) => {
       };
     case userTypes.USER_FORM_UPDATE_SUCCESS:
       if (Array.isArray(state.userForm[action.payload.updateData.step])) {
+        console.log("####################", action.payload.updateData.data);
+
         return {
           ...state,
           userForm: {
             ...state.userForm,
-            [action.payload.updateData.data]: [
-              ...state.userForm[action.payload.updateData.step],
-              action.payload.updateData.data,
+            [action.payload.updateData.step]: [
+              ...state.userForm[action.payload.updateData.step].map((unit) => {
+                if (unit.id === action.payload.updateData.data.id) {
+                  return action.payload.updateData.data;
+                }
+                return unit;
+              }),
             ],
           },
         };
@@ -108,6 +123,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
           [action.payload.deleteData.step]:
             action.payload.deleteData.step === "stepYear" ? 0 : "",
         },
+      };
+
+    case userTypes.USER_FORM_CALCULATE_SUCCESS:
+      return {
+        ...state,
+        emissions: action.payload.emissions,
       };
 
     default:

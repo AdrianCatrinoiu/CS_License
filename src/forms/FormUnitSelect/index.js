@@ -13,14 +13,36 @@ const FormUnitSelect = ({
   updateUnit,
   deleteUnit,
   unitList,
+  item,
 }) => {
-  const [unit, setUnit] = useState(unitList[0]);
+  const [unit, setUnit] = useState(item);
   const handleUnitChange = (event, value) => {
     updateUnit(id, value.label, value.value, value.unit);
-    setUnit(value);
+    setUnit({
+      id,
+      label: value.label,
+      value: value.value,
+      unit: value.unit,
+    });
   };
   const handleValueChange = (event, value) => {
-    updateUnit(id, unit.label, event.target.value, unit.unit);
+    if (event.target.value) {
+      updateUnit(id, unit.label, parseFloat(event.target.value), unit.unit);
+      setUnit({
+        id,
+        label: unit.label,
+        value: parseFloat(event.target.value),
+        unit: unit.unit,
+      });
+    } else {
+      updateUnit(id, unit.label, 0, unit.unit);
+      setUnit({
+        id,
+        label: unit.label,
+        value: 0,
+        unit: unit.unit,
+      });
+    }
   };
   return (
     <div className="flex flex-col w-[80%]  justify-center items-center my-8">
@@ -41,7 +63,7 @@ const FormUnitSelect = ({
               disableClearable
               id="combo-box-demo"
               options={unitList}
-              value={unit}
+              value={unit.label}
               onChange={handleUnitChange}
               sx={{
                 "& .css-1in441m": {
@@ -65,6 +87,7 @@ const FormUnitSelect = ({
               width: "100%",
               fontSize: 24,
             }}
+            value={unit.value}
             InputLabelProps={{ style: { fontSize: 16 } }}
             InputProps={{
               style: { fontSize: 16 },
@@ -81,7 +104,7 @@ const FormUnitSelect = ({
                 </InputAdornment>
               ),
             }}
-            onBlur={handleValueChange}
+            onChange={handleValueChange}
           />
         </div>
       </div>

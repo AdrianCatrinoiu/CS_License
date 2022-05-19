@@ -74,8 +74,10 @@ const StepHeating = ({ userId }) => {
   useEffect(() => {}, [heatingUnitList]);
 
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center h-2/3  animate-fadeIn">
-      <p className="mb-16 text-[24px]">Does your company burn fuels?</p>
+    <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[600px]">
+      <p className="mb-16 text-[24px] text-center">
+        Does your company burn fuels?
+      </p>
       {heatingUnitList.length === 0 && (
         <>
           <p className="mb-16 text-[24px]">If so, add them below</p>
@@ -95,6 +97,7 @@ const StepHeating = ({ userId }) => {
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
             unitList={heatingUnits}
+            item={unit}
           />
         ))}
         <div ref={messagesEndRef} />

@@ -3,13 +3,7 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
 const HomePageLayout = (props) => {
-  return (
-    <div className="layoutHeight">
-      <Navbar {...props} />
-      {props.children}
-      <Footer />
-    </div>
-  );
+  return <div className="layoutHeight">{props.children}</div>;
 };
 
 export default HomePageLayout;

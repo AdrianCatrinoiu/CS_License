@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import FormUnitSelect from "../../forms/FormUnitSelect";
 import refrigerantsUnits from "../../utils/constants/refrigerantsUnits.json";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +9,7 @@ import {
   userFormDeleteStart,
   userFormUpdateStart,
 } from "../../redux/User/user.actions";
+import FormRefrigerantSelect from "../../forms/FormRefrigerantSelect";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
@@ -17,7 +17,7 @@ const mapState = ({ user }) => ({
 
 const StepRefrigerants = ({ userId }) => {
   const { userForm } = useSelector(mapState);
-  const [refrigerantsUnitList, setRefrigerantsUnitList] = useState(
+  const [refrigerantsList, setRefrigerantsList] = useState(
     userForm.stepRefrigerants
   );
   const dispatch = useDispatch();
@@ -32,7 +32,8 @@ const StepRefrigerants = ({ userId }) => {
   };
 
   useEffect(() => {
-    setRefrigerantsUnitList(userForm.stepRefrigerants);
+    console.log("userForm.stepRefrigerants", userForm.stepRefrigerants);
+    setRefrigerantsList(userForm.stepRefrigerants);
   }, [userForm.stepRefrigerants]);
 
   const addUnit = () => {
@@ -42,8 +43,9 @@ const StepRefrigerants = ({ userId }) => {
         data: {
           id: new Date().getTime(),
           label: "",
-          value: 0,
-          unit: "",
+          kgBegin: 0,
+          kgEnd: 0,
+          formula: "",
         },
       })
     );
@@ -52,26 +54,22 @@ const StepRefrigerants = ({ userId }) => {
     }, 300);
   };
 
-  const updateUnit = (id, label, value, unit) => {
+  const updateUnit = (id, label, kgBegin, kgEnd, formula) => {
+    console.log(id, label, kgBegin, kgEnd, formula);
     dispatch(
       userFormUpdateStart(userId, {
         step: "stepRefrigerants",
-        data: {
-          id,
-          label,
-          value,
-          unit,
-        },
+        data: { id, label, kgBegin, kgEnd, formula },
       })
     );
   };
   const deleteUnit = (id) => {
-    setRefrigerantsUnitList(
-      refrigerantsUnitList.filter((refrigerantUnit) => {
+    setRefrigerantsList(
+      refrigerantsList.filter((refrigerantUnit) => {
         return refrigerantUnit.id !== id;
       })
     );
-    refrigerantsUnitList.filter((refrigerantUnit) => {
+    refrigerantsList.filter((refrigerantUnit) => {
       dispatch(
         userFormDeleteStart(userId, {
           step: "stepRefrigerants",
@@ -81,21 +79,24 @@ const StepRefrigerants = ({ userId }) => {
       return refrigerantUnit.id !== id;
     });
   };
-
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center h-2/3  animate-fadeIn">
-      <p className="mb-16 text-[24px]">Does your company use refrigerants?</p>
-      {refrigerantsUnitList.length === 0 && (
-        <>
-          <p className="mb-16 text-[24px]">If so, add them below</p>
-          <div className="animate-bounce flex justify-center items-center">
-            <NavigationIcon sx={{ transform: "rotate(180deg)" }} />
-          </div>
-        </>
+    <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[600px]">
+      <p className="mb-16 text-[24px] text-center">
+        Does your company use refrigerants?
+      </p>
+      <p className="mb-12 text-[24px] text-center">
+        Input the amount of refrigerant in all storage/devices at the begining
+        and at the end of the year accordingly.
+      </p>
+
+      {refrigerantsList.length === 0 && (
+        <div className="animate-bounce flex justify-center items-center">
+          <NavigationIcon sx={{ transform: "rotate(180deg)" }} />
+        </div>
       )}
-      <div className="overflow-scroll flex flex-col w-full items-center">
-        {refrigerantsUnitList.map((unit, index) => (
-          <FormUnitSelect
+      <div className="overflow-scroll flex flex-col w-full items-center mb-1">
+        {refrigerantsList.map((unit, index) => (
+          <FormRefrigerantSelect
             key={unit.id}
             id={unit.id}
             selectLabel="Refrigerant"
@@ -104,6 +105,7 @@ const StepRefrigerants = ({ userId }) => {
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
             unitList={refrigerantsUnits}
+            refrigerant={unit}
           />
         ))}
         <div ref={messagesEndRef} />

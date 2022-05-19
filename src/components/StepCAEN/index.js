@@ -27,15 +27,15 @@ const StepCAEN = ({ userId }) => {
     );
   };
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center h-2/3  animate-fadeIn">
-      <p className="mb-24 text-[24px]">
+    <div className="flex flex-col max-w-[600px] items-center h-2/3 animate-fadeIn pb-24 pt-8 bg-white rounded-3xl min-h-[600px]">
+      <p className="mb-12 text-[24px] text-center">
         Choose your company's field of activity:
       </p>
       <BounceDownFadeOut text="Scroll down for more options" />
 
       <FormControl
         sx={{
-          overflow: "scroll",
+          overflow: "auto",
           paddingLeft: "20%",
           paddingRight: "20%",
           width: "100%",

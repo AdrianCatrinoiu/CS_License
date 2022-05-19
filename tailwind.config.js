@@ -1,7 +1,19 @@
+const plugin = require("tailwindcss/plugin");
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
     extend: {
+      fontFamily: {
+        MontserratMedium: ["MontserratMedium", ...defaultTheme.fontFamily.sans],
+        MontserratRegular: [
+          "MontserratRegular",
+          ...defaultTheme.fontFamily.sans,
+        ],
+        MontserratBold: ["MontserratBold", ...defaultTheme.fontFamily.sans],
+        MontserratLight: ["MontserratLight", ...defaultTheme.fontFamily.sans],
+      },
       // that is animation class
       animation: {
         bounce_fade_out_5s: "bounce_fadeOut_5 5s ease-in-out",
@@ -43,5 +55,38 @@ module.exports = {
       }),
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addBase }) {
+      addBase({
+        "@font-face": {
+          fontFamily: "MontserratLight",
+          src: "url(./assets/fonts/Montserrat/static/Montserrat-Light.ttf)",
+        },
+      });
+    }),
+    plugin(function ({ addBase }) {
+      addBase({
+        "@font-face": {
+          fontFamily: "MontserratRegular",
+          src: "url(./assets/fonts/Montserrat/static/Montserrat-Light.ttf) format('tff')",
+        },
+      });
+    }),
+    plugin(function ({ addBase }) {
+      addBase({
+        "@font-face": {
+          fontFamily: "MontserratBold",
+          src: "url(./assets/fonts/Montserrat/static/Montserrat-Bold.ttf)",
+        },
+      });
+    }),
+    plugin(function ({ addBase }) {
+      addBase({
+        "@font-face": {
+          fontFamily: "MontserratMedium",
+          src: "url(./assets/fonts/Montserrat/static/Montserrat-Medium.ttf)",
+        },
+      });
+    }),
+  ],
 };

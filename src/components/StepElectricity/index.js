@@ -32,8 +32,8 @@ const StepElectricity = ({ userId }) => {
       userFormUpdateStart(userId, {
         step: "stepElectricity",
         data: {
-          renewable: renewable,
-          nonRenewable: nonRenewable,
+          renewable: parseFloat(renewable),
+          nonRenewable: parseFloat(nonRenewable),
           country: country,
         },
       })
@@ -42,17 +42,18 @@ const StepElectricity = ({ userId }) => {
   }, [renewable, nonRenewable, country]);
 
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center h-2/3  animate-fadeIn">
-      <p className="mb-16 text-[24px]">
-        Choose how much heating your company used during the selected year:
+    <div className="flex flex-col  items-center h-2/3 animate-fadeIn max-w-[600px] pb-24 pt-8 bg-white rounded-3xl min-h-[600px]">
+      <p className="mb-16 text-[24px] text-center">
+        Choose how much electricity your company used during the selected year:
       </p>
       <TextField
-        label="Non-renewable electricity used"
+        label="Non-renewable"
         id="outlined-start-adornment"
         sx={{
           m: 3,
           width: "20%",
           fontSize: 24,
+          minWidth: "200px",
         }}
         defaultValue={nonRenewable}
         InputLabelProps={{ style: { fontSize: 16 } }}
@@ -63,12 +64,13 @@ const StepElectricity = ({ userId }) => {
         onBlur={handleNonRenewableChange}
       />
       <TextField
-        label="Renewable electricity used"
+        label="Renewable"
         id="outlined-start-adornment"
         sx={{
           m: 3,
           width: "20%",
           fontSize: 24,
+          minWidth: "200px",
         }}
         defaultValue={renewable}
         InputLabelProps={{ style: { fontSize: 16 } }}
@@ -78,7 +80,7 @@ const StepElectricity = ({ userId }) => {
         }}
         onBlur={handleRenewableChange}
       />
-      <div className="w-1/5 ">
+      <div className="w-1/5 min-w-[200px]">
         <CountryDropdown
           className="w-full my-[24px] h-[56px] text-24 border-[1px] border-black border-opacity-[0.23] rounded-[4px]"
           value={country}

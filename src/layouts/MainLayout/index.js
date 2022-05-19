@@ -6,8 +6,8 @@ const MainLayout = (props) => {
   return (
     <div>
       <Navbar {...props} />
-      <div className="main">{props.children}</div>
-      <Footer />
+      <div className="h-full">{props.children}</div>
+      {/* <Footer /> */}
     </div>
   );
 };
