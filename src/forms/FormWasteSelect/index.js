@@ -7,7 +7,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 const FormWasteSelect = ({
   id,
-  label,
+  topLabel,
   selectLabel,
   unitLabel,
   updateUnit,
@@ -15,7 +15,10 @@ const FormWasteSelect = ({
   unitList,
   item,
 }) => {
-  const [unit, setUnit] = useState(item);
+  const [label, setLabel] = useState(item.label);
+  const [value, setValue] = useState(item.value);
+  const [type, setType] = useState(item.type);
+
   const disposeType = [
     {
       label: "Recycled",
@@ -30,48 +33,34 @@ const FormWasteSelect = ({
       label: "Composted",
     },
   ];
+
+  const handleUpdate = () => {
+    updateUnit(id, label, parseFloat(value), type);
+  };
+
   const handleMaterialChange = (event, value) => {
-    updateUnit(id, value.label, value.type, value.value);
-    setUnit({
-      id,
-      label: value.label,
-      type: value.type,
-      value: value.value,
-    });
+    setLabel(value.label);
+    setValue(0);
+    setType(value.type);
   };
   const handleTypeChange = (event, value) => {
-    updateUnit(id, unit.label, value.label, unit.value);
-    setUnit({
-      id,
-      label: unit.label,
-      type: value.label,
-      value: unit.value,
-    });
+    setType(value.label);
   };
   const handleValueChange = (event, value) => {
     if (event.target.value) {
-      updateUnit(id, unit.label, unit.type, event.target.value);
-      setUnit({
-        id,
-        label: unit.label,
-        type: unit.type,
-        value: event.target.value,
-      });
+      setValue(event.target.value);
     } else {
-      updateUnit(id, unit.label, unit.type, "");
-      setUnit({
-        id,
-        label: unit.label,
-        type: unit.type,
-        value: "",
-      });
+      setValue(0);
     }
   };
   return (
-    <div className="flex flex-col w-[80%]  justify-center items-center my-8">
+    <div
+      onBlur={handleUpdate}
+      className="flex flex-col w-[80%]  justify-center items-center my-8"
+    >
       <div className="w-[80%] min-w-[200px] px-[24px] border-[1px] border-black border-opacity-[0.23] rounded-[4px]">
         <div className="w-full flex flex-row items-center justify-between">
-          <p className="my-6 text-[18px] w-2/3">{label}</p>
+          <p className="my-6 text-[18px] w-2/3">{topLabel}</p>
           <IconButton
             className="w-16 h-16 self-center"
             onClick={() => deleteUnit(id)}
@@ -86,7 +75,7 @@ const FormWasteSelect = ({
               disableClearable
               id="combo-box-demo"
               options={unitList}
-              value={unit.label}
+              value={label}
               onChange={handleMaterialChange}
               sx={{
                 "& .css-1in441m": {
@@ -108,7 +97,7 @@ const FormWasteSelect = ({
               disableClearable
               id="combo-box-demo"
               options={disposeType}
-              value={unit.type}
+              value={type}
               onChange={handleTypeChange}
               sx={{
                 "& .css-1in441m": {
@@ -126,13 +115,12 @@ const FormWasteSelect = ({
           </div>
           <TextField
             label={unitLabel}
-            id="outlined-start-adornment"
             sx={{
               m: 3,
               width: "100%",
               fontSize: 24,
             }}
-            value={unit.value}
+            value={value}
             InputLabelProps={{ style: { fontSize: 16 } }}
             InputProps={{
               style: { fontSize: 16 },

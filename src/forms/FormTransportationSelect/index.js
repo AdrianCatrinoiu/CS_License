@@ -7,7 +7,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 const FormTransportationSelect = ({
   id,
-  label,
+  topLabel,
   selectLabel,
   vehiclesLabel,
   fuelLabel,
@@ -16,122 +16,48 @@ const FormTransportationSelect = ({
   unitList,
   unit,
 }) => {
-  const [vehicleType, setVehicleType] = useState(unit);
+  const [label, setLabel] = useState(unit.label);
+  const [vehicles, setVehicles] = useState(unit.vehicles);
+  const [fuel, setFuel] = useState(unit.fuel);
+  const [fuelUnit, setFuelUnit] = useState(unit.fuelUnit);
+  const [type, setType] = useState(unit.type);
+
+  const handleUpdate = () => {
+    updateUnit(id, label, parseInt(vehicles), parseFloat(fuel), fuelUnit, type);
+  };
 
   const handleVehicleTypeChange = (event, value) => {
-    if (value) {
-      updateUnit(
-        id,
-        value.label,
-        value.vehicles,
-        value.fuel,
-        value.fuelUnit,
-        value.type
-      );
-      setVehicleType({
-        id,
-        label: value.label,
-        vehicles: value.vehicles,
-        fuel: value.fuel,
-        fuelUnit: value.fuelUnit,
-        type: value.type,
-      });
-    } else {
-      updateUnit(id, "", 0, 0, "", "");
-      setVehicleType({
-        id,
-        label: "",
-        vehicles: 0,
-        fuel: 0,
-        fuelUnit: "",
-        type: "",
-      });
-    }
+    setLabel(value.label);
+    setVehicles(0);
+    setFuel(0);
+    setFuelUnit(value.fuelUnit);
+    setType(value.type);
   };
 
   const handleVehiclesChange = (event, value) => {
     if (event.target.value) {
-      updateUnit(
-        id,
-        vehicleType.label,
-        parseFloat(event.target.value),
-        vehicleType.fuel,
-        vehicleType.fuelUnit,
-        vehicleType.type
-      );
-      setVehicleType({
-        id,
-        label: vehicleType.label,
-        vehicles: parseFloat(event.target.value),
-        fuel: vehicleType.fuel,
-        fuelUnit: vehicleType.fuelUnit,
-        type: vehicleType.type,
-      });
+      setVehicles(event.target.value);
     } else {
-      updateUnit(
-        id,
-        vehicleType.label,
-        0,
-        vehicleType.fuel,
-        vehicleType.fuelUnit,
-        vehicleType.type
-      );
-      setVehicleType({
-        id,
-        label: vehicleType.label,
-        vehicles: 0,
-        fuel: vehicleType.fuel,
-        fuelUnit: vehicleType.fuelUnit,
-        type: vehicleType.type,
-      });
+      setVehicles(0);
     }
   };
 
   const handleFuelChange = (event, value) => {
-    console.log(value);
-    console.log(event.target.value);
     if (event.target.value) {
-      updateUnit(
-        id,
-        vehicleType.label,
-        vehicleType.vehicles,
-        parseFloat(event.target.value),
-        vehicleType.fuelUnit,
-        vehicleType.type
-      );
-      setVehicleType({
-        id,
-        label: vehicleType.label,
-        vehicles: vehicleType.vehicles,
-        fuel: parseFloat(event.target.value),
-        fuelUnit: vehicleType.fuelUnit,
-        type: vehicleType.type,
-      });
+      setFuel(event.target.value);
     } else {
-      updateUnit(
-        id,
-        vehicleType.label,
-        vehicleType.vehicles,
-        0,
-        vehicleType.fuelUnit,
-        vehicleType.type
-      );
-      setVehicleType({
-        id,
-        label: vehicleType.label,
-        vehicles: vehicleType.vehicles,
-        fuel: 0,
-        fuelUnit: vehicleType.fuelUnit,
-        type: vehicleType.type,
-      });
+      setFuel(0);
     }
   };
 
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center mb-8">
+    <div
+      onBlur={handleUpdate}
+      className="flex flex-col w-[80%] justify-center items-center mb-8"
+    >
       <div className="w-[80%] h-[375px] min-w-[200px] px-[24px] border-[1px] border-black border-opacity-[0.23] rounded-[4px]">
         <div className="w-full flex flex-row items-center justify-between">
-          <p className="my-6 text-[18px] w-2/3">{label}</p>
+          <p className="my-6 text-[18px] w-2/3">{topLabel}</p>
           <IconButton
             className="w-16 h-16 self-center"
             onClick={() => deleteUnit(id)}
@@ -145,7 +71,7 @@ const FormTransportationSelect = ({
               disablePortal
               disableClearable
               options={unitList}
-              value={vehicleType.label}
+              value={label}
               groupBy={(option) => option.type}
               onChange={handleVehicleTypeChange}
               sx={{
@@ -170,7 +96,7 @@ const FormTransportationSelect = ({
               marginBottom: "24px",
               fontSize: 24,
             }}
-            value={vehicleType.vehicles}
+            value={vehicles}
             InputLabelProps={{ style: { fontSize: 16 } }}
             InputProps={{
               style: { fontSize: 16 },
@@ -195,7 +121,7 @@ const FormTransportationSelect = ({
               width: "100%",
               fontSize: 24,
             }}
-            value={vehicleType.fuel}
+            value={fuel}
             InputLabelProps={{ style: { fontSize: 16 } }}
             InputProps={{
               style: { fontSize: 16 },
@@ -208,7 +134,7 @@ const FormTransportationSelect = ({
                   }}
                   position="start"
                 >
-                  {vehicleType.fuelUnit}
+                  {fuelUnit}
                 </InputAdornment>
               ),
             }}

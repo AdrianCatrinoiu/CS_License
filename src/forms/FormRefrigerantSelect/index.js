@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -7,84 +7,52 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 const FormRefrigerantSelect = ({
   id,
-  label,
+  topLabel,
   selectLabel,
   updateUnit,
   deleteUnit,
   unitList,
   refrigerant,
 }) => {
-  const [unit, setUnit] = useState(refrigerant);
+  const [label, setLabel] = useState(refrigerant.label);
+  const [kgBegin, setKgBegin] = useState(refrigerant.kgBegin);
+  const [kgEnd, setKgEnd] = useState(refrigerant.kgEnd);
+  const [formula, setFormula] = useState(refrigerant.formula);
 
-  useEffect(() => {
-    setUnit(refrigerant);
-  }, [refrigerant]);
+  const handleUpdate = () => {
+    updateUnit(id, label, parseFloat(kgBegin), parseFloat(kgEnd), formula);
+  };
 
   const handleUnitChange = (event, value) => {
-    updateUnit(id, value.label, value.kgBegin, value.kgEnd, value.formula);
-    setUnit({
-      id,
-      label: value.label,
-      kgBegin: value.kgBegin,
-      kgEnd: value.kgEnd,
-      formula: value.formula,
-    });
+    setLabel(value.label);
+    setKgBegin(0);
+    setKgEnd(0);
+    setFormula(value.formula);
   };
   const handleKgBeginChange = (event, value) => {
     if (event.target.value) {
-      updateUnit(id, unit.label, event.target.value, unit.kgEnd, unit.formula);
-      setUnit({
-        id,
-        label: unit.label,
-        kgBegin: event.target.value,
-        kgEnd: unit.kgEnd,
-        formula: unit.formula,
-      });
+      setKgBegin(event.target.value);
     } else {
-      updateUnit(id, unit.label, 0, unit.kgEnd, unit.formula);
-      setUnit({
-        id,
-        label: unit.label,
-        kgBegin: 0,
-        kgEnd: unit.kgEnd,
-        formula: unit.formula,
-      });
+      setKgBegin(0);
     }
   };
 
   const handleKgEndChange = (event, value) => {
     if (event.target.value) {
-      updateUnit(
-        id,
-        unit.label,
-        unit.kgBegin,
-        event.target.value,
-        unit.formula
-      );
-      setUnit({
-        id,
-        label: unit.label,
-        kgBegin: unit.kgBegin,
-        kgEnd: event.target.value,
-        formula: unit.formula,
-      });
+      setKgEnd(event.target.value);
     } else {
-      updateUnit(id, unit.label, unit.kgBegin, 0, unit.formula);
-      setUnit({
-        id,
-        label: unit.label,
-        kgBegin: unit.kgBegin,
-        kgEnd: 0,
-        formula: unit.formula,
-      });
+      setKgEnd(0);
     }
   };
 
   return (
-    <div className="flex flex-col w-full  justify-center items-center mb-8">
+    <div
+      onBlur={handleUpdate}
+      className="flex flex-col w-full  justify-center items-center mb-8"
+    >
       <div className="w-[80%] min-w-[200px] px-[24px] border-[1px] border-black border-opacity-[0.23] rounded-[4px]">
         <div className="w-full flex flex-row items-center justify-between">
-          <p className="my-6 text-[18px] w-2/3">{label}</p>
+          <p className="my-6 text-[18px] w-2/3">{topLabel}</p>
           <IconButton
             className="w-16 h-16 self-center"
             onClick={() => deleteUnit(id)}
@@ -100,7 +68,7 @@ const FormRefrigerantSelect = ({
                 disablePortal
                 disableClearable
                 options={unitList}
-                value={unit.label}
+                value={label}
                 onChange={handleUnitChange}
                 sx={{
                   "& .MuiOutlinedInput-root": {
@@ -127,7 +95,7 @@ const FormRefrigerantSelect = ({
             <div className="w-full min-w-[200px] mb-[24px] mt-[20px] ">
               <div className="w-full h-[56px] text-24 border-[1px] border-black border-opacity-[0.23] rounded-[4px] flex flex-row items-center justify-begin">
                 <p className="pl-[14px] opacity-[0.6] text-2xl">
-                  Formula: {unit.formula}
+                  Formula: {formula}
                 </p>
               </div>
             </div>
@@ -140,8 +108,7 @@ const FormRefrigerantSelect = ({
                 width: "100%",
                 fontSize: 24,
               }}
-              type="text"
-              value={unit.kgBegin}
+              value={kgBegin}
               InputLabelProps={{ style: { fontSize: 16 } }}
               InputProps={{
                 style: { fontSize: 16 },
@@ -169,7 +136,7 @@ const FormRefrigerantSelect = ({
                 marginTop: "20px",
                 marginBottom: "24px",
               }}
-              value={unit.kgEnd}
+              value={kgEnd}
               InputLabelProps={{ style: { fontSize: 16 } }}
               InputProps={{
                 style: { fontSize: 16 },

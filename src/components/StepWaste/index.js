@@ -46,14 +46,14 @@ const StepWaste = ({ userId }) => {
     }, 300);
   };
 
-  const updateUnit = (id, label, type, value) => {
+  const updateUnit = (id, label, value, type) => {
     wasteUnitList.map((wasteUnit) => {
       if (wasteUnit.id === id) {
         dispatch(
           userFormUpdateStart({
             step: "stepWaste",
             formId: userForm.formId,
-            data: { id, label, type, value: parseFloat(value) },
+            data: { id, label, value: parseFloat(value), type },
           })
         );
       }
@@ -98,7 +98,7 @@ const StepWaste = ({ userId }) => {
             id={unit.id}
             selectLabel="Material"
             unitLabel="Amount"
-            label="Select a waste material from the list below:"
+            topLabel="Select a waste material from the list below:"
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
             unitList={wasteUnits}

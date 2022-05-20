@@ -16,19 +16,19 @@ const userFormInitialState = {
   stepTransportation: [],
 };
 
-// const userEmissionsInitialState = {
-//   electricity: { CO2: 0, CH4: 0, N2O: 0 },
-//   heating: { CO2: 0, CH4: 0, N2O: 0 },
-//   waste: { CO2: 0, CH4: 0, N2O: 0 },
-//   refrigerants: { CO2: 0, CH4: 0, N2O: 0 },
-//   transportation: { CO2: 0, CH4: 0, N2O: 0 },
-// };
+const userEmissionsInitialState = {
+  electricity: { CO2: 0 },
+  heating: { CO2: 0, CH4: 0, N2O: 0 },
+  waste: { CO2: 0, CH4: 0, N2O: 0 },
+  refrigerants: { CO2: 0 },
+  transportation: { CO2: 0, CH4: 0, N2O: 0 },
+};
 
 const INITIAL_STATE = {
   user: null,
   userErr: [],
   userForm: userFormInitialState,
-  // emissions: userEmissionsInitialState,
+  emissions: userEmissionsInitialState,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {

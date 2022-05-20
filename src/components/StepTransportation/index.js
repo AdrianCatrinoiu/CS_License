@@ -145,7 +145,7 @@ const StepTransportation = ({ setFormStep }) => {
             selectLabel="Vehicle Type"
             vehiclesLabel="Number of vehicles"
             fuelLabel="Fuel used per year"
-            label="Select a vehicle from the list below:"
+            topLabel="Select a vehicle from the list below:"
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
             unitList={transportationTypes}

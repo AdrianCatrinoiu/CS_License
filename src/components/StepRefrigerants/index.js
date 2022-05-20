@@ -103,7 +103,7 @@ const StepRefrigerants = ({ userId }) => {
             id={unit.id}
             selectLabel="Refrigerant"
             unitLabel="Amount"
-            label="Select a refrigerant from the list below:"
+            topLabel="Select a refrigerant from the list below:"
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
             unitList={refrigerantsUnits}

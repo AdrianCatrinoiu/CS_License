@@ -5,50 +5,44 @@ import Autocomplete from "@mui/material/Autocomplete";
 import IconButton from "@mui/material/IconButton";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const FormUnitSelect = ({
+const FormHeatingSelect = ({
   id,
-  label,
+  topLabel,
   selectLabel,
   unitLabel,
   updateUnit,
   deleteUnit,
   unitList,
-  item,
+  heatingUnit,
 }) => {
-  const [unit, setUnit] = useState(item);
+  const [label, setLabel] = useState(heatingUnit.label);
+  const [value, setValue] = useState(heatingUnit.value);
+  const [unit, setUnit] = useState(heatingUnit.unit);
+
+  const handleUpdate = () => {
+    updateUnit(id, label, parseFloat(value), unit);
+  };
+
   const handleUnitChange = (event, value) => {
-    updateUnit(id, value.label, value.value, value.unit);
-    setUnit({
-      id,
-      label: value.label,
-      value: value.value,
-      unit: value.unit,
-    });
+    setLabel(value.label);
+    setValue(0);
+    setUnit(value.unit);
   };
   const handleValueChange = (event, value) => {
     if (event.target.value) {
-      updateUnit(id, unit.label, parseFloat(event.target.value), unit.unit);
-      setUnit({
-        id,
-        label: unit.label,
-        value: parseFloat(event.target.value),
-        unit: unit.unit,
-      });
+      setValue(event.target.value);
     } else {
-      updateUnit(id, unit.label, 0, unit.unit);
-      setUnit({
-        id,
-        label: unit.label,
-        value: 0,
-        unit: unit.unit,
-      });
+      setValue(0);
     }
   };
   return (
-    <div className="flex flex-col w-[80%]  justify-center items-center my-8">
+    <div
+      onBlur={handleUpdate}
+      className="flex flex-col w-[80%]  justify-center items-center my-8"
+    >
       <div className="w-[80%] min-w-[200px] px-[24px] border-[1px] border-black border-opacity-[0.23] rounded-[4px]">
         <div className="w-full flex flex-row items-center justify-between">
-          <p className="my-6 text-[18px] w-2/3">{label}</p>
+          <p className="my-6 text-[18px] w-2/3">{topLabel}</p>
           <IconButton
             className="w-16 h-16 self-center"
             onClick={() => deleteUnit(id)}
@@ -63,7 +57,7 @@ const FormUnitSelect = ({
               disableClearable
               id="combo-box-demo"
               options={unitList}
-              value={unit.label}
+              value={label}
               onChange={handleUnitChange}
               sx={{
                 "& .css-1in441m": {
@@ -87,7 +81,8 @@ const FormUnitSelect = ({
               width: "100%",
               fontSize: 24,
             }}
-            value={unit.value}
+            type="number"
+            value={value}
             InputLabelProps={{ style: { fontSize: 16 } }}
             InputProps={{
               style: { fontSize: 16 },
@@ -100,7 +95,7 @@ const FormUnitSelect = ({
                   }}
                   position="start"
                 >
-                  {unit.unit}
+                  {unit}
                 </InputAdornment>
               ),
             }}
@@ -112,4 +107,4 @@ const FormUnitSelect = ({
   );
 };
 
-export default FormUnitSelect;
+export default FormHeatingSelect;

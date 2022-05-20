@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Chart } from "react-google-charts";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Icon from "@mui/material/Icon";
 import InfoCard from "../InfoCard";
 
 const mapState = ({ user }) => ({

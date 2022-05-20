@@ -185,7 +185,7 @@ export function* userFormCalculate({ payload: { formData } }) {
       method: "POST",
       path: "/form/calculate",
       token: token,
-      data: { formData },
+      data: { data: formData },
     });
     console.log(data.data);
     if (data.status === 200) {
