@@ -79,17 +79,18 @@ const Summary = ({ userId }) => {
     ],
   ];
   const totalElectricity = parseFloat(
-    userForm.stepElectricity.nonRenewable + userForm.stepElectricity.renewable
+    userForm.stepElectricity.nonRenewableAmount +
+      userForm.stepElectricity.renewableAmount
   );
   const electricityPieData = [
     ["Task", "Hours per Day"],
     [
       "Renewable",
-      (userForm.stepElectricity.renewable / totalElectricity) * 100,
+      (userForm.stepElectricity.renewableAmount / totalElectricity) * 100,
     ],
     [
       "Nonrenewable",
-      (userForm.stepElectricity.nonRenewable / totalElectricity) * 100,
+      (userForm.stepElectricity.nonRenewableAmount / totalElectricity) * 100,
     ],
   ];
 
@@ -183,9 +184,9 @@ const Summary = ({ userId }) => {
             How to try and reduce your emissions:
           </p>
           <InfoCard
-            title={"Choose renewable energy"}
+            title={"Choose renewableAmount energy"}
             text={
-              "With more and more green energy providers on the market, making the switch to renewable energy usage is much easier today than it used to be. Check with your energy provider first if they have any renewable energy plans available. If they don’t, then consider switching to a provider that can guarantee that your energy consumption comes from renewable sources."
+              "With more and more green energy providers on the market, making the switch to renewableAmount energy usage is much easier today than it used to be. Check with your energy provider first if they have any renewableAmount energy plans available. If they don’t, then consider switching to a provider that can guarantee that your energy consumption comes from renewableAmount sources."
             }
             position="left"
           />

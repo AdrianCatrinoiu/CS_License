@@ -31,33 +31,33 @@ export const userError = (err) => ({
   type: userTypes.USER_ERROR,
   payload: err,
 });
-export const userFormAddStart = (userId, addData) => ({
+export const userFormAddStart = (addData) => ({
   type: userTypes.USER_FORM_ADD_START,
-  payload: { userId, addData },
-});
-export const userFormAddSuccess = (addData) => ({
-  type: userTypes.USER_FORM_ADD_SUCCESS,
   payload: { addData },
 });
-export const userFormUpdateStart = (userId, updateData) => ({
-  type: userTypes.USER_FORM_UPDATE_START,
-  payload: { userId, updateData },
+export const userFormAddSuccess = (formId, addData) => ({
+  type: userTypes.USER_FORM_ADD_SUCCESS,
+  payload: { formId, addData },
 });
-export const userFormUpdateSuccess = (updateData) => ({
-  type: userTypes.USER_FORM_UPDATE_SUCCESS,
+export const userFormUpdateStart = (updateData) => ({
+  type: userTypes.USER_FORM_UPDATE_START,
   payload: { updateData },
 });
-export const userFormDeleteStart = (userId, deleteData) => ({
-  type: userTypes.USER_FORM_DELETE_START,
-  payload: { userId, deleteData },
+export const userFormUpdateSuccess = (formId, updateData) => ({
+  type: userTypes.USER_FORM_UPDATE_SUCCESS,
+  payload: { formId, updateData },
 });
-export const userFormDeleteSuccess = (deleteData) => ({
-  type: userTypes.USER_FORM_DELETE_SUCCESS,
+export const userFormDeleteStart = (deleteData) => ({
+  type: userTypes.USER_FORM_DELETE_START,
   payload: { deleteData },
 });
-export const userFormCalculateStart = (userId, formData) => ({
+export const userFormDeleteSuccess = (formId, deleteData) => ({
+  type: userTypes.USER_FORM_DELETE_SUCCESS,
+  payload: { formId, deleteData },
+});
+export const userFormCalculateStart = (formData) => ({
   type: userTypes.USER_FORM_CALCULATE_START,
-  payload: { userId, formData },
+  payload: { formData },
 });
 export const userFormCalculateSuccess = (emissions) => ({
   type: userTypes.USER_FORM_CALCULATE_SUCCESS,

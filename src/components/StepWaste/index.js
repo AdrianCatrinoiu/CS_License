@@ -35,9 +35,10 @@ const StepWaste = ({ userId }) => {
 
   const addUnit = () => {
     dispatch(
-      userFormAddStart(userId, {
+      userFormAddStart({
         step: "stepWaste",
-        data: { id: new Date().getTime(), label: "", type: "", value: "" },
+        formId: userForm.formId,
+        data: { label: "", type: "", value: 0 },
       })
     );
     setTimeout(() => {
@@ -49,9 +50,10 @@ const StepWaste = ({ userId }) => {
     wasteUnitList.map((wasteUnit) => {
       if (wasteUnit.id === id) {
         dispatch(
-          userFormUpdateStart(userId, {
+          userFormUpdateStart({
             step: "stepWaste",
-            data: { id, label, type, value },
+            formId: userForm.formId,
+            data: { id, label, type, value: parseFloat(value) },
           })
         );
       }
@@ -60,14 +62,17 @@ const StepWaste = ({ userId }) => {
   };
 
   const deleteUnit = (id) => {
-    wasteUnitList.filter((wasteUnit) => {
-      dispatch(
-        userFormDeleteStart(userId, {
-          step: "stepWaste",
-          data: { id },
-        })
-      );
-      return wasteUnit.id !== id;
+    wasteUnitList.forEach((wasteUnit) => {
+      console.log(wasteUnit.id, id);
+      if (wasteUnit.id === id) {
+        dispatch(
+          userFormDeleteStart({
+            step: "stepWaste",
+            formId: userForm.formId,
+            data: { id },
+          })
+        );
+      }
     });
   };
 
@@ -86,7 +91,7 @@ const StepWaste = ({ userId }) => {
           </div>
         </>
       )}
-      <div className="overflow-scroll flex flex-col w-full items-center">
+      <div className="overflow-y-auto flex flex-col w-full items-center">
         {wasteUnitList.map((unit, index) => (
           <FormWasteSelect
             key={unit.id}

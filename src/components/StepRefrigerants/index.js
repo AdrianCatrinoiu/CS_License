@@ -32,16 +32,15 @@ const StepRefrigerants = ({ userId }) => {
   };
 
   useEffect(() => {
-    console.log("userForm.stepRefrigerants", userForm.stepRefrigerants);
     setRefrigerantsList(userForm.stepRefrigerants);
   }, [userForm.stepRefrigerants]);
 
   const addUnit = () => {
     dispatch(
-      userFormAddStart(userId, {
+      userFormAddStart({
         step: "stepRefrigerants",
+        formId: userForm.formId,
         data: {
-          id: new Date().getTime(),
           label: "",
           kgBegin: 0,
           kgEnd: 0,
@@ -55,28 +54,31 @@ const StepRefrigerants = ({ userId }) => {
   };
 
   const updateUnit = (id, label, kgBegin, kgEnd, formula) => {
-    console.log(id, label, kgBegin, kgEnd, formula);
     dispatch(
-      userFormUpdateStart(userId, {
+      userFormUpdateStart({
         step: "stepRefrigerants",
-        data: { id, label, kgBegin, kgEnd, formula },
+        formId: userForm.formId,
+        data: {
+          id,
+          label,
+          kgBegin: parseFloat(kgBegin),
+          kgEnd: parseFloat(kgEnd),
+          formula,
+        },
       })
     );
   };
   const deleteUnit = (id) => {
-    setRefrigerantsList(
-      refrigerantsList.filter((refrigerantUnit) => {
-        return refrigerantUnit.id !== id;
-      })
-    );
-    refrigerantsList.filter((refrigerantUnit) => {
-      dispatch(
-        userFormDeleteStart(userId, {
-          step: "stepRefrigerants",
-          data: { id },
-        })
-      );
-      return refrigerantUnit.id !== id;
+    refrigerantsList.forEach((refrigerant) => {
+      if (refrigerant.id === id) {
+        dispatch(
+          userFormDeleteStart({
+            step: "stepRefrigerants",
+            formId: userForm.formId,
+            data: { id },
+          })
+        );
+      }
     });
   };
   return (
@@ -94,7 +96,7 @@ const StepRefrigerants = ({ userId }) => {
           <NavigationIcon sx={{ transform: "rotate(180deg)" }} />
         </div>
       )}
-      <div className="overflow-scroll flex flex-col w-full items-center mb-1">
+      <div className="overflow-y-auto flex flex-col w-full items-center mb-1">
         {refrigerantsList.map((unit, index) => (
           <FormRefrigerantSelect
             key={unit.id}

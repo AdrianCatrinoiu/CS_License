@@ -101,7 +101,7 @@ const Navbar = (props) => {
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
               {user ? (
-                <>
+                <div>
                   <Link
                     className="w-full h-full flex items-center"
                     to="/dashboard"
@@ -118,9 +118,9 @@ const Navbar = (props) => {
                     </ListItemIcon>
                     Logout
                   </MenuItem>
-                </>
+                </div>
               ) : (
-                <>
+                <div>
                   <Link
                     className="w-full h-full flex items-center"
                     to="/register"
@@ -140,7 +140,7 @@ const Navbar = (props) => {
                       Login
                     </MenuItem>
                   </Link>
-                </>
+                </div>
               )}
             </Menu>
           </div>

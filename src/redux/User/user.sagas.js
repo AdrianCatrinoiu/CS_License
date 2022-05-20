@@ -16,7 +16,7 @@ export function* emailSignIn({ payload: { email, password } }) {
     //setState pt login -- yield sign in
     const data = yield call(axiosCall, {
       method: "POST",
-      path: "/api/auth/login",
+      path: "/auth/login",
       data: { email, password },
     });
 
@@ -26,7 +26,7 @@ export function* emailSignIn({ payload: { email, password } }) {
 
     yield put(
       signInSuccessAction({
-        ...data.data.user,
+        ...data.data,
       })
     );
   } catch (err) {}
@@ -66,7 +66,7 @@ export function* onSignOutUserStart() {
 }
 
 export function* signUpUser({
-  payload: { firstName, lastName, email, password, confirmPassword, formData },
+  payload: { firstName, lastName, email, password, confirmPassword },
 }) {
   if (password !== confirmPassword) {
     const err = ["Passwords do not match!"];
@@ -76,17 +76,15 @@ export function* signUpUser({
   try {
     const data = yield call(axiosCall, {
       method: "POST",
-      path: "/api/auth/register",
-      data: { email, password, firstName, lastName, formData },
+      path: "/auth/register",
+      data: { email, password, firstName, lastName },
     });
-    console.log(data.data);
     console.log(data.data.user);
+    console.log(data.data.formData);
     if (data.status === 201) {
       yield put(
         signInSuccessAction({
-          id: data.data.id,
-          role: "user",
-          ...data.data.user,
+          ...data.data,
         })
       );
       localStorage.setItem("accessToken", data.data.accessToken);
@@ -98,18 +96,23 @@ export function* onSignUpUserStart() {
   yield takeLatest(userTypes.SIGN_UP_USER_START, signUpUser);
 }
 
-export function* userFormAdd({ payload: { userId, addData } }) {
+export function* userFormAdd({ payload: { addData } }) {
   try {
     const token = localStorage.getItem("accessToken");
 
     const data = yield call(axiosCall, {
       method: "POST",
-      path: "/api/form/add",
+      path: "/form/add",
       token: token,
-      data: { userId, addData },
+      data: { data: addData },
     });
-    if (data.status === 200) {
-      yield put(userFormAddSuccess(addData));
+    if (data.status === 201) {
+      yield put(
+        userFormAddSuccess(data.data.formId, {
+          ...addData,
+          data: { ...addData.data, id: data.data.id },
+        })
+      );
     }
   } catch (e) {}
 }
@@ -118,18 +121,28 @@ export function* userFormAddStart() {
   yield takeLatest(userTypes.USER_FORM_ADD_START, userFormAdd);
 }
 
-export function* userFormUpdate({ payload: { userId, updateData } }) {
+export function* userFormUpdate({ payload: { updateData } }) {
   try {
     const token = localStorage.getItem("accessToken");
     const data = yield call(axiosCall, {
       method: "PUT",
-      path: "/api/form/update",
+      path: "/form/update",
       token: token,
 
-      data: { userId, updateData },
+      data: { data: updateData },
     });
+    console.log("data.data", data.data);
     if (data.status === 200) {
-      yield put(userFormUpdateSuccess(updateData));
+      if (updateData.step === "stepCAEN" || updateData.step === "stepYear") {
+        yield put(userFormUpdateSuccess(data.data.formId, updateData));
+      } else {
+        yield put(
+          userFormUpdateSuccess(data.data.formId, {
+            ...updateData,
+            data: { ...updateData.data, ...data.data.emissions },
+          })
+        );
+      }
     }
   } catch (e) {}
 }
@@ -138,19 +151,25 @@ export function* userFormUpdateStart() {
   yield takeLatest(userTypes.USER_FORM_UPDATE_START, userFormUpdate);
 }
 
-export function* userFormDelete({ payload: { userId, deleteData } }) {
+export function* userFormDelete({ payload: { deleteData } }) {
   try {
     const token = localStorage.getItem("accessToken");
 
     const data = yield call(axiosCall, {
       method: "DELETE",
-      path: "/api/form/delete",
+      path: "/form/delete",
       token: token,
 
-      data: { userId, deleteData },
+      data: { data: deleteData },
     });
+    console.log("deleteDataSaga", data.data);
     if (data.status === 200) {
-      yield put(userFormDeleteSuccess(deleteData));
+      yield put(
+        userFormDeleteSuccess(data.data.formId, {
+          ...deleteData,
+          data: { id: data.data.id },
+        })
+      );
     }
   } catch (e) {}
 }
@@ -159,14 +178,14 @@ export function* userFormDeleteStart() {
   yield takeLatest(userTypes.USER_FORM_DELETE_START, userFormDelete);
 }
 
-export function* userFormCalculate({ payload: { userId, formData } }) {
+export function* userFormCalculate({ payload: { formData } }) {
   try {
     const token = localStorage.getItem("accessToken");
     const data = yield call(axiosCall, {
       method: "POST",
-      path: "/api/form/calculate",
+      path: "/form/calculate",
       token: token,
-      data: { userId, formData },
+      data: { formData },
     });
     console.log(data.data);
     if (data.status === 200) {

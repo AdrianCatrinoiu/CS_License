@@ -17,7 +17,7 @@ const mapState = ({ user }) => ({
   userForm: user.userForm,
 });
 
-const StepTransportation = ({ userId, setFormStep }) => {
+const StepTransportation = ({ setFormStep }) => {
   const { userForm } = useSelector(mapState);
   const [transportationList, setTransportationList] = useState(
     userForm.stepTransportation
@@ -41,10 +41,10 @@ const StepTransportation = ({ userId, setFormStep }) => {
 
   const addUnit = () => {
     dispatch(
-      userFormAddStart(userId, {
+      userFormAddStart({
         step: "stepTransportation",
+        formId: userForm.formId,
         data: {
-          id: new Date().getTime(),
           label: "",
           vehicles: 0,
           fuel: 0,
@@ -63,8 +63,9 @@ const StepTransportation = ({ userId, setFormStep }) => {
       if (transportation.id === id) {
         if (label === null) {
           dispatch(
-            userFormUpdateStart(userId, {
+            userFormUpdateStart({
               step: "stepTransportation",
+              formId: userForm.formId,
               data: {
                 id,
                 label: "",
@@ -77,9 +78,17 @@ const StepTransportation = ({ userId, setFormStep }) => {
           );
         } else {
           dispatch(
-            userFormUpdateStart(userId, {
+            userFormUpdateStart({
               step: "stepTransportation",
-              data: { id, label, vehicles, fuel, fuelUnit, type },
+              formId: userForm.formId,
+              data: {
+                id,
+                label,
+                vehicles: parseFloat(vehicles),
+                fuel: parseFloat(fuel),
+                fuelUnit,
+                type,
+              },
             })
           );
         }
@@ -89,14 +98,16 @@ const StepTransportation = ({ userId, setFormStep }) => {
   };
 
   const deleteUnit = (id) => {
-    transportationList.filter((transportation) => {
-      dispatch(
-        userFormDeleteStart(userId, {
-          step: "stepTransportation",
-          data: { id },
-        })
-      );
-      return transportation.id !== id;
+    transportationList.forEach((transportation) => {
+      if (transportation.id === id) {
+        dispatch(
+          userFormDeleteStart({
+            step: "stepTransportation",
+            formId: userForm.formId,
+            data: { id },
+          })
+        );
+      }
     });
   };
 
@@ -112,7 +123,7 @@ const StepTransportation = ({ userId, setFormStep }) => {
           className="h-[48px] w-[96px]"
           onClick={() => {
             setFormStep(7);
-            dispatch(userFormCalculateStart(userId, userForm));
+            dispatch(userFormCalculateStart(userForm));
           }}
         >
           Calculate
@@ -126,7 +137,7 @@ const StepTransportation = ({ userId, setFormStep }) => {
           </div>
         </>
       )}
-      <div className="overflow-auto scroll-mb-[1200px] flex flex-col w-full items-center min-h-[395px]">
+      <div className="overflow-y-auto scroll-mb-[1200px] flex flex-col w-full items-center max-h-[395px]">
         {transportationList.map((unit, index) => (
           <FormTransportationSelect
             key={unit.id}

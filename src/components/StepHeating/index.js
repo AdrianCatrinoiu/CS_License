@@ -35,8 +35,9 @@ const StepHeating = ({ userId }) => {
 
   const addUnit = () => {
     dispatch(
-      userFormAddStart(userId, {
+      userFormAddStart({
         step: "stepHeating",
+        formId: userForm.formId,
         data: { id: new Date().getTime(), label: "", value: 0, unit: "" },
       })
     );
@@ -49,8 +50,9 @@ const StepHeating = ({ userId }) => {
     heatingUnitList.map((heatingUnit) => {
       if (heatingUnit.id === id) {
         dispatch(
-          userFormUpdateStart(userId, {
+          userFormUpdateStart({
             step: "stepHeating",
+            formId: userForm.formId,
             data: { id, label, value, unit },
           })
         );
@@ -60,14 +62,18 @@ const StepHeating = ({ userId }) => {
   };
 
   const deleteUnit = (id) => {
-    heatingUnitList.filter((heatingUnit) => {
-      dispatch(
-        userFormDeleteStart(userId, {
-          step: "stepHeating",
-          data: { id },
-        })
-      );
-      return heatingUnit.id !== id;
+    heatingUnitList.forEach((heatingUnit) => {
+      console.log(heatingUnit.id, id);
+
+      if (heatingUnit.id === id) {
+        dispatch(
+          userFormDeleteStart({
+            step: "stepHeating",
+            formId: userForm.formId,
+            data: { id },
+          })
+        );
+      }
     });
   };
 
@@ -86,7 +92,7 @@ const StepHeating = ({ userId }) => {
           </div>
         </>
       )}
-      <div className="overflow-scroll flex flex-col w-full items-center">
+      <div className=" overflow-y-auto flex flex-col w-full items-center">
         {heatingUnitList.map((unit, index) => (
           <FormUnitSelect
             key={unit.id}

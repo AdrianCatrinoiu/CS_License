@@ -11,35 +11,36 @@ const mapState = ({ user }) => ({
 
 const StepElectricity = ({ userId }) => {
   const { userForm } = useSelector(mapState);
-  const [renewable, setRenewable] = useState(
-    userForm.stepElectricity.renewable
+  const [renewableAmount, setRenewableAmount] = useState(
+    userForm.stepElectricity.renewableAmount
   );
-  const [nonRenewable, setNonRenewable] = useState(
-    userForm.stepElectricity.nonRenewable
+  const [nonRenewableAmount, setNonRenewableAmount] = useState(
+    userForm.stepElectricity.nonRenewableAmount
   );
   const [country, setCountry] = useState(userForm.stepElectricity.country);
   const dispatch = useDispatch();
 
   const handleRenewableChange = (event) => {
-    setRenewable(event.target.value);
+    setRenewableAmount(event.target.value);
   };
   const handleNonRenewableChange = (event) => {
-    setNonRenewable(event.target.value);
+    setNonRenewableAmount(event.target.value);
   };
 
   useEffect(() => {
     dispatch(
-      userFormUpdateStart(userId, {
+      userFormUpdateStart({
         step: "stepElectricity",
+        formId: userForm.formId,
         data: {
-          renewable: parseFloat(renewable),
-          nonRenewable: parseFloat(nonRenewable),
+          renewableAmount: parseFloat(renewableAmount),
+          nonRenewableAmount: parseFloat(nonRenewableAmount),
           country: country,
         },
       })
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [renewable, nonRenewable, country]);
+  }, [renewableAmount, nonRenewableAmount, country]);
 
   return (
     <div className="flex flex-col  items-center h-2/3 animate-fadeIn max-w-[600px] pb-24 pt-8 bg-white rounded-3xl min-h-[600px]">
@@ -47,7 +48,7 @@ const StepElectricity = ({ userId }) => {
         Choose how much electricity your company used during the selected year:
       </p>
       <TextField
-        label="Non-renewable"
+        label="Non-renewableAmount"
         id="outlined-start-adornment"
         sx={{
           m: 3,
@@ -55,7 +56,7 @@ const StepElectricity = ({ userId }) => {
           fontSize: 24,
           minWidth: "200px",
         }}
-        defaultValue={nonRenewable}
+        defaultValue={nonRenewableAmount}
         InputLabelProps={{ style: { fontSize: 16 } }}
         InputProps={{
           style: { fontSize: 16 },
@@ -72,7 +73,7 @@ const StepElectricity = ({ userId }) => {
           fontSize: 24,
           minWidth: "200px",
         }}
-        defaultValue={renewable}
+        defaultValue={renewableAmount}
         InputLabelProps={{ style: { fontSize: 16 } }}
         InputProps={{
           style: { fontSize: 16 },

@@ -35,7 +35,7 @@ const StepYear = ({ userId }) => {
             onChange={(newDate) => {
               setYear(newDate.year());
               dispatch(
-                userFormUpdateStart(userId, {
+                userFormUpdateStart({
                   step: "stepYear",
                   data: newDate.year(),
                 })

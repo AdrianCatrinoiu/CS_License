@@ -1,12 +1,14 @@
 import userTypes from "./user.types";
 
 const userFormInitialState = {
+  formId: null,
   stepYear: 0,
   stepCAEN: "",
   stepElectricity: {
-    renewable: 0,
-    nonRenewable: 0,
+    renewableAmount: 0,
+    nonRenewableAmount: 0,
     country: "",
+    emissionsAmountCO2: 0,
   },
   stepHeating: [],
   stepWaste: [],
@@ -14,19 +16,19 @@ const userFormInitialState = {
   stepTransportation: [],
 };
 
-const userEmissionsInitialState = {
-  electricity: { CO2: 0, CH4: 0, N2O: 0 },
-  heating: { CO2: 0, CH4: 0, N2O: 0 },
-  waste: { CO2: 0, CH4: 0, N2O: 0 },
-  refrigerants: { CO2: 0, CH4: 0, N2O: 0 },
-  transportation: { CO2: 0, CH4: 0, N2O: 0 },
-};
+// const userEmissionsInitialState = {
+//   electricity: { CO2: 0, CH4: 0, N2O: 0 },
+//   heating: { CO2: 0, CH4: 0, N2O: 0 },
+//   waste: { CO2: 0, CH4: 0, N2O: 0 },
+//   refrigerants: { CO2: 0, CH4: 0, N2O: 0 },
+//   transportation: { CO2: 0, CH4: 0, N2O: 0 },
+// };
 
 const INITIAL_STATE = {
   user: null,
   userErr: [],
   userForm: userFormInitialState,
-  emissions: userEmissionsInitialState,
+  // emissions: userEmissionsInitialState,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -34,10 +36,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case userTypes.SIGN_IN_SUCCESS:
       return {
         ...state,
-        user: action.payload,
+        user: action.payload.user,
         userErr: [],
         userForm: action.payload.formData,
-        emissions: action.payload.emissions,
       };
     case userTypes.SIGN_OUT_USER_SUCCESS:
       return {
@@ -70,9 +71,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
         },
       };
     case userTypes.USER_FORM_UPDATE_SUCCESS:
+      console.log("updateData", action.payload.updateData);
       if (Array.isArray(state.userForm[action.payload.updateData.step])) {
-        console.log("####################", action.payload.updateData.data);
-
+        console.log("isArray");
         return {
           ...state,
           userForm: {
@@ -88,15 +89,18 @@ const userReducer = (state = INITIAL_STATE, action) => {
           },
         };
       }
+      console.log("notArray");
       return {
         ...state,
         userForm: {
           ...state.userForm,
+          formId: action.payload.updateData.formId,
           [action.payload.updateData.step]: action.payload.updateData.data,
         },
       };
 
     case userTypes.USER_FORM_DELETE_SUCCESS:
+      console.log("deleteData", action.payload.deleteData);
       if (Array.isArray(state.userForm[action.payload.deleteData.step])) {
         return {
           ...state,

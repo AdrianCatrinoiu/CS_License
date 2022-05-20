@@ -20,8 +20,9 @@ const StepCAEN = ({ userId }) => {
   const handleChange = (event) => {
     setCAEN(event.target.value);
     dispatch(
-      userFormUpdateStart(userId, {
+      userFormUpdateStart({
         step: "stepCAEN",
+        formId: userForm.formId,
         data: event.target.value,
       })
     );
