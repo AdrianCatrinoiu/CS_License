@@ -12,6 +12,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import useWindowDimensions from "../../customHooks/useWindowDimensions";
 import StepButton from "../StepButton";
+import StepWaste from "../StepWaste";
 
 const mapState = ({ user }) => ({
   user: user.user,
@@ -27,6 +28,7 @@ const FormType = ({ formStep, setFormStep }) => {
     "Field of activity",
     "Electricity emissions",
     "Burning emissions",
+    "Waste emissions",
     "Refrigerants emissions",
     "Transportation emissions",
   ];
@@ -41,7 +43,7 @@ const FormType = ({ formStep, setFormStep }) => {
             formStep={formStep}
           />
         )}
-        {formStep < 5 && (
+        {formStep < 6 && (
           <StepButton
             orientation="right"
             setFormStep={setFormStep}
@@ -81,11 +83,12 @@ const FormType = ({ formStep, setFormStep }) => {
           {formStep === 1 && <StepCAEN userId={user.id} />}
           {formStep === 2 && <StepElectricity userId={user.id} />}
           {formStep === 3 && <StepHeating userId={user.id} />}
-          {formStep === 4 && <StepRefrigerants userId={user.id} />}
-          {formStep === 5 && (
+          {formStep === 4 && <StepWaste userId={user.id} />}
+          {formStep === 5 && <StepRefrigerants userId={user.id} />}
+          {formStep === 6 && (
             <StepTransportation userId={user.id} setFormStep={setFormStep} />
           )}
-          {formStep === 6 && <Summary userId={user.id} />}
+          {formStep === 7 && <Summary userId={user.id} />}
         </div>
       </div>
     </div>

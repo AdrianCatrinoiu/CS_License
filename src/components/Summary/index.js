@@ -23,6 +23,7 @@ const Summary = ({ userId }) => {
   const totalCO2 =
     emissions.electricity.CO2 +
     emissions.heating.CO2 +
+    emissions.waste.CO2 +
     emissions.refrigerants.CO2 +
     emissions.transportation.CO2;
   const totalTrees = parseInt(totalCO2 / 25);
@@ -30,22 +31,23 @@ const Summary = ({ userId }) => {
 
   const CO2data = [
     ["Element", "kg of CO2", { role: "style" }],
-    ["Electricity", emissions.electricity.CO2, "green"], // RGB value
-    ["Heating", emissions.heating.CO2, "red"], // English color name
+    ["Electricity", emissions.electricity.CO2, "green"],
+    ["Heating", emissions.heating.CO2, "red"],
+    ["Waste", emissions.waste.CO2, "orange"],
     ["Refrigerants", emissions.refrigerants.CO2, "blue"],
-    ["Transportation", emissions.transportation.CO2, "brown"], // CSS-style declaration
+    ["Transportation", emissions.transportation.CO2, "brown"],
   ];
 
   const CH4data = [
     ["Element", "g of CH4", { role: "style" }],
-    ["Heating", emissions.heating.CH4, "red"], // English color name
-    ["Transportation", emissions.transportation.CH4, "brown"], // CSS-style declaration
+    ["Heating", emissions.heating.CH4, "red"],
+    ["Transportation", emissions.transportation.CH4, "brown"],
   ];
 
   const N2Odata = [
     ["Element", "g of N2O", { role: "style" }],
-    ["Heating", emissions.heating.N2O, "red"], // English color name
-    ["Transportation", emissions.transportation.N2O, "brown"], // CSS-style declaration
+    ["Heating", emissions.heating.N2O, "red"],
+    ["Transportation", emissions.transportation.N2O, "brown"],
   ];
 
   const generalData = [
@@ -62,6 +64,7 @@ const Summary = ({ userId }) => {
       emissions.heating.CH4,
       emissions.heating.N2O,
     ],
+    ["Waste", emissions.waste.CO2, emissions.waste.CH4, emissions.waste.N2O],
     [
       "Refrigerants",
       emissions.refrigerants.CO2,
@@ -75,6 +78,24 @@ const Summary = ({ userId }) => {
       emissions.transportation.N2O,
     ],
   ];
+  const totalElectricity = parseFloat(
+    userForm.stepElectricity.nonRenewable + userForm.stepElectricity.renewable
+  );
+  const electricityPieData = [
+    ["Task", "Hours per Day"],
+    [
+      "Renewable",
+      (userForm.stepElectricity.renewable / totalElectricity) * 100,
+    ],
+    [
+      "Nonrenewable",
+      (userForm.stepElectricity.nonRenewable / totalElectricity) * 100,
+    ],
+  ];
+
+  const totalHeating = userForm.stepHeating.reduce((partialSum, item) => {
+    return partialSum + item.value;
+  }, 0);
 
   const options = {
     chart: {
@@ -135,6 +156,14 @@ const Summary = ({ userId }) => {
             <InfoCard
               text={`Those trees would cover ${totalHectares} hectares.`}
               position="right"
+            />
+
+            <Chart
+              chartType="PieChart"
+              data={electricityPieData}
+              options={options}
+              width={"100%"}
+              height={"400px"}
             />
             {/* <p className="mb-24 text-[24px]">
               Your total emissions would need approximately

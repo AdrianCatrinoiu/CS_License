@@ -1,23 +1,23 @@
 import React, { useEffect, useRef, useState } from "react";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import FormUnitSelect from "../../forms/FormUnitSelect";
 import NavigationIcon from "@mui/icons-material/Navigation";
-import heatingUnits from "../../utils/constants/heatingUnits.json";
+import wasteUnits from "../../utils/constants/wasteUnits.json";
 import { useDispatch, useSelector } from "react-redux";
 import {
   userFormAddStart,
   userFormDeleteStart,
   userFormUpdateStart,
 } from "../../redux/User/user.actions";
+import FormWasteSelect from "../../forms/FormWasteSelect";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
 });
 
-const StepHeating = ({ userId }) => {
+const StepWaste = ({ userId }) => {
   const { userForm } = useSelector(mapState);
-  const [heatingUnitList, setHeatingUnitList] = useState(userForm.stepHeating);
+  const [wasteUnitList, setWasteUnitList] = useState(userForm.stepWaste);
   const dispatch = useDispatch();
 
   const messagesEndRef = useRef(null);
@@ -30,14 +30,14 @@ const StepHeating = ({ userId }) => {
   };
 
   useEffect(() => {
-    setHeatingUnitList(userForm.stepHeating);
-  }, [userForm.stepHeating]);
+    setWasteUnitList(userForm.stepWaste);
+  }, [userForm.stepWaste]);
 
   const addUnit = () => {
     dispatch(
       userFormAddStart(userId, {
-        step: "stepHeating",
-        data: { id: new Date().getTime(), label: "", value: 0, unit: "" },
+        step: "stepWaste",
+        data: { id: new Date().getTime(), label: "", type: "", value: "" },
       })
     );
     setTimeout(() => {
@@ -45,58 +45,58 @@ const StepHeating = ({ userId }) => {
     }, 300);
   };
 
-  const updateUnit = (id, label, value, unit) => {
-    heatingUnitList.map((heatingUnit) => {
-      if (heatingUnit.id === id) {
+  const updateUnit = (id, label, type, value) => {
+    wasteUnitList.map((wasteUnit) => {
+      if (wasteUnit.id === id) {
         dispatch(
           userFormUpdateStart(userId, {
-            step: "stepHeating",
-            data: { id, label, value, unit },
+            step: "stepWaste",
+            data: { id, label, type, value },
           })
         );
       }
-      return heatingUnit;
+      return wasteUnit;
     });
   };
 
   const deleteUnit = (id) => {
-    heatingUnitList.filter((heatingUnit) => {
+    wasteUnitList.filter((wasteUnit) => {
       dispatch(
         userFormDeleteStart(userId, {
-          step: "stepHeating",
+          step: "stepWaste",
           data: { id },
         })
       );
-      return heatingUnit.id !== id;
+      return wasteUnit.id !== id;
     });
   };
 
-  useEffect(() => {}, [heatingUnitList]);
+  useEffect(() => {}, [wasteUnitList]);
 
   return (
     <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[600px]">
       <p className="mb-16 text-[24px] text-center">
-        Does your company burn fuels?
+        Does your company generate waste?
       </p>
-      {heatingUnitList.length === 0 && (
+      {wasteUnitList.length === 0 && (
         <>
-          <p className="mb-16 text-[24px]">If so, add them below</p>
+          <p className="mb-16 text-[24px]">If so, add it below</p>
           <div className="animate-bounce flex justify-center items-center">
             <NavigationIcon sx={{ transform: "rotate(180deg)" }} />
           </div>
         </>
       )}
       <div className="overflow-scroll flex flex-col w-full items-center">
-        {heatingUnitList.map((unit, index) => (
-          <FormUnitSelect
+        {wasteUnitList.map((unit, index) => (
+          <FormWasteSelect
             key={unit.id}
             id={unit.id}
             selectLabel="Material"
             unitLabel="Amount"
-            label="Select a heating material from the list below:"
+            label="Select a waste material from the list below:"
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
-            unitList={heatingUnits}
+            unitList={wasteUnits}
             item={unit}
           />
         ))}
@@ -117,4 +117,4 @@ const StepHeating = ({ userId }) => {
   );
 };
 
-export default StepHeating;
+export default StepWaste;

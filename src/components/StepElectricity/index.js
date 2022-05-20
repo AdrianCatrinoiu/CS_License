@@ -51,7 +51,7 @@ const StepElectricity = ({ userId }) => {
         id="outlined-start-adornment"
         sx={{
           m: 3,
-          width: "20%",
+          width: "60%",
           fontSize: 24,
           minWidth: "200px",
         }}
@@ -68,7 +68,7 @@ const StepElectricity = ({ userId }) => {
         id="outlined-start-adornment"
         sx={{
           m: 3,
-          width: "20%",
+          width: "60%",
           fontSize: 24,
           minWidth: "200px",
         }}
@@ -80,7 +80,7 @@ const StepElectricity = ({ userId }) => {
         }}
         onBlur={handleRenewableChange}
       />
-      <div className="w-1/5 min-w-[200px]">
+      <div className="w-[60%] min-w-[200px]">
         <CountryDropdown
           className="w-full my-[24px] h-[56px] text-24 border-[1px] border-black border-opacity-[0.23] rounded-[4px]"
           value={country}

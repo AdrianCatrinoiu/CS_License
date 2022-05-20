@@ -128,8 +128,8 @@ const FormTransportationSelect = ({
   };
 
   return (
-    <div className="flex flex-col w-[80%] justify-center items-center mb-6">
-      <div className="w-1/3 h-[400px] min-w-[200px] px-[24px] border-[1px] border-black border-opacity-[0.23] rounded-[4px]">
+    <div className="flex flex-col w-[80%] justify-center items-center mb-8">
+      <div className="w-[80%] h-[375px] min-w-[200px] px-[24px] border-[1px] border-black border-opacity-[0.23] rounded-[4px]">
         <div className="w-full flex flex-row items-center justify-between">
           <p className="my-6 text-[18px] w-2/3">{label}</p>
           <IconButton

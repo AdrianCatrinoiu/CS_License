@@ -1,0 +1,182 @@
+[
+  {
+    "label": "Aluminum Cans"
+  },
+  {
+    "label": "Aluminum Ingot"
+  },
+  {
+    "label": "Steel Cans"
+  },
+  {
+    "label": "Cooper wire"
+  },
+  {
+    "label": "Glass"
+  },
+  {
+    "label": "HDPE"
+  },
+  {
+    "label": "LDPE"
+  },
+  {
+    "label": "PET"
+  },
+  {
+    "label": "LLDPE"
+  },
+  {
+    "label": "PP"
+  },
+  {
+    "label": "PS"
+  },
+  {
+    "label": "PVC"
+  },
+  {
+    "label": "PLA"
+  },
+  {
+    "label": "Corrugated containers"
+  },
+  {
+    "label": "Magazines/Third-class mail"
+  },
+  {
+    "label": "Newspaper"
+  },
+  {
+    "label": "Office paper"
+  },
+  {
+    "label": "Phonebooks"
+  },
+  {
+    "label": "Textbooks"
+  },
+  {
+    "label": "Dimensional lumber"
+  },
+  {
+    "label": "Medium-density fiberboard"
+  },
+  {
+    "label": "Food waste(non-meat)"
+  },
+  {
+    "label": "Food waste(meat only)"
+  },
+  {
+    "label": "Beef"
+  },
+  {
+    "label": "Poultry"
+  },
+  {
+    "label": "Grains"
+  },
+  {
+    "label": "Bread"
+  },
+  {
+    "label": "Fruits and vegetables"
+  },
+  {
+    "label": "Dairy products"
+  },
+  {
+    "label": "Yard trimmings"
+  },
+  {
+    "label": "Grass"
+  },
+  {
+    "label": "Leaves"
+  },
+  {
+    "label": "Branches"
+  },
+  {
+    "label": "Mixed paper(general)"
+  },
+  {
+    "label": "Mixed paper(primarily from residential)"
+  },
+  {
+    "label": "Mixed paper(primarily from offices)"
+  },
+  {
+    "label": "Mixed metals"
+  },
+  {
+    "label": "Mixed plastics"
+  },
+  {
+    "label": "Mixed recyclables"
+  },
+  {
+    "label": "Food waste"
+  },
+  {
+    "label": "Mixed organics"
+  },
+  {
+    "label": "Mixed MSW"
+  },
+  {
+    "label": "Carpet"
+  },
+  {
+    "label": "Desktop CPUs"
+  },
+  {
+    "label": "Portable electronic devices"
+  },
+  {
+    "label": "Flat-panel displays"
+  },
+  {
+    "label": "CRT displays"
+  },
+  {
+    "label": "Electronic peripherals"
+  },
+  {
+    "label": "Hard-copy devices"
+  },
+  {
+    "label": "Mixed electronics"
+  },
+  {
+    "label": "Clay bricks"
+  },
+  {
+    "label": "Concrete"
+  },
+  {
+    "label": "Fly ash"
+  },
+  {
+    "label": "Tires"
+  },
+  {
+    "label": "Asphalt concrete"
+  },
+  {
+    "label": "Asphalt shingles"
+  },
+  {
+    "label": "Drywall"
+  },
+  {
+    "label": "Fiberglass insulation"
+  },
+  {
+    "label": "Vinyl Flooring"
+  },
+  {
+    "label": "Wood flooring"
+  }
+]

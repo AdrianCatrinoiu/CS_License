@@ -101,7 +101,7 @@ const StepTransportation = ({ userId, setFormStep }) => {
   };
 
   return (
-    <div className="flex flex-col w-[80%] items-center h-2/3  animate-fadeIn  max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[640px]">
+    <div className="flex flex-col w-[80%] items-center h-2/3  animate-fadeIn  max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[615px]">
       <p className="mb-12 text-[24px] text-center">
         Choose the transportation types that your company and employees use:
       </p>
@@ -111,7 +111,7 @@ const StepTransportation = ({ userId, setFormStep }) => {
           color="success"
           className="h-[48px] w-[96px]"
           onClick={() => {
-            setFormStep(6);
+            setFormStep(7);
             dispatch(userFormCalculateStart(userId, userForm));
           }}
         >
@@ -126,7 +126,7 @@ const StepTransportation = ({ userId, setFormStep }) => {
           </div>
         </>
       )}
-      <div className="overflow-auto scroll-mb-[1200px] flex flex-col w-full items-center min-h-[415px]">
+      <div className="overflow-auto scroll-mb-[1200px] flex flex-col w-full items-center min-h-[395px]">
         {transportationList.map((unit, index) => (
           <FormTransportationSelect
             key={unit.id}

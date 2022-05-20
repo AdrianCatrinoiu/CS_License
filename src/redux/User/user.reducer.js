@@ -9,6 +9,7 @@ const userFormInitialState = {
     country: "",
   },
   stepHeating: [],
+  stepWaste: [],
   stepRefrigerants: [],
   stepTransportation: [],
 };
@@ -16,6 +17,7 @@ const userFormInitialState = {
 const userEmissionsInitialState = {
   electricity: { CO2: 0, CH4: 0, N2O: 0 },
   heating: { CO2: 0, CH4: 0, N2O: 0 },
+  waste: { CO2: 0, CH4: 0, N2O: 0 },
   refrigerants: { CO2: 0, CH4: 0, N2O: 0 },
   transportation: { CO2: 0, CH4: 0, N2O: 0 },
 };

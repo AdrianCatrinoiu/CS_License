@@ -5,7 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import IconButton from "@mui/material/IconButton";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const FormUnitSelect = ({
+const FormWasteSelect = ({
   id,
   label,
   selectLabel,
@@ -16,31 +16,54 @@ const FormUnitSelect = ({
   item,
 }) => {
   const [unit, setUnit] = useState(item);
-  const handleUnitChange = (event, value) => {
-    updateUnit(id, value.label, value.value, value.unit);
+  const disposeType = [
+    {
+      label: "Recycled",
+    },
+    {
+      label: "Landfilled",
+    },
+    {
+      label: "Combusted",
+    },
+    {
+      label: "Composted",
+    },
+  ];
+  const handleMaterialChange = (event, value) => {
+    updateUnit(id, value.label, value.type, value.value);
     setUnit({
       id,
       label: value.label,
+      type: value.type,
       value: value.value,
-      unit: value.unit,
+    });
+  };
+  const handleTypeChange = (event, value) => {
+    updateUnit(id, unit.label, value.label, unit.value);
+    setUnit({
+      id,
+      label: unit.label,
+      type: value.label,
+      value: unit.value,
     });
   };
   const handleValueChange = (event, value) => {
     if (event.target.value) {
-      updateUnit(id, unit.label, parseFloat(event.target.value), unit.unit);
+      updateUnit(id, unit.label, unit.type, event.target.value);
       setUnit({
         id,
         label: unit.label,
-        value: parseFloat(event.target.value),
-        unit: unit.unit,
+        type: unit.type,
+        value: event.target.value,
       });
     } else {
-      updateUnit(id, unit.label, 0, unit.unit);
+      updateUnit(id, unit.label, unit.type, "");
       setUnit({
         id,
         label: unit.label,
-        value: 0,
-        unit: unit.unit,
+        type: unit.type,
+        value: "",
       });
     }
   };
@@ -64,7 +87,7 @@ const FormUnitSelect = ({
               id="combo-box-demo"
               options={unitList}
               value={unit.label}
-              onChange={handleUnitChange}
+              onChange={handleMaterialChange}
               sx={{
                 "& .css-1in441m": {
                   fontSize: 12,
@@ -75,6 +98,28 @@ const FormUnitSelect = ({
                   {...params}
                   InputLabelProps={{ style: { fontSize: 16 } }}
                   label={selectLabel}
+                />
+              )}
+            />
+          </div>
+          <div className="w-full m-[24px]">
+            <Autocomplete
+              disablePortal
+              disableClearable
+              id="combo-box-demo"
+              options={disposeType}
+              value={unit.type}
+              onChange={handleTypeChange}
+              sx={{
+                "& .css-1in441m": {
+                  fontSize: 12,
+                },
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  InputLabelProps={{ style: { fontSize: 16 } }}
+                  label="Handling"
                 />
               )}
             />
@@ -100,7 +145,7 @@ const FormUnitSelect = ({
                   }}
                   position="start"
                 >
-                  {unit.unit}
+                  tonnes
                 </InputAdornment>
               ),
             }}
@@ -112,4 +157,4 @@ const FormUnitSelect = ({
   );
 };
 
-export default FormUnitSelect;
+export default FormWasteSelect;
