@@ -63,7 +63,6 @@ const StepWaste = ({ userId }) => {
 
   const deleteUnit = (id) => {
     wasteUnitList.forEach((wasteUnit) => {
-      console.log(wasteUnit.id, id);
       if (wasteUnit.id === id) {
         dispatch(
           userFormDeleteStart({

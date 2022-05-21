@@ -25,6 +25,10 @@ const Summary = ({ userId }) => {
     emissions.waste.CO2 +
     emissions.refrigerants.CO2 +
     emissions.transportation.CO2;
+  const totalCH4 =
+    emissions.heating.CH4 + emissions.waste.CH4 + emissions.transportation.CH4;
+  const totalN2O =
+    emissions.heating.N2O + emissions.waste.N2O + emissions.transportation.N2O;
   const totalTrees = parseInt(totalCO2 / 25);
   const totalHectares = totalTrees / 1600;
 
@@ -103,6 +107,14 @@ const Summary = ({ userId }) => {
       subtitle: `Electricity, Heating, Refrigerants and Transportation:${userForm.stepYear} `,
     },
   };
+  const optionsAnimateOnStart = {
+    backgroundColor: "transparent",
+    animation: {
+      startup: true,
+      easing: "linear",
+      duration: 1000,
+    },
+  };
   return (
     <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn">
       <div className="mb-[50px]">
@@ -117,24 +129,57 @@ const Summary = ({ userId }) => {
           <p className="mb-24 text-[24px]">
             Your emissions in {userForm.stepYear}:
           </p>
-          <Chart
-            chartType="ColumnChart"
-            width="100%"
-            height="400px"
-            data={CO2data}
-          />
-          <Chart
-            chartType="ColumnChart"
-            width="100%"
-            height="400px"
-            data={CH4data}
-          />
-          <Chart
-            chartType="ColumnChart"
-            width="100%"
-            height="400px"
-            data={N2Odata}
-          />
+          <div className="flex md:flex-row flex-col justify-between w-full max-h-[500px] mb-24">
+            <div className="flex flex-col px-32 py-12 justify-center items-center bg-[#7bee64] rounded-3xl shadow-2xl animate-fadeIn mr-[80px] ">
+              <div className="flex flex-col items-center justify-center my-8">
+                <p className="font-MontserratBold text-[32px] text-blue-400">
+                  {totalCO2.toFixed(2)}
+                </p>
+                <p className="text-[24px]">kg equivalent of CO2</p>
+              </div>
+              <div className="flex flex-col items-center justify-center my-8">
+                <p className="font-MontserratBold text-[32px] text-blue-400">
+                  {totalCH4.toFixed(2)}
+                </p>
+                <p className="text-[24px]">g equivalent of CH4</p>
+              </div>
+              <div className="flex flex-col items-center justify-center my-8">
+                <p className="font-MontserratBold text-[32px] text-blue-400">
+                  {totalN2O.toFixed(2)}
+                </p>
+                <p className="text-[24px]">g equivalent of N2O</p>
+              </div>
+            </div>
+            <div className="w-full h-full  bg-[#dddddd] rounded-2xl shadow-2xl animate-fadeIn">
+              <Chart
+                chartType="ColumnChart"
+                width="100%"
+                height="100%"
+                data={CO2data}
+                options={optionsAnimateOnStart}
+              />
+            </div>
+          </div>
+          <div className="flex md:flex-row flex-col justify-between w-full max-h-[500px] mb-24">
+            <div className="w-full h-full  bg-[#dddddd] rounded-2xl shadow-2xl animate-fadeIn mr-[80px]">
+              <Chart
+                chartType="ColumnChart"
+                width="100%"
+                height="400px"
+                data={CH4data}
+                options={optionsAnimateOnStart}
+              />
+            </div>
+            <div className="w-full h-full  bg-[#dddddd] rounded-2xl shadow-2xl animate-fadeIn">
+              <Chart
+                chartType="ColumnChart"
+                width="100%"
+                height="400px"
+                data={N2Odata}
+                options={optionsAnimateOnStart}
+              />{" "}
+            </div>
+          </div>
         </div>
       )}
       {value === 1 && (

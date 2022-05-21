@@ -63,8 +63,6 @@ const StepHeating = ({ userId }) => {
 
   const deleteUnit = (id) => {
     heatingUnitList.forEach((heatingUnit) => {
-      console.log(heatingUnit.id, id);
-
       if (heatingUnit.id === id) {
         dispatch(
           userFormDeleteStart({

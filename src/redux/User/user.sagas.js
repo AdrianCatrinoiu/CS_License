@@ -79,8 +79,6 @@ export function* signUpUser({
       path: "/auth/register",
       data: { email, password, firstName, lastName },
     });
-    console.log(data.data.user);
-    console.log(data.data.formData);
     if (data.status === 201) {
       yield put(
         signInSuccessAction({
@@ -131,7 +129,6 @@ export function* userFormUpdate({ payload: { updateData } }) {
 
       data: { data: updateData },
     });
-    console.log("data.data", data.data);
     if (data.status === 200) {
       if (updateData.step === "stepCAEN" || updateData.step === "stepYear") {
         yield put(userFormUpdateSuccess(data.data.formId, updateData));
@@ -162,7 +159,6 @@ export function* userFormDelete({ payload: { deleteData } }) {
 
       data: { data: deleteData },
     });
-    console.log("deleteDataSaga", data.data);
     if (data.status === 200) {
       yield put(
         userFormDeleteSuccess(data.data.formId, {
@@ -187,7 +183,6 @@ export function* userFormCalculate({ payload: { formData } }) {
       token: token,
       data: { data: formData },
     });
-    console.log(data.data);
     if (data.status === 200) {
       yield put(userFormCalculateSuccess(data.data));
     }

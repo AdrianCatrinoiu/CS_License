@@ -71,9 +71,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         },
       };
     case userTypes.USER_FORM_UPDATE_SUCCESS:
-      console.log("updateData", action.payload.updateData);
       if (Array.isArray(state.userForm[action.payload.updateData.step])) {
-        console.log("isArray");
         return {
           ...state,
           userForm: {
@@ -89,7 +87,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
           },
         };
       }
-      console.log("notArray");
       return {
         ...state,
         userForm: {
@@ -100,7 +97,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
       };
 
     case userTypes.USER_FORM_DELETE_SUCCESS:
-      console.log("deleteData", action.payload.deleteData);
       if (Array.isArray(state.userForm[action.payload.deleteData.step])) {
         return {
           ...state,

@@ -7,12 +7,9 @@ import StepRefrigerants from "../StepRefrigerants";
 import StepTransportation from "../StepTransportation";
 import { useSelector } from "react-redux";
 import Summary from "../Summary";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import useWindowDimensions from "../../customHooks/useWindowDimensions";
 import StepButton from "../StepButton";
 import StepWaste from "../StepWaste";
+import FormStepper from "../../forms/FormStepper";
 
 const mapState = ({ user }) => ({
   user: user.user,
@@ -20,18 +17,6 @@ const mapState = ({ user }) => ({
 
 const FormType = ({ formStep, setFormStep }) => {
   const { user } = useSelector(mapState);
-
-  const { width } = useWindowDimensions();
-
-  const steps = [
-    "Year",
-    "Field of activity",
-    "Electricity emissions",
-    "Burning emissions",
-    "Waste emissions",
-    "Refrigerants emissions",
-    "Transportation emissions",
-  ];
 
   return (
     <div className=" h-full w-full">
@@ -51,33 +36,7 @@ const FormType = ({ formStep, setFormStep }) => {
           />
         )}
 
-        <Stepper
-          activeStep={formStep}
-          alternativeLabel
-          className="w-[80%] self-center mt-[100px]"
-          sx={{
-            "& .MuiStepLabel-label": { fontSize: "1.5rem" },
-            "& .MuiStepper-root": { fontSize: "1.5rem" },
-          }}
-        >
-          {steps.map((label) => (
-            <Step
-              key={label}
-              sx={{
-                "& .MuiSvgIcon-root": {
-                  height: 24,
-                  width: 24,
-                },
-                "& .MuiStepIcon-text": {
-                  fontSize: "1rem",
-                },
-              }}
-            >
-              <StepLabel>{width > 500 && label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-
+        <FormStepper formStep={formStep} />
         <div className="flex flex-col items-center w-full h-full max-h-[70%] mt-[50px]">
           {formStep === 0 && <StepYear userId={user.id} />}
           {formStep === 1 && <StepCAEN userId={user.id} />}
