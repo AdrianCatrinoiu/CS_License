@@ -36,7 +36,7 @@ const FormType = ({ formStep, setFormStep }) => {
           />
         )}
 
-        <FormStepper formStep={formStep} />
+        <FormStepper formStep={formStep} setFormStep={setFormStep} />
         <div className="flex flex-col items-center w-full h-full max-h-[70%] mt-[50px]">
           {formStep === 0 && <StepYear userId={user.id} />}
           {formStep === 1 && <StepCAEN userId={user.id} />}

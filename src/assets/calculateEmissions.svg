@@ -1,0 +1,85 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1035 1084" width="200" height="209">
+	<title>calculateEmissions</title>
+	<style>
+		.s0 { fill: none;stroke: #366088;stroke-linecap: round;stroke-linejoin: round;stroke-width: 11.1;stroke-dasharray: 56 } 
+		.s1 { fill: #a4edf5 } 
+		.s2 { fill: #ffffff;stroke: #366088;stroke-linecap: round;stroke-linejoin: round;stroke-width: 11.1 } 
+		.s3 { fill: #d0fdff;stroke: #366088;stroke-linecap: round;stroke-linejoin: round;stroke-width: 11.1 } 
+		.s4 { fill: none;stroke: #366088;stroke-linecap: round;stroke-linejoin: round;stroke-width: 11.1 } 
+	</style>
+	<g id="&lt;Group&gt;">
+		<g id="&lt;Group&gt;">
+			<g id="&lt;Group&gt;">
+				<path id="&lt;Path&gt;" class="s0" d="m152.8 134.1c106.5-92 249.3-141.6 400.4-125.9q9.5 1 18.9 2.3"/>
+				<path id="&lt;Path&gt;" class="s0" d="m514.9 1063.7c-23.3 0.7-46.9-0.2-70.6-2.6-130.2-13.5-244.4-73.1-328.2-160.8"/>
+				<path id="&lt;Path&gt;" class="s0" d="m1026.7 495.8c2.2 30.5 1.8 61.7-1.5 93.3-8.9 86.3-38.1 165.6-82.4 233.7"/>
+			</g>
+			<g id="&lt;Group&gt;">
+				<path id="&lt;Path&gt;" class="s1" d="m111.9 494.6c22.1-213.7 213.2-368.9 426.9-346.8 213.6 22.1 368.9 213.2 346.8 426.9-22.1 213.6-213.2 368.9-426.9 346.8-213.6-22.1-368.9-213.3-346.8-426.9z"/>
+			</g>
+		</g>
+		<g id="&lt;Group&gt;">
+			<path id="&lt;Path&gt;" class="s2" d="m342.9 458c13.7 0 24.9 10.8 24.9 24.2v352c0 13.4-11.2 24.2-24.9 24.2h-313.4c-13.8 0-25-10.8-25-24.2v-352c0-13.4 11.2-24.2 25-24.2z"/>
+			<path id="&lt;Path&gt;" class="s3" d="m186.1 858.3h-158.6c-12.7 0-23-10.3-23-23v-114.2h181.6z"/>
+			<path id="&lt;Path&gt;" class="s3" d="m367.5 721.1h-181.6v-138.7h181.6z"/>
+			<path id="&lt;Path&gt;" class="s3" d="m276.1 322.9l69.2 44.5c15.7 10.2 20 30.9 9.5 46.2-10.4 15.3-31.7 19.4-47.4 9.3l-69.1-44.6"/>
+			<path id="&lt;Path&gt;" class="s2" d="m136.8 173.2c65.4-12.8 129.1 28.3 142.3 91.9 13.1 63.5-29.2 125.3-94.6 138.2-65.4 12.8-129-28.4-142.2-91.9-13.2-63.5 29.1-125.4 94.5-138.2z"/>
+			<path id="&lt;Path&gt;" class="s2" d="m252.5 627.7l51.1 49.6"/>
+			<path id="&lt;Path&gt;" class="s2" d="m252.5 677.3l51.1-49.6"/>
+			<path id="&lt;Path&gt;" class="s2" d="m57.3 652.5h72.2"/>
+			<path id="&lt;Path&gt;" class="s2" d="m241.9 770.2h72.2"/>
+			<path id="&lt;Path&gt;" class="s2" d="m241.9 805.3h72.2"/>
+			<path id="&lt;Path&gt;" class="s2" d="m57.3 787.8h72.2"/>
+			<path id="&lt;Path&gt;" class="s2" d="m93.4 822.8v-70.1"/>
+			<path id="&lt;Path&gt;" class="s2" d="m4.5 582.4h363"/>
+			<path id="&lt;Path&gt;" class="s2" d="m186 582.2v276.1"/>
+			<path id="&lt;Path&gt;" class="s2" d="m367.8 720.2h-363.6"/>
+			<path id="&lt;Path&gt;" class="s2" d="m209 241.1l-96.7 94.3"/>
+			<ellipse id="&lt;Path&gt;" class="s2" cx="122.9" cy="251.8" rx="21.1" ry="20.5"/>
+			<ellipse id="&lt;Path&gt;" class="s2" cx="198.5" cy="324.7" rx="21.1" ry="20.5"/>
+			<path id="&lt;Path&gt;" class="s4" d="m49.8 524.6h66.3"/>
+			<path id="&lt;Path&gt;" class="s4" d="m152.8 524.6h66.3"/>
+			<path id="&lt;Path&gt;" class="s4" d="m256.2 524.6h66.4"/>
+		</g>
+		<g id="&lt;Group&gt;">
+			<g id="&lt;Group&gt;">
+				<path id="&lt;Compound Path&gt;" class="s2" d="m499.5 388.3c-64.1 0-116.1-45.5-116.1-109.6 0-64.1 52-116 116.1-116q0.1 0 0.2 0c0-1.7-0.2-3.4-0.2-5.1 0-84.1 68.1-152.3 152.2-152.3 52.3 0 98.4 26.4 125.8 66.5 12-6.3 25.6-9.9 40.1-9.9 47.5 0 86 38.5 86 86.1 0 5.5-0.5 10.9-1.5 16.1 55.7 8.5 98.4 56.5 98.4 114.6 0 64.1-51.9 116-116 116z"/>
+			</g>
+			<path id="&lt;Path&gt;" class="s3" d="m1005.7 412.7v2.3c0 38.1-31.2 69.3-69.3 69.3h-68.4v11.8c0 12.6-10.3 23-22.9 23h-85.3c-12.7 0-23-10.4-23-23 0-5.5 2-10.6 5.3-14.6-28.9-8.3-50.2-35-50.2-66.5v-2.3c0-38.1 31.2-69.3 69.4-69.3h10.4c6.4-36.8 38.5-64.7 77.1-64.7 38.6 0 70.7 27.9 77.1 64.7h10.5c38.1 0 69.3 31.2 69.3 69.3z"/>
+			<g id="&lt;Group&gt;">
+				<g id="&lt;Group&gt;">
+					<g id="&lt;Group&gt;">
+						<g id="&lt;Group&gt;">
+							<g id="&lt;Group&gt;">
+								<g id="&lt;Group&gt;">
+									<path id="&lt;Path&gt;" class="s2" d="m833.1 368c-5.4 6.4-30.9 18.4-30.9 26.8q0 16.6 0 16.6c0 45-50.3 56.6-112.3 56.6-62.1 0-112.4-8.3-112.4-56.6 0 0 0-16.6 0-16.7 0-8.3-22.3-21.8-27.7-28.2-23.3-27.7-17.6-58.1-17.2-97.3 0.9-86.4 72.4-153.8 158.8-153 86.1 0.8 155.7 68.3 155.7 154.6 0 38.5 9 69.8-14 97.2z"/>
+									<path id="&lt;Path&gt;" class="s3" d="m700.4 388.5h-21.1c-7 0-12.1-5.9-10.1-11.8l10-42.9c1.5-4.4 3.8-7.4 9-7.4h3.3c5.2 0 7.5 3 9 7.4l10 42.9c2 5.9-3.1 11.8-10.1 11.8z"/>
+									<path id="&lt;Path&gt;" class="s3" d="m663.2 308.1c-13 28.3-30.9 44.2-55.7 38.7-24.8-5.5-54.4-29.9-47.6-60.3 6.7-30.5 45.2-42.9 70.6-43.5 34-0.8 50.2 27.3 32.7 65.1z"/>
+									<path id="&lt;Path&gt;" class="s3" d="m749.9 243.6c25.4 1.3 62.8 11.3 70.3 41.6 7.5 30.3-20 55.4-44.7 61.6-24.7 6.1-46.1-8-56.6-37.3-13.6-37.7 0.1-67.5 31-65.9z"/>
+								</g>
+							</g>
+						</g>
+					</g>
+				</g>
+			</g>
+		</g>
+		<g id="&lt;Group&gt;">
+			<g id="&lt;Group&gt;">
+				<path id="&lt;Path&gt;" class="s3" d="m707.1 606.7h3.9c7.8 0 15.1 3.6 19.9 9.8l14.5 18.8c4.5 5.9 11.5 9.3 18.9 9.3h5.9q65.2 6.6 69.7 18.1c4.5 11.5 17 68.6 21.5 78.6q4.5 10 32.1 29.1l24.7 55.8c2.3 5.2 3.5 10.9 3.5 16.6v119l-17.5 15.3-22.1 22.4q4.7 79.5-14.7 79.5-19.3 0-98.2 0h-24.6c-10.2 0-18.5-8.3-18.5-18.5h-102c-9.2 0-16.7-7.4-16.7-16.6v-16c0-9.2-7.5-16.7-16.7-16.7h-110.1c-10.1 0-18.4-8.2-18.4-18.4 0-6.6 2.7-13 7.4-17.7l26.1-24v-0.1l155.7-5.9c5.5-0.2 9.8-4.8 9.6-10.3l-1.9-69.7 40.3-77.2 7.7-181.3z"/>
+			</g>
+			<path id="&lt;Path&gt;" class="s2" d="m707.1 606.7l-7.7 181.4-40.3 77.2 1.9 69.7c0.2 5.5-4.1 10.1-9.6 10.3l-155.7 5.8v-23.6q38.6-175 49.3-187 10.7-12 38.9-94.8l6.3-39h71z"/>
+			<g id="&lt;Group&gt;">
+				<path id="&lt;Path&gt;" class="s3" d="m609.4 844h-116.9v-302.7h116.9z"/>
+				<path id="&lt;Path&gt;" class="s4" d="m587 577.7l-72.1 72.2"/>
+				<circle id="&lt;Path&gt;" class="s4" cx="529.8" cy="580.1" r="14.9"/>
+				<circle id="&lt;Path&gt;" class="s4" cx="572.1" cy="646.3" r="14.9"/>
+			</g>
+			<g id="&lt;Group&gt;">
+				<path id="&lt;Path&gt;" class="s2" d="m863 836.1h-118.8v-153h118.8z"/>
+				<path id="&lt;Path&gt;" class="s4" d="m840.2 725.1l-73.3 73.4"/>
+				<circle id="&lt;Path&gt;" class="s4" cx="782" cy="727.5" r="15.1"/>
+				<circle id="&lt;Path&gt;" class="s4" cx="825.1" cy="794.9" r="15.1"/>
+			</g>
+		</g>
+	</g>
+</svg>

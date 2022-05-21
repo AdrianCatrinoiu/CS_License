@@ -17,21 +17,28 @@ const FormTransportationSelect = ({
   unit,
 }) => {
   const [label, setLabel] = useState(unit.label);
-  const [vehicles, setVehicles] = useState(unit.vehicles);
-  const [fuel, setFuel] = useState(unit.fuel);
+  const [vehicleNr, setVehicles] = useState(unit.vehicleNr);
+  const [fuelUsed, setFuelUsed] = useState(unit.fuelUsed);
   const [fuelUnit, setFuelUnit] = useState(unit.fuelUnit);
-  const [type, setType] = useState(unit.type);
+  const [vehicleType, setVehicleType] = useState(unit.vehicleType);
 
   const handleUpdate = () => {
-    updateUnit(id, label, parseInt(vehicles), parseFloat(fuel), fuelUnit, type);
+    updateUnit(
+      id,
+      label,
+      parseInt(vehicleNr),
+      parseFloat(fuelUsed),
+      fuelUnit,
+      vehicleType
+    );
   };
 
   const handleVehicleTypeChange = (event, value) => {
     setLabel(value.label);
     setVehicles(0);
-    setFuel(0);
+    setFuelUsed(0);
     setFuelUnit(value.fuelUnit);
-    setType(value.type);
+    setVehicleType(value.vehicleType);
   };
 
   const handleVehiclesChange = (event, value) => {
@@ -44,9 +51,9 @@ const FormTransportationSelect = ({
 
   const handleFuelChange = (event, value) => {
     if (event.target.value) {
-      setFuel(event.target.value);
+      setFuelUsed(event.target.value);
     } else {
-      setFuel(0);
+      setFuelUsed(0);
     }
   };
 
@@ -72,7 +79,7 @@ const FormTransportationSelect = ({
               disableClearable
               options={unitList}
               value={label}
-              groupBy={(option) => option.type}
+              groupBy={(option) => option.vehicleType}
               onChange={handleVehicleTypeChange}
               sx={{
                 "& .css-1in441m": {
@@ -96,7 +103,7 @@ const FormTransportationSelect = ({
               marginBottom: "24px",
               fontSize: 24,
             }}
-            value={vehicles}
+            value={vehicleNr}
             InputLabelProps={{ style: { fontSize: 16 } }}
             InputProps={{
               style: { fontSize: 16 },
@@ -121,7 +128,7 @@ const FormTransportationSelect = ({
               width: "100%",
               fontSize: 24,
             }}
-            value={fuel}
+            value={fuelUsed}
             InputLabelProps={{ style: { fontSize: 16 } }}
             InputProps={{
               style: { fontSize: 16 },

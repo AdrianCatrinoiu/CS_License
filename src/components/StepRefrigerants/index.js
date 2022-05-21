@@ -82,7 +82,7 @@ const StepRefrigerants = ({ userId }) => {
     });
   };
   return (
-    <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[600px]">
+    <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[601px]">
       <p className="mb-16 text-[24px] text-center">
         Does your company use refrigerants?
       </p>
@@ -96,7 +96,7 @@ const StepRefrigerants = ({ userId }) => {
           <NavigationIcon sx={{ transform: "rotate(180deg)" }} />
         </div>
       )}
-      <div className="overflow-y-auto flex flex-col w-full items-center mb-1">
+      <div className="overflow-y-auto flex flex-col w-full items-center mb-1 max-h-[606px]">
         {refrigerantsList.map((unit, index) => (
           <FormRefrigerantSelect
             key={unit.id}

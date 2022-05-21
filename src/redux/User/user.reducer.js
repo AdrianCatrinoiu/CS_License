@@ -26,7 +26,7 @@ const userEmissionsInitialState = {
 
 const INITIAL_STATE = {
   user: null,
-  userErr: [],
+  userErr: "",
   userForm: userFormInitialState,
   emissions: userEmissionsInitialState,
 };
@@ -37,7 +37,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         user: action.payload.user,
-        userErr: [],
+        userErr: "",
         userForm: action.payload.formData,
       };
     case userTypes.SIGN_OUT_USER_SUCCESS:
@@ -87,12 +87,20 @@ const userReducer = (state = INITIAL_STATE, action) => {
           },
         };
       }
+      console.log("action formId", action.payload);
       return {
         ...state,
         userForm: {
           ...state.userForm,
-          formId: action.payload.updateData.formId,
+          formId: action.payload.formId,
           [action.payload.updateData.step]: action.payload.updateData.data,
+        },
+      };
+    case userTypes.USER_FORMDATA_UPDATE:
+      return {
+        ...state,
+        userForm: {
+          ...action.payload.formData,
         },
       };
 

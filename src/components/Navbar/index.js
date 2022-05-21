@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./styles.scss";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import { signOutUserStart } from "../../redux/User/user.actions";
@@ -15,6 +14,7 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logout from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
+import useWindowDimensions from "../../customHooks/useWindowDimensions";
 
 const mapState = (state) => ({
   user: state.user.user,
@@ -23,6 +23,7 @@ const mapState = (state) => ({
 const Navbar = (props) => {
   const dispatch = useDispatch();
   const { user } = useSelector(mapState);
+  const { width } = useWindowDimensions();
 
   const signOut = () => {
     dispatch(signOutUserStart());
@@ -38,8 +39,8 @@ const Navbar = (props) => {
 
   return (
     <header className="h-28 bg-white">
-      <div className="flex flex-row w-full h-full">
-        <div className="flex rounded-full self-start items-center w-1/3 left-3 h-full">
+      <div className="flex flex-row justify-between w-full h-full">
+        <div className="flex rounded-full self-start items-center md:w-1/3 w-1/2 left-3 h-full">
           <Link to="/" className="flex flex-row items-center">
             <img
               className="w-32 h-24  ml-8 "
@@ -49,14 +50,17 @@ const Navbar = (props) => {
             <p className="">Nortec noir</p>
           </Link>
         </div>
-        <div className="w-1/3 flex justify-center items-center h-full">
-          <div className="w-48 h-20 flex justify-center items-center hover:shadow-2xl text-center rounded-md hover:translate-y-1  hover:bg-lime-500  duration-300 ">
-            <Link className="w-full h-full flex items-center" to="/">
-              <p className="w-full text-center self-center">Home</p>
-            </Link>
+        {width > 768 && (
+          <div className="md:w-1/3 w-1/2 flex justify-center items-center h-full">
+            <div className="w-48 h-20 flex justify-center items-center hover:shadow-2xl text-center rounded-md hover:translate-y-1  hover:bg-lime-500  duration-300 ">
+              <Link className="w-full h-full flex items-center" to="/About">
+                <p className="w-full text-center self-center">About</p>
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className="w-1/3 h-full  flex flex-col justify-center self-end items-end">
+        )}
+
+        <div className="md:w-1/3 w-1/2 h-full  flex flex-col justify-center self-end items-end">
           <div className="flex flex-row items-center justify-center mr-12">
             <Tooltip title="Account settings">
               <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
@@ -111,7 +115,18 @@ const Navbar = (props) => {
                     </MenuItem>
                   </Link>
                   <Divider />
+                  {width < 768 && (
+                    <Link
+                      className="w-full h-full flex items-center"
+                      to="/about"
+                    >
+                      <MenuItem className="w-full">
+                        <Avatar /> About
+                      </MenuItem>
+                    </Link>
+                  )}
 
+                  <Divider />
                   <MenuItem className="w-full" onClick={() => signOut()}>
                     <ListItemIcon>
                       <Logout fontSize="small" />
@@ -132,6 +147,16 @@ const Navbar = (props) => {
                       Register
                     </MenuItem>
                   </Link>
+                  {width < 768 && (
+                    <Link
+                      className="w-full h-full flex items-center"
+                      to="/about"
+                    >
+                      <MenuItem className="w-full">
+                        <Avatar /> About
+                      </MenuItem>
+                    </Link>
+                  )}
                   <Link className="w-full h-full flex items-center" to="/login">
                     <MenuItem className="w-full">
                       <ListItemIcon>

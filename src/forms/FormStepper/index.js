@@ -15,17 +15,17 @@ import StepConnector, {
   stepConnectorClasses,
 } from "@mui/material/StepConnector";
 
-const FormStepper = ({ formStep }) => {
+const FormStepper = ({ formStep, setFormStep }) => {
   const { width } = useWindowDimensions();
 
   const steps = [
-    { label: "Year", svg: Year },
-    { label: "Field of activity", svg: CAEN },
-    { label: "Electricity emissions", svg: Electricity },
-    { label: "Burning emissions", svg: Burning },
-    { label: "Waste emissions", svg: Waste },
-    { label: "Refrigerants emissions", svg: Refrigerants },
-    { label: "Transportation emissions", svg: Transportation },
+    { label: "Year", step: 0 },
+    { label: "Field of activity", step: 1 },
+    { label: "Electricity emissions", step: 2 },
+    { label: "Burning emissions", step: 3 },
+    { label: "Waste emissions", step: 4 },
+    { label: "Refrigerants emissions", step: 5 },
+    { label: "Transportation emissions", step: 6 },
   ];
 
   const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
@@ -113,14 +113,20 @@ const FormStepper = ({ formStep }) => {
   return (
     <div className="w-full flex flex-col">
       <Stepper
-        className="w-[80%] self-center mt-8"
+        className=" md:w-[80%] w-full self-center mt-8"
         alternativeLabel
         activeStep={formStep}
         connector={<ColorlibConnector />}
       >
         {steps.map((label) => (
           <Step key={label.label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>
+            <StepLabel
+              StepIconComponent={ColorlibStepIcon}
+              onClick={() => {
+                setFormStep(label.step);
+              }}
+              className="cursor-pointer"
+            >
               {label.label}
             </StepLabel>
           </Step>

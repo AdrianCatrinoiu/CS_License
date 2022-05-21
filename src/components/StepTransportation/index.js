@@ -46,10 +46,10 @@ const StepTransportation = ({ setFormStep }) => {
         formId: userForm.formId,
         data: {
           label: "",
-          vehicles: 0,
-          fuel: 0,
+          vehicleNr: 0,
+          fuelUsed: 0,
           fuelUnit: "",
-          type: "",
+          vehicleType: "",
         },
       })
     );
@@ -58,7 +58,14 @@ const StepTransportation = ({ setFormStep }) => {
     }, 300);
   };
 
-  const updateUnit = (id, label, vehicles, fuel, fuelUnit, type) => {
+  const updateUnit = (
+    id,
+    label,
+    vehicleNr,
+    fuelUsed,
+    fuelUnit,
+    vehicleType
+  ) => {
     transportationList.map((transportation) => {
       if (transportation.id === id) {
         if (label === null) {
@@ -70,9 +77,9 @@ const StepTransportation = ({ setFormStep }) => {
                 id,
                 label: "",
                 vehicles: 0,
-                fuel: 0,
+                fuelUsed: 0,
                 fuelUnit: "",
-                type: "",
+                vehicleType: "",
               },
             })
           );
@@ -84,15 +91,16 @@ const StepTransportation = ({ setFormStep }) => {
               data: {
                 id,
                 label,
-                vehicles: parseFloat(vehicles),
-                fuel: parseFloat(fuel),
+                vehicleNr: parseFloat(vehicleNr),
+                fuelUsed: parseFloat(fuelUsed),
                 fuelUnit,
-                type,
+                vehicleType,
               },
             })
           );
         }
       }
+
       return transportation;
     });
   };

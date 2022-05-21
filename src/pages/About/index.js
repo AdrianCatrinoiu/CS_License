@@ -1,15 +1,15 @@
 import React from "react";
 import Details from "../../components/Details";
-import HomePageLayout from "../../layouts/HomePageLayout";
+import MainLayout from "../../layouts/MainLayout";
 import "./styles.scss";
 
 const About = () => {
   return (
-    <HomePageLayout>
+    <MainLayout>
       <section className="about">
         <Details />
       </section>
-    </HomePageLayout>
+    </MainLayout>
   );
 };
 

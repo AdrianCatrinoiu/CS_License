@@ -63,3 +63,7 @@ export const userFormCalculateSuccess = (emissions) => ({
   type: userTypes.USER_FORM_CALCULATE_SUCCESS,
   payload: { emissions },
 });
+export const userFormDataUpdate = (formData) => ({
+  type: userTypes.USER_FORMDATA_UPDATE,
+  payload: { formData },
+});

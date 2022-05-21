@@ -16,7 +16,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 import Fab from "@mui/material/Fab";
 import NavigationIcon from "@mui/icons-material/Navigation";
-
+import { userError } from "../../redux/User/user.actions";
 const mapState = ({ user }) => ({
   user: user.user,
   userErr: user.userErr,
@@ -34,7 +34,7 @@ const SignUp = (props) => {
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [errors, setErrors] = useState([]);
+  const [error, setError] = useState();
 
   const reset = () => {
     setFirstName("");
@@ -42,7 +42,7 @@ const SignUp = (props) => {
     setEmail("");
     setPassword("");
     setConfirmPassword("");
-    setErrors([]);
+    setError(null);
   };
   useEffect(() => {
     if (user) {
@@ -52,9 +52,7 @@ const SignUp = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
   useEffect(() => {
-    if (Array.isArray(userErr) && userErr.length > 0) {
-      setErrors(userErr);
-    }
+    setError(userErr);
   }, [userErr]);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -96,7 +94,7 @@ const SignUp = (props) => {
     <div className="h-full bg-white w-full bg-[url('./assets/background.svg')]  sm:bg-[length:1500px] md:bg-[length:1800px] lg:bg-[length:2000px] xl:bg-[length:2300px] 2xl:bg-[length:2500px] bg-[length:800px] bg-no-repeat bg-bottom">
       <div className="absolute top-[10%] mt-[30px] left-[100px]">
         <Link to="/">
-          <Fab variant="extended">
+          <Fab variant="extended" onClick={() => dispatch(userError(""))}>
             <NavigationIcon
               sx={{
                 transform: "rotate(270deg)",
@@ -107,12 +105,8 @@ const SignUp = (props) => {
       </div>
       <div className="flex flex-col items-center justify-center ">
         <div className="mt-[10%]">
-          {errors.length > 0 && (
-            <ul>
-              {errors.map((err, index) => {
-                return <li key={index}>{err}</li>;
-              })}
-            </ul>
+          {error && (
+            <p className=" font-MontserratBold text-red-500">{error}</p>
           )}
         </div>
         <div className="p-12 sm:w-1/2 h-full flex flex-col items-center justify-center divide-y-2 ">
@@ -239,48 +233,6 @@ const SignUp = (props) => {
             </div>
           </div>
         </div>
-
-        {/* <div className="formWrap">
-          <form onSubmit={handleFormSubmit}>
-            <FormInput
-              type="text"
-              name="firstName"
-              value={firstName}
-              placeholder="First Name"
-              handleChange={(e) => setFirstName(e.target.value)}
-            />
-            <FormInput
-              type="text"
-              name="lastName"
-              value={lastName}
-              placeholder="Last Name"
-              handleChange={(e) => setLastName(e.target.value)}
-            />
-            <FormInput
-              type="email"
-              name="email"
-              value={email}
-              placeholder="Email"
-              handleChange={(e) => setEmail(e.target.value)}
-            />
-            <FormInput
-              type="password"
-              name="password"
-              value={password}
-              placeholder="Password"
-              handleChange={(e) => setPassword(e.target.value)}
-            />
-            <FormInput
-              type="password"
-              name="confirmPassword"
-              value={confirmPassword}
-              placeholder="Confirm your password"
-              handleChange={(e) => setConfirmPassword(e.target.value)}
-            />
-
-            <Button type="submit">Register</Button>
-          </form>
-        </div> */}
       </div>
     </div>
   );

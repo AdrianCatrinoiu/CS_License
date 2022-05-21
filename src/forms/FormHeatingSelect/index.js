@@ -81,7 +81,6 @@ const FormHeatingSelect = ({
               width: "100%",
               fontSize: 24,
             }}
-            type="number"
             value={value}
             InputLabelProps={{ style: { fontSize: 16 } }}
             InputProps={{

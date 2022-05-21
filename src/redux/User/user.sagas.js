@@ -6,6 +6,7 @@ import {
   userError,
   userFormAddSuccess,
   userFormCalculateSuccess,
+  userFormDataUpdate,
   userFormDeleteSuccess,
   userFormUpdateSuccess,
 } from "./user.actions";
@@ -19,17 +20,19 @@ export function* emailSignIn({ payload: { email, password } }) {
       path: "/auth/login",
       data: { email, password },
     });
-
+    console.log("data", data.data);
     if (data.status === 200) {
       localStorage.setItem("accessToken", data.data.accessToken);
+      yield put(
+        signInSuccessAction({
+          ...data.data,
+        })
+      );
     }
-
-    yield put(
-      signInSuccessAction({
-        ...data.data,
-      })
-    );
-  } catch (err) {}
+  } catch (err) {
+    console.log("err", err);
+    yield put(userError(err.response.data.message));
+  }
 }
 
 export function* onEmailSignInStart() {
@@ -68,6 +71,10 @@ export function* onSignOutUserStart() {
 export function* signUpUser({
   payload: { firstName, lastName, email, password, confirmPassword },
 }) {
+  if (!firstName || !lastName || !email || !password || !confirmPassword) {
+    yield put(userError("Please fill in all fields"));
+    return;
+  }
   if (password !== confirmPassword) {
     const err = ["Passwords do not match!"];
     yield put(userError(err));
@@ -79,6 +86,7 @@ export function* signUpUser({
       path: "/auth/register",
       data: { email, password, firstName, lastName },
     });
+    console.log(data.status);
     if (data.status === 201) {
       yield put(
         signInSuccessAction({
@@ -87,7 +95,9 @@ export function* signUpUser({
       );
       localStorage.setItem("accessToken", data.data.accessToken);
     }
-  } catch (e) {}
+  } catch (e) {
+    yield put(userError(e.response.data.message));
+  }
 }
 
 export function* onSignUpUserStart() {
@@ -111,6 +121,8 @@ export function* userFormAdd({ payload: { addData } }) {
           data: { ...addData.data, id: data.data.id },
         })
       );
+    } else {
+      yield put(userError(data.data.message));
     }
   } catch (e) {}
 }
@@ -140,6 +152,10 @@ export function* userFormUpdate({ payload: { updateData } }) {
           })
         );
       }
+    }
+    if (data.status === 201) {
+      console.log(data.data);
+      yield put(userFormDataUpdate(data.data));
     }
   } catch (e) {}
 }

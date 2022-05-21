@@ -1,14 +1,19 @@
 import React from "react";
-import Nortec from "../../assets/nortecnoir_logo.png";
+import Logo from "../../assets/logo.svg";
 import InfoCard from "../InfoCard";
 import "./styles.scss";
+import CalculateEmissions from "../../assets/calculateEmissions.svg";
+import GreenhouseGas from "../../assets/greenhouseGas.svg";
+import AirPollution from "../../assets/airPollution.svg";
+import GlobalWarming from "../../assets/globalWarming.svg";
 
 const Details = (props) => {
   return (
     <div>
       <div className=" flex flex-col items-center  w-full mb-20">
-        <div className="w-full float-left  flex -z-[1] flex-col pb-20 justify-center items-center bg-cover">
-          <img src={Nortec} alt="Nortec"></img>
+        <div className="w-full float-left  flex  flex-col pb-20 justify-center items-center bg-cover">
+          <img src={Logo} alt="Nortec" className="w-[20%]  mt-16 "></img>
+          <p className="text-[56px] text-gray-500">Nortec Noir</p>
         </div>
         <InfoCard
           title="The Problem"
@@ -18,6 +23,7 @@ const Details = (props) => {
           the total amount of greenhouse gases (also reffered as GHG)
           emitted directly or indirectly through its activities."
           position="left"
+          image={GlobalWarming}
         />
         <InfoCard
           title="What is the carbon footprint in businesses?"
@@ -30,6 +36,7 @@ const Details = (props) => {
           gases that it emits directly and indirectly through it's
           activities."
           position="right"
+          image={AirPollution}
         />
         <InfoCard
           title="Greenhouse gas emissions categories"
@@ -44,6 +51,7 @@ const Details = (props) => {
           business travel to purchased goods and services, waste disposal
           and employee commuting."
           position="left"
+          image={GreenhouseGas}
         />
         <InfoCard
           title="How does the carbon footprint calculator work?"
@@ -53,6 +61,7 @@ const Details = (props) => {
           this formula, there are several methodologies to calculate the
           carbon footprint and we approached the GHG Protocol."
           position="right"
+          image={CalculateEmissions}
         />
       </div>
     </div>

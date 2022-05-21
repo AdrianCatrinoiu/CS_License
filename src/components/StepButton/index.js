@@ -7,8 +7,8 @@ const StepButton = ({ orientation, isDisabled, setFormStep, formStep }) => {
     <div
       className={
         orientation === "right"
-          ? "absolute flex justify-center items-center  top-1/2 right-[10%] rounded-full bg-gray-200  cursor-pointer  hover:bg-lime-500  duration-300"
-          : "absolute flex justify-center items-center  top-1/2 left-[10%] rounded-full bg-gray-200  cursor-pointer  hover:bg-lime-500  duration-300"
+          ? "absolute flex justify-center items-center  sm:top-1/2 top-[90%] right-[10%] rounded-full bg-gray-200  cursor-pointer  hover:bg-lime-500  duration-300"
+          : "absolute flex justify-center items-center  sm:top-1/2 top-[90%] left-[10%] rounded-full bg-gray-200  cursor-pointer  hover:bg-lime-500  duration-300"
       }
     >
       <Fab

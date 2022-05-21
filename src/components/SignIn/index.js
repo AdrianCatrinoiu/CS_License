@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { emailSignInStartAction } from "../../redux/User/user.actions";
+import {
+  emailSignInStartAction,
+  userError,
+} from "../../redux/User/user.actions";
 import "./styles.scss";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
@@ -16,20 +19,25 @@ import { Link } from "react-router-dom";
 
 const mapState = ({ user }) => ({
   user: user.user,
+  userErr: user.userErr,
 });
 
 const SignIn = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector(mapState);
+  const { user, userErr } = useSelector(mapState);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState();
 
   const resetForm = () => {
     setEmail("");
     setPassword("");
   };
+  useEffect(() => {
+    setError(userErr);
+  }, [userErr]);
   //at sign-in
   useEffect(() => {
     if (user) {
@@ -57,6 +65,11 @@ const SignIn = (props) => {
 
   return (
     <div className="p-12 sm:w-1/2 h-full flex flex-col items-center justify-center divide-y-2">
+      {error && (
+        <div className="mt-[10%]">
+          <p className=" font-MontserratBold text-red-500">{error}</p>
+        </div>
+      )}
       <div className="w-[80%] flex flex-col items-center justify-center mb-8">
         <TextField
           label="Email"
@@ -105,11 +118,13 @@ const SignIn = (props) => {
           }}
         />
 
-        <div className="w-full flex flex-row justify-between">
-          <Button variant="text" color="success">
+        <div className="w-full flex flex-row justify-end">
+          {/* <Button variant="text" color="success">
             <p className="text-2xl">Forgot password?</p>
-          </Button>
+          </Button> */}
+          <p>Already have an account?</p>
           <Button
+            className="w-[150px] h-[56px]"
             variant="contained"
             color="success"
             endIcon={<ArrowForwardIcon />}
@@ -123,7 +138,11 @@ const SignIn = (props) => {
         <div className="mt-8 flex flex-row justify-between">
           <p>No account yet?</p>
           <Link to="/register">
-            <Button variant="text" color="success">
+            <Button
+              variant="text"
+              color="success"
+              onClick={() => dispatch(userError(""))}
+            >
               <p className="text-2xl">Sign up</p>
             </Button>
           </Link>

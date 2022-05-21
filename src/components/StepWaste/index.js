@@ -78,7 +78,7 @@ const StepWaste = ({ userId }) => {
   useEffect(() => {}, [wasteUnitList]);
 
   return (
-    <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[600px]">
+    <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[601px]">
       <p className="mb-16 text-[24px] text-center">
         Does your company generate waste?
       </p>
@@ -90,7 +90,7 @@ const StepWaste = ({ userId }) => {
           </div>
         </>
       )}
-      <div className="overflow-y-auto flex flex-col w-full items-center">
+      <div className="overflow-y-auto flex flex-col w-full items-center max-h-[509px]">
         {wasteUnitList.map((unit, index) => (
           <FormWasteSelect
             key={unit.id}
