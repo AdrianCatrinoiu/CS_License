@@ -78,27 +78,23 @@ const FormStepper = ({ formStep }) => {
     const { active, completed, className } = props;
 
     const icons = {
-      1: <img className="w-full " src={Year} alt="Year" />,
-      2: <img className="w-full " src={CAEN} alt="Field of activity" />,
+      1: <img className="h-full" src={Year} alt="Year" />,
+      2: <img className="h-full" src={CAEN} alt="Field of activity" />,
       3: (
-        <img
-          className="w-full "
-          src={Electricity}
-          alt="Electricity emissions"
-        />
+        <img className="h-full" src={Electricity} alt="Electricity emissions" />
       ),
-      4: <img className="w-full " src={Burning} alt="Burning emissions" />,
-      5: <img className="w-full " src={Waste} alt="Waste emissions" />,
+      4: <img className="h-full" src={Burning} alt="Burning emissions" />,
+      5: <img className="h-full" src={Waste} alt="Waste emissions" />,
       6: (
         <img
-          className="w-full "
+          className="h-full"
           src={Refrigerants}
           alt="Refrigerants emissions"
         />
       ),
       7: (
         <img
-          className="w-full "
+          className="h-full"
           src={Transportation}
           alt="Transportation emissions"
         />

@@ -1,7 +1,6 @@
 <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1203 1154" width="200" height="192">
 	<title>electricity2-svg</title>
 	<style>
-		.s0 { fill: none;stroke: #366088;stroke-linecap: round;stroke-linejoin: round;stroke-width: 12.5;stroke-dasharray: 75 } 
 		.s1 { fill: none;stroke: #366088;stroke-linecap: round;stroke-linejoin: round;stroke-width: 12.5;stroke-dasharray: 63 } 
 		.s2 { fill: #a4edf5 } 
 		.s3 { fill: #ffffff;stroke: #366088;stroke-linecap: round;stroke-linejoin: round;stroke-width: 12.5 } 
@@ -10,10 +9,8 @@
 	</style>
 	<g id="&lt;Group&gt;">
 		<g id="&lt;Group&gt;">
-			<path id="&lt;Path&gt;" class="s0" d="m327.2 1125.5c-192-99.1-323.3-299.5-323.3-530.5"/>
-			<path id="&lt;Path&gt;" class="s0" d="m1196 628.2c-12.5 228.6-153.8 423-352.6 511.7"/>
-			<path id="&lt;Path&gt;" class="s1" d="m676.9 3.3c159 20.4 298.5 103.4 392.9 223.5"/>
-			<circle id="&lt;Path&gt;" class="s2" cx="600.4" cy="595" r="438"/>
+			
+			<circle id="&lt;Path&gt;" class="s2" cx="610" cy="575" r="458"/>
 		</g>
 		<g id="&lt;Group&gt;">
 			<g id="&lt;Group&gt;">
