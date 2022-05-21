@@ -86,7 +86,7 @@ const Summary = ({ userId }) => {
             Your emissions in {userForm.stepYear}:
           </p>
           <div className="flex md:flex-row flex-col justify-between w-full md:max-h-[500px] mb-24">
-            <div className="flex flex-col px-32 py-12 justify-center items-center bg-[#7bee64] rounded-3xl shadow-2xl animate-fadeIn md:mr-[80px] md:mb-0 mb-8 ">
+            <div className="flex flex-col px-32 py-12 justify-center items-center rounded-3xl bg-[#7bee64] shadow-2xl animate-fadeIn md:mr-[80px] md:mb-0 mb-8 ">
               <div className="flex flex-col items-center justify-center my-8">
                 <p className="font-MontserratBold text-[32px] text-blue-400">
                   {totalCO2.toFixed(2)}
@@ -169,7 +169,7 @@ const Summary = ({ userId }) => {
             <InfoCard
               textComponent={
                 <p className="text-[24px] text-blue-400 text-center">
-                  You would need approximately{" "}
+                  You would need to plant approximately{" "}
                   <span className=" font-MontserratBold text-green-500">
                     {totalTrees}
                   </span>{" "}

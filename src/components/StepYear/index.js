@@ -20,7 +20,7 @@ const StepYear = ({ userId }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex flex-col max-w-[600px] items-center h-2/3 animate-fadeIn bg-white pt-8 rounded-3xl min-h-[600px]">
+    <div className="flex flex-col max-w-[600px] items-center h-2/3 animate-fadeIn bg-white shadow-2xl pt-8 rounded-3xl min-h-[600px]">
       <p className="mb-24 text-[24px] text-center">
         Choose the year for your estimation:
       </p>
@@ -32,6 +32,11 @@ const StepYear = ({ userId }) => {
             isDateDisabled={() => false}
             minDate={minDate}
             maxDate={maxDate}
+            sx={{
+              "& .MuiYearPicker-root": {
+                fontSize: "46px",
+              },
+            }}
             onChange={(newDate) => {
               setYear(newDate.year());
               dispatch(

@@ -16,7 +16,7 @@ const InfoCard = ({ title, text, textComponent, position, image }) => {
       ref={ref}
       className={
         isVisible
-          ? "transition ease-in duration-500 md:w-[80%] p-6 my-16 md:divide-x-2 shadow-xl rounded-xl bg-gray-100 flex md:flex-row flex-col justify-center"
+          ? "transition ease-in duration-500 md:w-[80%] p-6 my-16 md:divide-x-2 shadow-xl rounded-xl bg-slate-200 flex md:flex-row flex-col justify-center"
           : "opacity-0"
       }
     >
