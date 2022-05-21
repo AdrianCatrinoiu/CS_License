@@ -38,7 +38,7 @@ const StepHeating = ({ userId }) => {
       userFormAddStart({
         step: "stepHeating",
         formId: userForm.formId,
-        data: { id: new Date().getTime(), label: "", value: 0, unit: "" },
+        data: { id: new Date().getTime(), label: "", value: null, unit: "" },
       })
     );
     setTimeout(() => {

@@ -38,7 +38,7 @@ const StepWaste = ({ userId }) => {
       userFormAddStart({
         step: "stepWaste",
         formId: userForm.formId,
-        data: { label: "", type: "", value: 0 },
+        data: { label: "", type: "", value: null },
       })
     );
     setTimeout(() => {

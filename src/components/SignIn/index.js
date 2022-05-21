@@ -64,7 +64,7 @@ const SignIn = (props) => {
   };
 
   return (
-    <div className="p-12 sm:w-1/2 h-full flex flex-col items-center justify-center divide-y-2">
+    <div className="p-12 sm:w-1/2 h-full flex flex-col items-center justify-center divide-y-2 ">
       {error && (
         <div className="mt-[10%]">
           <p className=" font-MontserratBold text-red-500">{error}</p>
@@ -73,7 +73,7 @@ const SignIn = (props) => {
       <div className="w-[80%] flex flex-col items-center justify-center mb-8">
         <TextField
           label="Email"
-          sx={{ m: 2, width: "25ch" }}
+          sx={{ m: 2, width: "100%" }}
           value={email}
           onChange={handleEmailChange}
           InputLabelProps={{ style: { fontSize: 16 } }}
@@ -90,7 +90,7 @@ const SignIn = (props) => {
         />
         <TextField
           label="Password"
-          sx={{ marginY: 2, width: "25ch" }}
+          sx={{ marginY: 2, width: "100%" }}
           type={showPassword ? "text" : "password"}
           value={password}
           onChange={handlePasswordChange}

@@ -1,175 +1,175 @@
 [
   {
     "label": "Electric Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "kwh",
     "vehicleType": "Passenger Vehicle"
   },
   {
     "label": "Gasoline Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Passenger Vehicle"
   },
   {
     "label": "Diesel Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Passenger Vehicle"
   },
   {
     "label": "Biodiesel(100%) Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Passenger Vehicle"
   },
   {
     "label": "Gasoline Hybrid Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Passenger Vehicle"
   },
   {
     "label": "Gasoline Motorcycle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Passenger Vehicle"
   },
   {
     "label": "Gasoline Light-duty Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Light-duty Vehicle(Vans,Trucks,SUVs,Pickup)"
   },
   {
     "label": "Diesel Light-duty Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Light-duty Vehicle(Vans,Trucks,SUVs,Pickup)"
   },
   {
     "label": "Biodiesel(100%) Light-duty Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Light-duty Vehicle(Vans,Trucks,SUVs,Pickup)"
   },
   {
     "label": "Compressed Natural Gas Light-duty Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "m³",
     "vehicleType": "Light-duty Vehicle(Vans,Trucks,SUVs,Pickup)"
   },
   {
     "label": "Ethanol(100%) Light-duty Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Light-duty Vehicle(Vans,Trucks,SUVs,Pickup)"
   },
   {
     "label": "Gasoline Heavy-duty Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Heavy-duty Vehicle"
   },
 
   {
     "label": "Diesel Heavy-duty Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Heavy-duty Vehicle"
   },
 
   {
     "label": "Biodiesel(100%) Heavy-duty Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Heavy-duty Vehicle"
   },
 
   {
     "label": "Compressed Natural Gas Heavy-duty Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "m³",
     "vehicleType": "Heavy-duty Vehicle"
   },
 
   {
     "label": "Ethanol(100%) Heavy-duty Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Heavy-duty Vehicle"
   },
 
   {
     "label": "Gasoline Agricultural Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Agricultural Vehicle"
   },
   {
     "label": "Diesel Agricultural Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Agricultural Vehicle"
   },
   {
     "label": "Gasoline Ships and Boats",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Ships and Boats"
   },
   {
     "label": "Diesel Ships and Boats",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Ships and Boats"
   },
   {
     "label": "Jet Fueled Aircraft",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Aircraft"
   },
   {
     "label": "Aviation Gasoline Aircraft",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Aircraft"
   },
 
   {
     "label": "Gasoline Non-Road Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Non-Road Vehicle"
   },
   {
     "label": "Diesel Non-Road Vehicle",
-    "vehicleNr": 0,
-    "fuelUsed": 0,
+    "vehicleNr": null,
+    "fuelUsed": null,
     "fuelUnit": "litres",
     "vehicleType": "Non-Road Vehicle"
   }

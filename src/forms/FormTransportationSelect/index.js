@@ -35,8 +35,8 @@ const FormTransportationSelect = ({
 
   const handleVehicleTypeChange = (event, value) => {
     setLabel(value.label);
-    setVehicles(0);
-    setFuelUsed(0);
+    setVehicles(null);
+    setFuelUsed(null);
     setFuelUnit(value.fuelUnit);
     setVehicleType(value.vehicleType);
   };
@@ -45,7 +45,7 @@ const FormTransportationSelect = ({
     if (event.target.value) {
       setVehicles(event.target.value);
     } else {
-      setVehicles(0);
+      setVehicles(null);
     }
   };
 
@@ -53,7 +53,7 @@ const FormTransportationSelect = ({
     if (event.target.value) {
       setFuelUsed(event.target.value);
     } else {
-      setFuelUsed(0);
+      setFuelUsed(null);
     }
   };
 
@@ -104,6 +104,7 @@ const FormTransportationSelect = ({
               fontSize: 24,
             }}
             value={vehicleNr}
+            disabled={!label}
             InputLabelProps={{ style: { fontSize: 16 } }}
             InputProps={{
               style: { fontSize: 16 },
@@ -129,6 +130,7 @@ const FormTransportationSelect = ({
               fontSize: 24,
             }}
             value={fuelUsed}
+            disabled={!label}
             InputLabelProps={{ style: { fontSize: 16 } }}
             InputProps={{
               style: { fontSize: 16 },

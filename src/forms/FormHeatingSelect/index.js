@@ -25,14 +25,14 @@ const FormHeatingSelect = ({
 
   const handleUnitChange = (event, value) => {
     setLabel(value.label);
-    setValue(0);
+    setValue(null);
     setUnit(value.unit);
   };
   const handleValueChange = (event, value) => {
     if (event.target.value) {
       setValue(event.target.value);
     } else {
-      setValue(0);
+      setValue(null);
     }
   };
   return (

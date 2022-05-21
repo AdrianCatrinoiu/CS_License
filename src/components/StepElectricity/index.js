@@ -47,9 +47,17 @@ const StepElectricity = ({ userId }) => {
       <p className="mb-16 text-[24px] text-center">
         Choose how much electricity your company used during the selected year:
       </p>
+      <div className="w-[60%] min-w-[200px]">
+        <CountryDropdown
+          className="w-full my-[24px] h-[56px] text-24 border-[1px] border-black border-opacity-[0.23] rounded-[4px]"
+          value={country}
+          onChange={(val) => setCountry(val)}
+        />
+      </div>
       <TextField
         label="Non-renewableAmount"
         id="outlined-start-adornment"
+        disabled={country === ""}
         sx={{
           m: 3,
           width: "60%",
@@ -67,6 +75,7 @@ const StepElectricity = ({ userId }) => {
       <TextField
         label="Renewable"
         id="outlined-start-adornment"
+        disabled={country === ""}
         sx={{
           m: 3,
           width: "60%",
@@ -81,13 +90,6 @@ const StepElectricity = ({ userId }) => {
         }}
         onBlur={handleRenewableChange}
       />
-      <div className="w-[60%] min-w-[200px]">
-        <CountryDropdown
-          className="w-full my-[24px] h-[56px] text-24 border-[1px] border-black border-opacity-[0.23] rounded-[4px]"
-          value={country}
-          onChange={(val) => setCountry(val)}
-        />
-      </div>
     </div>
   );
 };

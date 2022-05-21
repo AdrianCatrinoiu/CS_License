@@ -46,8 +46,8 @@ const StepTransportation = ({ setFormStep }) => {
         formId: userForm.formId,
         data: {
           label: "",
-          vehicleNr: 0,
-          fuelUsed: 0,
+          vehicleNr: null,
+          fuelUsed: null,
           fuelUnit: "",
           vehicleType: "",
         },
@@ -76,8 +76,8 @@ const StepTransportation = ({ setFormStep }) => {
               data: {
                 id,
                 label: "",
-                vehicles: 0,
-                fuelUsed: 0,
+                vehicles: null,
+                fuelUsed: null,
                 fuelUnit: "",
                 vehicleType: "",
               },

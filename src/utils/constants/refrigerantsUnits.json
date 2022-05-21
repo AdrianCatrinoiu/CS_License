@@ -1,315 +1,315 @@
 [
   {
     "label": "Carbon dioxide",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CO2"
   },
   {
     "label": "Methane",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CH4"
   },
   {
     "label": "Nitrous oxide",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "N2O"
   },
   {
     "label": "Nitrogen trifluoride",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "NF3"
   },
   {
     "label": "Sulfur hexafluoride",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "SF6"
   },
   {
     "label": "HFC-23 (R-23)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CHF3"
   },
   {
     "label": "HFC-32 (R-32)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CH2F2"
   },
   {
     "label": "HFC-41 (R-41)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CH3F"
   },
   {
     "label": "HFC-125 (R-125)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C2HF5"
   },
   {
     "label": "HFC-134 (R-134)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C2H2F4"
   },
   {
     "label": "HFC-134a (R-134a)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C2H2F4"
   },
   {
     "label": "HFC-143 (R-143)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C2H3F3"
   },
   {
     "label": "HFC-143a (R-143a)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C2H3F3"
   },
   {
     "label": "HFC-152 (R-152)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C2H4F2"
   },
   {
     "label": "HFC-152a (R-152a)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C2H4F2"
   },
   {
     "label": "HFC-161 (R-161)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C2H5F"
   },
   {
     "label": "HFC-227ea (R-227ea)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C3HF7"
   },
   {
     "label": "HFC-236cb (R-236cb)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C3H2F6"
   },
   {
     "label": "HFC-236ea (R-236ea)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C3H2F6"
   },
   {
     "label": "HFC-236fa (R-236fa)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C3H2F6"
   },
   {
     "label": "HFC-245ca (R-245ca)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C3H2F6"
   },
   {
     "label": "HFC-245fa (R-245fa)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C3H3F5"
   },
   {
     "label": "HFC-365mfc ",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C3H3F5"
   },
   {
     "label": "HFC-43-10mee (R-4310)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C5H2F10"
   },
   {
     "label": "PFC-14 (Perfluoromethane)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CF4"
   },
   {
     "label": "PFC-116 (Perfluoroethane)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C2F6"
   },
   {
     "label": "PFC-218 (Perfluoropropane)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C3F8"
   },
   {
     "label": "PFC-318 (Perfluorocyclobutane)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "c-C4F8"
   },
   {
     "label": "PFC-3-1-10 (Perfluorobutane)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C4F10"
   },
   {
     "label": "PFC-4-1-12 (Perfluoropentane)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C5F12"
   },
   {
     "label": "PFC-5-1-14 (Perfluorohexane)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C6F14"
   },
   {
     "label": "PFC-9-1-18 (Perfluorodecalin)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "C10F18"
   },
 
   {
     "label": "CFC-11",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CCl3F"
   },
   {
     "label": "CFC-12",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CCl2F2"
   },
   {
     "label": "CFC-13",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CClF3"
   },
   {
     "label": "CFC-113",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CCl2FCClF2"
   },
   {
     "label": "CFC-114",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CClF2CClF2"
   },
   {
     "label": "CFC-115",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CClF2CF3"
   },
   {
     "label": "Halon-1301",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CBrF3"
   },
   {
     "label": "Halon-1211",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CBrClF2"
   },
   {
     "label": "Halon-2402",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CBrF2CBrF2"
   },
   {
     "label": "Carbon tetrachloride",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CCl4"
   },
   {
     "label": "Methyl bromide",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CH3Br"
   },
   {
     "label": "Methyl chloroform",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CH3CCl3"
   },
   {
     "label": "HCFC-21",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CHCl2F"
   },
   {
     "label": "R-22 (HCFC-22)",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CHClF2"
   },
   {
     "label": "HCFC-123",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CHCl2CF3"
   },
   {
     "label": "HCFC-124",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CHClFCF3"
   },
   {
     "label": "HCFC-141b",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CH3CCl2F"
   },
   {
     "label": "HCFC-142b",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CH3CClF2"
   },
   {
     "label": "HCFC-225ca",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CHCl2CF2Cf3"
   },
   {
     "label": "HCFC-225cb",
-    "kgBegin": 0,
-    "kgEnd": 0,
+    "kgBegin": null,
+    "kgEnd": null,
     "formula": "CHClFCF2CClF2"
   }
 ]

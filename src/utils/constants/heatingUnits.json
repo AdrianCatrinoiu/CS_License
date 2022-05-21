@@ -1,107 +1,107 @@
 [
   {
     "label": "Anthracite Coal",
-    "value": 0,
+    "value": null,
     "unit": "tons"
   },
   {
     "label": "Bituminous Coal",
-    "value": 0,
+    "value": null,
     "unit": "tons"
   },
   {
     "label": "Lignite Coal",
-    "value": 0,
+    "value": null,
     "unit": "tons"
   },
   {
     "label": "Coal coke",
-    "value": 0,
+    "value": null,
     "unit": "tons"
   },
   {
     "label": "Municipal solid waste",
-    "value": 0,
+    "value": null,
     "unit": "tons"
   },
   {
     "label": "Plastics",
-    "value": 0,
+    "value": null,
     "unit": "tons"
   },
   {
     "label": "Tires",
-    "value": 0,
+    "value": null,
     "unit": "tons"
   },
   {
     "label": "Agricultural by-products",
-    "value": 0,
+    "value": null,
     "unit": "tons"
   },
   {
     "label": "Wood",
-    "value": 0,
+    "value": null,
     "unit": "tons"
   },
   {
     "label": "Natural gas",
-    "value": 0,
+    "value": null,
     "unit": "m³"
   },
   {
     "label": "Propane gas",
-    "value": 0,
+    "value": null,
     "unit": "m³"
   },
   {
     "label": "Asphalt and Road oil",
-    "value": 0,
+    "value": null,
     "unit": "litres"
   },
   {
     "label": "Butane",
-    "value": 0,
+    "value": null,
     "unit": "litres"
   },
   {
     "label": "Crude oil",
-    "value": 0,
+    "value": null,
     "unit": "litres"
   },
   {
     "label": "Ethane",
-    "value": 0,
+    "value": null,
     "unit": "litres"
   },
   {
     "label": "Kerosene",
-    "value": 0,
+    "value": null,
     "unit": "litres"
   },
   {
     "label": "Lubricants",
-    "value": 0,
+    "value": null,
     "unit": "litres"
   },
   {
     "label": "Propane",
-    "value": 0,
+    "value": null,
     "unit": "litres"
   },
   {
     "label": "Used oil",
-    "value": 0,
+    "value": null,
     "unit": "litres"
   },
   {
     "label": "Biodiesel",
-    "value": 0,
+    "value": null,
     "unit": "litres"
   },
   {
     "label": "Ethanol",
-    "value": 0,
+    "value": null,
     "unit": "litres"
   }
 ]

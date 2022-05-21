@@ -42,8 +42,8 @@ const StepRefrigerants = ({ userId }) => {
         formId: userForm.formId,
         data: {
           label: "",
-          kgBegin: 0,
-          kgEnd: 0,
+          kgBegin: null,
+          kgEnd: null,
           formula: "",
         },
       })
