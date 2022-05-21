@@ -87,7 +87,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
           },
         };
       }
-      console.log("action formId", action.payload);
       return {
         ...state,
         userForm: {

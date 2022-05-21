@@ -14,8 +14,7 @@ const PollutantPieChart = ({ emission, title, emissions }) => {
   let emissionArrayPieData = [["Task", "Hours per Day"]];
   if (title === "Electricity") {
     emissionTotal = parseFloat(emission.emissionsAmountCO2);
-    console.log(emissionTotal);
-    console.log(emission.nonRenewableAmount);
+
     emissionArrayPieData = [
       ["Emission", "Kg of CO2"],
       ["Renewable", (emission.renewableAmount / emissionTotal) * 100],
@@ -24,50 +23,55 @@ const PollutantPieChart = ({ emission, title, emissions }) => {
   }
   if (title === "Heating") {
     emission.forEach((element) => {
-      emissionTotal += element.emissionsAmountCO2;
-      emissionArrayPieData.push([
-        element.label,
-        (element.emissionsAmountCO2 / emissions.heating.CO2) * 100,
-      ]);
+      if (element.emissionsAmountCO2 > 0) {
+        emissionTotal += element.emissionsAmountCO2;
+        emissionArrayPieData.push([
+          element.label,
+          (element.emissionsAmountCO2 / emissions.heating.CO2) * 100,
+        ]);
+      }
     });
-    console.log(emissionArrayPieData);
   }
   if (title === "Waste") {
     emission.forEach((element) => {
-      emissionTotal += element.emissionsAmountCO2;
-      emissionArrayPieData.push([
-        element.label,
-        (element.emissionsAmountCO2 / emissions.waste.CO2) * 100,
-      ]);
+      if (element.emissionsAmountCO2 > 0) {
+        emissionTotal += element.emissionsAmountCO2;
+        emissionArrayPieData.push([
+          element.label,
+          (element.emissionsAmountCO2 / emissions.waste.CO2) * 100,
+        ]);
+      }
     });
   }
   if (title === "Refrigerants") {
     emission.forEach((element) => {
-      emissionTotal += element.emissionsAmountCO2;
+      if (element.emissionsAmountCO2 > 0) {
+        emissionTotal += element.emissionsAmountCO2;
 
-      emissionArrayPieData.push([
-        element.label,
-        (element.emissionsAmountCO2 / emissions.refrigerants.CO2) * 100,
-      ]);
+        emissionArrayPieData.push([
+          element.label,
+          (element.emissionsAmountCO2 / emissions.refrigerants.CO2) * 100,
+        ]);
+      }
     });
   }
   if (title === "Transportation") {
     emission.forEach((element) => {
-      emissionTotal += element.emissionsAmountCO2;
+      if (element.emissionsAmountCO2 > 0) {
+        emissionTotal += element.emissionsAmountCO2;
 
-      emissionArrayPieData.push([
-        element.label,
-        (element.emissionsAmountCO2 / emissions.transportation.CO2) * 100,
-      ]);
+        emissionArrayPieData.push([
+          element.label,
+          (element.emissionsAmountCO2 / emissions.transportation.CO2) * 100,
+        ]);
+      }
     });
   }
 
   const totalPercentage = parseFloat((emissionTotal / totalCO2) * 100).toFixed(
     2
   );
-  console.log("totalPercentage", totalPercentage);
-  console.log("emissionTotal", emissionTotal);
-  console.log("totalCO2", totalCO2);
+
   const optionsAnimateOnStart = {
     backgroundColor: "transparent",
     animation: {

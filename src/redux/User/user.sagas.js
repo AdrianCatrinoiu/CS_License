@@ -20,7 +20,6 @@ export function* emailSignIn({ payload: { email, password } }) {
       path: "/auth/login",
       data: { email, password },
     });
-    console.log("data", data.data);
     if (data.status === 200) {
       localStorage.setItem("accessToken", data.data.accessToken);
       yield put(
@@ -30,7 +29,6 @@ export function* emailSignIn({ payload: { email, password } }) {
       );
     }
   } catch (err) {
-    console.log("err", err);
     yield put(userError(err.response.data.message));
   }
 }
@@ -86,7 +84,6 @@ export function* signUpUser({
       path: "/auth/register",
       data: { email, password, firstName, lastName },
     });
-    console.log(data.status);
     if (data.status === 201) {
       yield put(
         signInSuccessAction({
@@ -154,7 +151,6 @@ export function* userFormUpdate({ payload: { updateData } }) {
       }
     }
     if (data.status === 201) {
-      console.log(data.data);
       yield put(userFormDataUpdate(data.data));
     }
   } catch (e) {}
