@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import moment from "moment";
@@ -18,6 +18,10 @@ const StepYear = ({ userId }) => {
   const maxDate = moment();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setYear(userForm.stepYear);
+  }, [userForm.stepYear]);
 
   return (
     <div className="flex flex-col max-w-[600px] items-center h-2/3 animate-fadeIn bg-white shadow-2xl pt-8 rounded-3xl min-h-[600px]">

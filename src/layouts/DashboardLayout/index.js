@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import { signOutUserStart } from "../../redux/User/user.actions";
 import Navbar from "../../components/Navbar";
 import VerticalNav from "../../components/VerticalNav";
-import Footer from "../../components/Footer";
 
 const DashBoardLayout = (props) => {
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ const DashBoardLayout = (props) => {
           <VerticalNav>
             <ul>
               <li>
-                <Link to="/dashboard">Home</Link>
+                <Link to="/">Form</Link>
               </li>
               <li>
                 <span className="signOut" onClick={() => signOut()}>
@@ -33,7 +32,6 @@ const DashBoardLayout = (props) => {
         </div>
         <div className="content">{props.children}</div>
       </div>
-      {/* <Footer /> */}
     </div>
   );
 };

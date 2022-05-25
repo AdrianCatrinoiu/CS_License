@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar/index.js";
 
 const MainLayout = (props) => {
@@ -7,7 +6,6 @@ const MainLayout = (props) => {
     <div>
       <Navbar {...props} />
       <div className="h-full">{props.children}</div>
-      {/* <Footer /> */}
     </div>
   );
 };

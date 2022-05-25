@@ -21,7 +21,7 @@ const PollutantPieChart = ({ emission, title, emissions }) => {
       ["Nonrenewable", (emission.nonRenewableAmount / emissionTotal) * 100],
     ];
   }
-  if (title === "Heating") {
+  if (title === "Burning") {
     emission.forEach((element) => {
       if (element.emissionsAmountCO2 > 0) {
         emissionTotal += element.emissionsAmountCO2;

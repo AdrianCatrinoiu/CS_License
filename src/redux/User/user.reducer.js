@@ -87,6 +87,23 @@ const userReducer = (state = INITIAL_STATE, action) => {
           },
         };
       }
+      if (action.payload.updateData.step === "stepYear") {
+        return {
+          ...state,
+          userForm: {
+            ...state.userForm,
+            formId: action.payload.formId,
+            [action.payload.updateData.step]: action.payload.updateData.data,
+          },
+          user: {
+            ...state.user,
+            userFormYears: [
+              ...state.user.userFormYears,
+              action.payload.updateData.data,
+            ],
+          },
+        };
+      }
       return {
         ...state,
         userForm: {

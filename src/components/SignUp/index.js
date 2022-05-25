@@ -91,8 +91,8 @@ const SignUp = (props) => {
   };
 
   return (
-    <div className="h-full bg-white w-full sm:bg-[url('./assets/background.svg')]  sm:bg-[length:1500px] md:bg-[length:1800px] lg:bg-[length:2000px] xl:bg-[length:2300px] 2xl:bg-[length:2500px] bg-[length:800px] bg-no-repeat bg-bottom">
-      <div className="absolute sm:top-[10%] top-[90%] mt-[30px] left-[100px]">
+    <div className="h-full bg-white w-full sm:bg-[url('./assets/background.svg')]  sm:bg-[length:1500px] md:bg-[length:1800px] lg:bg-[length:1900px] xl:bg-[length:2000px] 2xl:bg-[length:2100px] bg-[length:800px] bg-no-repeat bg-bottom">
+      <div className="absolute sm:top-[10%] top-[90%] mt-[46px] left-[100px] ">
         <Link to="/">
           <Fab
             variant="extended"
@@ -107,13 +107,11 @@ const SignUp = (props) => {
           </Fab>
         </Link>
       </div>
-      <div className="flex flex-col items-center justify-center ">
-        <div className="mt-[10%]">
+      <div className="flex flex-col items-center">
+        <div className="sm:w-1/2 flex flex-col items-center justify-center divide-y-2 mt-[5%]">
           {error && (
             <p className=" font-MontserratBold text-red-500">{error}</p>
           )}
-        </div>
-        <div className="p-12 sm:w-1/2 h-full flex flex-col items-center justify-center divide-y-2 ">
           <div className="w-[80%] flex flex-col items-center justify-center mb-8">
             <TextField
               label="First name"

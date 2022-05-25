@@ -127,12 +127,14 @@ const Navbar = (props) => {
                   )}
 
                   <Divider />
-                  <MenuItem className="w-full" onClick={() => signOut()}>
-                    <ListItemIcon>
-                      <Logout fontSize="small" />
-                    </ListItemIcon>
-                    Logout
-                  </MenuItem>
+                  <Link className="w-full h-full flex items-center" to="/">
+                    <MenuItem className="w-full" onClick={() => signOut()}>
+                      <ListItemIcon>
+                        <Logout fontSize="small" />
+                      </ListItemIcon>
+                      Logout
+                    </MenuItem>
+                  </Link>
                 </div>
               ) : (
                 <div>

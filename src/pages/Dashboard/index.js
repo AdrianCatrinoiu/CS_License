@@ -1,13 +1,14 @@
 import React from "react";
+import ProfileDetails from "../../components/ProfileDetails";
 import WithAuth from "../../hoc/withAuth";
 import DashBoardLayout from "../../layouts/DashboardLayout";
 import "./styles.scss";
 
-const Dashboard = (props) => {
+const Dashboard = () => {
   return (
     <WithAuth>
       <DashBoardLayout>
-        <h1>You're logged in</h1>
+        <ProfileDetails />
       </DashBoardLayout>
     </WithAuth>
   );
