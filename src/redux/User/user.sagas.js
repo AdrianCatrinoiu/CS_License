@@ -8,6 +8,7 @@ import {
   userFormCalculateSuccess,
   userFormDataUpdate,
   userFormDeleteSuccess,
+  userFormRankingsSuccess,
   userFormUpdateSuccess,
 } from "./user.actions";
 import { axiosCall } from "../../api-routes/utils";
@@ -67,9 +68,9 @@ export function* onSignOutUserStart() {
 }
 
 export function* signUpUser({
-  payload: { firstName, lastName, email, password, confirmPassword },
+  payload: { companyName, email, password, confirmPassword },
 }) {
-  if (!firstName || !lastName || !email || !password || !confirmPassword) {
+  if (!companyName || !email || !password || !confirmPassword) {
     yield put(userError("Please fill in all fields"));
     return;
   }
@@ -82,7 +83,7 @@ export function* signUpUser({
     const data = yield call(axiosCall, {
       method: "POST",
       path: "/auth/register",
-      data: { email, password, firstName, lastName },
+      data: { email, password, companyName },
     });
     if (data.status === 201) {
       yield put(
@@ -196,13 +197,39 @@ export function* userFormCalculate({ payload: { formData } }) {
       data: { data: formData },
     });
     if (data.status === 200) {
-      yield put(userFormCalculateSuccess(data.data));
+      yield put(
+        userFormCalculateSuccess(data.data, formData.formId, formData.stepYear)
+      );
     }
   } catch (e) {}
 }
 
 export function* userFormCalculateStart() {
   yield takeLatest(userTypes.USER_FORM_CALCULATE_START, userFormCalculate);
+}
+
+export function* userFormRankings({ payload: { filters } }) {
+  try {
+    const token = localStorage.getItem("accessToken");
+    console.log("filters", filters);
+    const data = yield call(axiosCall, {
+      method: "POST",
+      path: "/form/rankings",
+      token: token,
+      data: { filters },
+    });
+    console.log("data", data);
+
+    if (data.status === 200) {
+      yield put(userFormRankingsSuccess(filters, data.data));
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export function* userFormRankingsStart() {
+  yield takeLatest(userTypes.USER_FORM_RANKINGS_START, userFormRankings);
 }
 
 export default function* userSagas() {
@@ -215,5 +242,6 @@ export default function* userSagas() {
     call(userFormUpdateStart),
     call(userFormDeleteStart),
     call(userFormCalculateStart),
+    call(userFormRankingsStart),
   ]);
 }

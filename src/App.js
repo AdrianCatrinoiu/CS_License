@@ -7,6 +7,7 @@ import About from "./pages/About";
 import FormPage from "./pages/FormPage";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import MontserratLight from "./assets/fonts/Montserrat/static/Montserrat-Light.ttf";
+import Rankings from "./pages/Rankings";
 
 const theme = createTheme({
   typography: {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="/form" element={<FormPage />} />
+          <Route path="/rankings" element={<Rankings />} />
         </Routes>
       </div>
     </ThemeProvider>

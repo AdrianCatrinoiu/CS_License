@@ -114,6 +114,14 @@ const Navbar = (props) => {
                       <Avatar /> My account
                     </MenuItem>
                   </Link>
+                  <Link
+                    className="w-full h-full flex items-center"
+                    to="/rankings"
+                  >
+                    <MenuItem className="w-full">
+                      <Avatar /> Rankings
+                    </MenuItem>
+                  </Link>
                   <Divider />
                   {width < 768 && (
                     <Link

@@ -24,11 +24,18 @@ const userEmissionsInitialState = {
   transportation: { CO2: 0, CH4: 0, N2O: 0 },
 };
 
+const rankingsInitialState = {
+  filters: "",
+  rankings: [],
+};
+
 const INITIAL_STATE = {
   user: null,
   userErr: "",
   userForm: userFormInitialState,
   emissions: userEmissionsInitialState,
+  emissionsList: [],
+  rankings: rankingsInitialState,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -39,6 +46,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         user: action.payload.user,
         userErr: "",
         userForm: action.payload.formData,
+        emissionsList: action.payload.emissionsList,
       };
     case userTypes.SIGN_OUT_USER_SUCCESS:
       return {
@@ -91,7 +99,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
         return {
           ...state,
           userForm: {
-            ...state.userForm,
+            ...userFormInitialState,
             formId: action.payload.formId,
             [action.payload.updateData.step]: action.payload.updateData.data,
           },
@@ -128,7 +136,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             ...state.userForm,
             [action.payload.deleteData.step]: state.userForm[
               action.payload.deleteData.step
-            ].filter((item) => item.id !== action.payload.deleteData.data.id),
+            ].filters((item) => item.id !== action.payload.deleteData.data.id),
           },
         };
       }
@@ -150,11 +158,53 @@ const userReducer = (state = INITIAL_STATE, action) => {
             action.payload.deleteData.step === "stepYear" ? 0 : "",
         },
       };
-
+    //if emissions in emissionsList found, update, else add
     case userTypes.USER_FORM_CALCULATE_SUCCESS:
+      const isEmissionFound = state.emissionsList.find(
+        (item) => item.formId === action.payload.formId
+      );
+      if (isEmissionFound) {
+        console.log("here");
+        return {
+          ...state,
+          emissions: action.payload.emissions,
+          emissionsList: [
+            ...state.emissionsList.map((item) => {
+              if (item.formId === action.payload.formId) {
+                console.log(action.payload.emissions);
+                return {
+                  formId: item.formId,
+                  year: item.year,
+                  emissions: action.payload.emissions,
+                };
+              }
+              return item;
+            }),
+          ],
+        };
+      } else {
+        console.log("there");
+        return {
+          ...state,
+          emissions: action.payload.emissions,
+          emissionsList: [
+            ...state.emissionsList,
+            {
+              formId: action.payload.formId,
+              year: action.payload.year,
+              emissions: action.payload.emissions,
+            },
+          ],
+        };
+      }
+
+    case userTypes.USER_FORM_RANKINGS_SUCCESS:
       return {
         ...state,
-        emissions: action.payload.emissions,
+        rankings: {
+          filters: action.payload.filters,
+          rankings: action.payload.rankings,
+        },
       };
 
     default:

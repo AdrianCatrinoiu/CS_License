@@ -26,8 +26,7 @@ const SignUp = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, userErr } = useSelector(mapState);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [companyName, setCompanyName] = useState("");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,8 +36,7 @@ const SignUp = (props) => {
   const [error, setError] = useState();
 
   const reset = () => {
-    setFirstName("");
-    setLastName("");
+    setCompanyName("");
     setEmail("");
     setPassword("");
     setConfirmPassword("");
@@ -58,20 +56,17 @@ const SignUp = (props) => {
     event.preventDefault();
     dispatch(
       signUpUserStart({
-        firstName,
-        lastName,
+        companyName,
         email,
         password,
         confirmPassword,
       })
     );
   };
-  const handleFirstNameChange = (event, value) => {
-    setFirstName(event.target.value);
+  const handleCompanyNameChange = (event, value) => {
+    setCompanyName(event.target.value);
   };
-  const handleLastNameChange = (event, value) => {
-    setLastName(event.target.value);
-  };
+
   const handleEmailChange = (event, value) => {
     setEmail(event.target.value);
   };
@@ -114,27 +109,10 @@ const SignUp = (props) => {
           )}
           <div className="w-[80%] flex flex-col items-center justify-center mb-8">
             <TextField
-              label="First name"
+              label="Company name"
               sx={{ m: 2, width: "25ch" }}
-              value={firstName}
-              onChange={handleFirstNameChange}
-              InputLabelProps={{ style: { fontSize: 16 } }}
-              InputProps={{
-                style: { fontSize: 16 },
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <IconButton size="small" disabled>
-                      <PersonIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <TextField
-              label="Last name"
-              sx={{ m: 2, width: "25ch" }}
-              value={lastName}
-              onChange={handleLastNameChange}
+              value={companyName}
+              onChange={handleCompanyNameChange}
               InputLabelProps={{ style: { fontSize: 16 } }}
               InputProps={{
                 style: { fontSize: 16 },

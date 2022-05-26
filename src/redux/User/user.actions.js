@@ -59,11 +59,19 @@ export const userFormCalculateStart = (formData) => ({
   type: userTypes.USER_FORM_CALCULATE_START,
   payload: { formData },
 });
-export const userFormCalculateSuccess = (emissions) => ({
+export const userFormCalculateSuccess = (emissions, formId, year) => ({
   type: userTypes.USER_FORM_CALCULATE_SUCCESS,
-  payload: { emissions },
+  payload: { emissions, formId, year },
 });
 export const userFormDataUpdate = (formData) => ({
   type: userTypes.USER_FORMDATA_UPDATE,
   payload: { formData },
+});
+export const userFormRankingsStart = (filters) => ({
+  type: userTypes.USER_FORM_RANKINGS_START,
+  payload: { filters },
+});
+export const userFormRankingsSuccess = (filters, rankings) => ({
+  type: userTypes.USER_FORM_RANKINGS_SUCCESS,
+  payload: { filters, rankings },
 });
