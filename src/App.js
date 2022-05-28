@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { checkUserSession } from "./redux/User/user.actions";
 import Verify from "./pages/Verify";
 import ShareForm from "./pages/ShareForm";
+import KommunicateChat from "./components/Chat";
 
 const theme = createTheme({
   typography: {
@@ -52,6 +53,7 @@ function App() {
           <Route path="/form/verify/:id" element={<Verify />} />
           <Route path="/form/share/:formUuid" element={<ShareForm />} />
         </Routes>
+        <KommunicateChat />
       </div>
     </ThemeProvider>
   );
