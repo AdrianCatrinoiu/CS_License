@@ -20,32 +20,23 @@ const FormTransportationSelect = ({
   const [vehicleNr, setVehicles] = useState(unit.vehicleNr);
   const [fuelUsed, setFuelUsed] = useState(unit.fuelUsed);
   const [fuelUnit, setFuelUnit] = useState(unit.fuelUnit);
-  const [vehicleType, setVehicleType] = useState(unit.vehicleType);
 
   const handleUpdate = () => {
-    updateUnit(
-      id,
-      label,
-      parseInt(vehicleNr),
-      parseFloat(fuelUsed),
-      fuelUnit,
-      vehicleType
-    );
+    updateUnit(id, label, parseInt(vehicleNr), parseFloat(fuelUsed), fuelUnit);
   };
 
   const handleVehicleTypeChange = (event, value) => {
     setLabel(value.label);
-    setVehicles(null);
-    setFuelUsed(null);
+    setVehicles("");
+    setFuelUsed("");
     setFuelUnit(value.fuelUnit);
-    setVehicleType(value.vehicleType);
   };
 
   const handleVehiclesChange = (event, value) => {
     if (event.target.value) {
       setVehicles(event.target.value);
     } else {
-      setVehicles(null);
+      setVehicles("");
     }
   };
 
@@ -53,7 +44,7 @@ const FormTransportationSelect = ({
     if (event.target.value) {
       setFuelUsed(event.target.value);
     } else {
-      setFuelUsed(null);
+      setFuelUsed("");
     }
   };
 
@@ -79,7 +70,6 @@ const FormTransportationSelect = ({
               disableClearable
               options={unitList}
               value={label}
-              groupBy={(option) => option.vehicleType}
               onChange={handleVehicleTypeChange}
               sx={{
                 "& .css-1in441m": {

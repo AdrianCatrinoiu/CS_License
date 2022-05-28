@@ -11,7 +11,6 @@ const ProfileDetails = () => {
   const { emissionsList } = useSelector(mapState);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("emissionsList", emissionsList);
     dispatch(userGetEmissionsListStart());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -19,17 +18,20 @@ const ProfileDetails = () => {
   return (
     <div className="flex flex-col justify-between">
       {emissionsList &&
-        emissionsList.map((emission) => (
-          <div key={emission.formId} className="my-4">
-            <FormYear
-              year={emission.year}
-              emissions={emission.emissions}
-              adminBadge={emission.adminBadge}
-              emissionBadge={emission.emissionBadge}
-              uuid={emission.uuid}
-            />
-          </div>
-        ))}
+        emissionsList.map((emission) => {
+          console.log("emission", emission);
+          return (
+            <div key={emission?.formId} className="my-4">
+              <FormYear
+                year={emission?.year}
+                emissions={emission?.emissions}
+                adminBadge={emission?.adminBadge}
+                emissionBadge={emission?.emissionBadge}
+                uuid={emission?.uuid}
+              />
+            </div>
+          );
+        })}
     </div>
   );
 };

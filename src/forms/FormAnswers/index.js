@@ -20,7 +20,7 @@ const FormAnswers = () => {
           <div className="h-full flex flex-col items-center w-full">
             <div className="w-[80%] flex flex-col justify-between items-center bg-green-200 rounded-3xl shadow-2xl p-4 mb-24">
               <div className="w-[80%] flex flex-row justify-between">
-                <p className="text-[24px] font-MontserratBold text-gray-500">
+                <p className="text-[20px] font-MontserratBold text-gray-500">
                   Non renewable electricity:
                 </p>
                 <div className="flex flex-row items-center">
@@ -31,7 +31,7 @@ const FormAnswers = () => {
             </div>
             <div className="w-[80%] flex flex-col justify-between items-center bg-green-200 rounded-3xl shadow-2xl p-4 mb-24">
               <div className="w-[80%] flex flex-row justify-between items-center">
-                <p className="text-[24px] font-MontserratBold text-gray-500">
+                <p className="text-[20px] font-MontserratBold text-gray-500">
                   Renewable electricity:
                 </p>
                 <div className="flex flex-row items-center">
@@ -53,7 +53,7 @@ const FormAnswers = () => {
               className="w-[80%] flex flex-col justify-between items-center bg-green-200 rounded-3xl shadow-2xl p-4 mb-24"
             >
               <div className="w-[80%] flex flex-row justify-between items-center divide-x-2 divide-gray-500">
-                <p className="text-[24px] w-full font-MontserratBold text-gray-500">
+                <p className="text-[20px] w-full font-MontserratBold text-gray-500">
                   {item.label}
                 </p>
                 <div className="flex flex-col self-stretch w-full justify-center items-center">
@@ -76,8 +76,8 @@ const FormAnswers = () => {
               key={index}
               className="w-[80%] flex flex-col justify-between items-center bg-green-200 rounded-3xl shadow-2xl p-4 mb-24"
             >
-              <div className="h-full  w-[80%] flex flex-row justify-between items-center divide-x-2 divide-gray-500">
-                <p className="text-[24px] w-full font-MontserratBold text-gray-500">
+              <div className="h-full  w-full flex flex-row justify-between items-center divide-x-2 divide-gray-500">
+                <p className="text-[20px] w-full text-center font-MontserratBold text-gray-500">
                   {item.label}
                 </p>
                 <div className="flex flex-col self-stretch w-full justify-center items-center">
@@ -105,8 +105,8 @@ const FormAnswers = () => {
               key={index}
               className="w-[80%] flex flex-col justify-between items-center bg-green-200 rounded-3xl shadow-2xl p-4 mb-24"
             >
-              <div className="w-[80%] flex flex-row justify-between items-center  divide-x-2 divide-gray-500">
-                <p className="text-[24px] w-full text-center font-MontserratBold text-gray-500">
+              <div className="w-full flex flex-row justify-between items-center  divide-x-2 divide-gray-500">
+                <p className="text-[20px] w-full text-center font-MontserratBold text-gray-500">
                   {item.label}
                 </p>
                 <div className="flex flex-col self-stretch w-full justify-center items-center">
@@ -141,13 +141,13 @@ const FormAnswers = () => {
               key={index}
               className="w-[80%] flex flex-col justify-between items-center bg-green-200 rounded-3xl shadow-2xl p-4 mb-24"
             >
-              <div className="w-[90%] flex flex-row items-center divide-x-2 divide-gray-500">
-                <p className="text-[24px] self-stretch w-full font-MontserratBold text-gray-500">
+              <div className="w-full flex flex-row items-center divide-x-2 divide-gray-500">
+                <p className=" w-full text-[20px] self-stretch font-MontserratBold text-gray-500">
                   {item.label}
                 </p>
 
                 <div className="flex flex-col self-stretch w-full justify-center items-center">
-                  <div className="flex flex-col items-center">
+                  <div className="w-[80%] flex flex-col items-center">
                     <p className=" text-center">Nr. of Vehicles</p>
                     <p>{item.vehicleNr}</p>
                   </div>

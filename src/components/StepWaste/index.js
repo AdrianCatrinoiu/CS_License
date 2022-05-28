@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import NavigationIcon from "@mui/icons-material/Navigation";
-import wasteUnits from "../../utils/constants/wasteUnits.json";
 import { useDispatch, useSelector } from "react-redux";
 import {
   userFormAddStart,
@@ -14,10 +13,11 @@ import StepButton from "../StepButton";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
+  formStatistics: user.formStatistics,
 });
 
 const StepWaste = ({ userId, formStep, setFormStep }) => {
-  const { userForm } = useSelector(mapState);
+  const { userForm, formStatistics } = useSelector(mapState);
   const [wasteUnitList, setWasteUnitList] = useState(userForm.stepWaste);
   const dispatch = useDispatch();
 
@@ -108,7 +108,7 @@ const StepWaste = ({ userId, formStep, setFormStep }) => {
             topLabel="Select a waste material from the list below:"
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
-            unitList={wasteUnits}
+            unitList={formStatistics.wasteValues}
             item={unit}
           />
         ))}

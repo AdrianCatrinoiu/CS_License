@@ -113,3 +113,10 @@ export const shareFormSuccess = (formData) => ({
   type: userTypes.SHARE_FORM_SUCCESS,
   payload: { formData },
 });
+export const getFormStatisticsStart = () => ({
+  type: userTypes.GET_FORM_STATISTICS_START,
+});
+export const getFormStatisticsSuccess = (formStatistics) => ({
+  type: userTypes.GET_FORM_STATISTICS_SUCCESS,
+  payload: { formStatistics },
+});

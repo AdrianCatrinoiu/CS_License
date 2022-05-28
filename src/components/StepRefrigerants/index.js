@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import refrigerantsUnits from "../../utils/constants/refrigerantsUnits.json";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -14,10 +13,11 @@ import StepButton from "../StepButton";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
+  formStatistics: user.formStatistics,
 });
 
 const StepRefrigerants = ({ userId, formStep, setFormStep }) => {
-  const { userForm } = useSelector(mapState);
+  const { userForm, formStatistics } = useSelector(mapState);
   const [refrigerantsList, setRefrigerantsList] = useState(
     userForm.stepRefrigerants
   );
@@ -114,7 +114,7 @@ const StepRefrigerants = ({ userId, formStep, setFormStep }) => {
             topLabel="Select a refrigerant from the list below:"
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
-            unitList={refrigerantsUnits}
+            unitList={formStatistics.refrigerantsValues}
             refrigerant={unit}
           />
         ))}

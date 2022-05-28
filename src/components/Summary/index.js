@@ -8,14 +8,19 @@ import SummarySolutions from "../SummarySolutions";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
-  emissions: user.emissions,
+  // emissions: user.emissions,
+  emissionsList: user.emissionsList,
 });
 
 const Summary = ({ userId }) => {
-  const { userForm, emissions } = useSelector(mapState);
+  const { userForm, emissionsList } = useSelector(mapState);
 
   const [value, setValue] = useState(0);
-
+  const emissionYear = emissionsList.filter(
+    (e) => e.formId === userForm.formId
+  );
+  const emissions = emissionYear[0].emissions;
+  console.log("emissions", emissions);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

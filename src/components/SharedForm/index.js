@@ -4,11 +4,11 @@ import { Chart } from "react-google-charts";
 const SharedForm = ({ year, emissions, emissionBadge, companyName }) => {
   const CO2data = [
     ["Element", "kg of CO2", { role: "style" }],
-    ["Electricity", emissions.electricity.CO2, "green"],
-    ["Heating", emissions.heating.CO2, "red"],
-    ["Waste", emissions.waste.CO2, "orange"],
-    ["Refrigerants", emissions.refrigerants.CO2, "blue"],
-    ["Transportation", emissions.transportation.CO2, "brown"],
+    ["Electricity", emissions?.electricity.CO2, "green"],
+    ["Heating", emissions?.heating.CO2, "red"],
+    ["Waste", emissions?.waste.CO2, "orange"],
+    ["Refrigerants", emissions?.refrigerants.CO2, "blue"],
+    ["Transportation", emissions?.transportation.CO2, "brown"],
   ];
   const optionsAnimateOnStart = {
     backgroundColor: "transparent",

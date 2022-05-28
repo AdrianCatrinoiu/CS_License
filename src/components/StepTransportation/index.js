@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import NavigationIcon from "@mui/icons-material/Navigation";
-import transportationTypes from "../../utils/constants/transportationTypes.json";
 import FormTransportationSelect from "../../forms/FormTransportationSelect";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -14,10 +13,11 @@ import StepButton from "../StepButton";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
+  formStatistics: user.formStatistics,
 });
 
 const StepTransportation = ({ setFormStep, formStep }) => {
-  const { userForm } = useSelector(mapState);
+  const { userForm, formStatistics } = useSelector(mapState);
   const [transportationList, setTransportationList] = useState(
     userForm.stepTransportation
   );
@@ -48,7 +48,6 @@ const StepTransportation = ({ setFormStep, formStep }) => {
           vehicleNr: null,
           fuelUsed: null,
           fuelUnit: "",
-          vehicleType: "",
         },
       })
     );
@@ -57,14 +56,7 @@ const StepTransportation = ({ setFormStep, formStep }) => {
     }, 300);
   };
 
-  const updateUnit = (
-    id,
-    label,
-    vehicleNr,
-    fuelUsed,
-    fuelUnit,
-    vehicleType
-  ) => {
+  const updateUnit = (id, label, vehicleNr, fuelUsed, fuelUnit) => {
     transportationList.map((transportation) => {
       if (transportation.id === id) {
         if (label === null) {
@@ -78,11 +70,10 @@ const StepTransportation = ({ setFormStep, formStep }) => {
                 vehicles: null,
                 fuelUsed: null,
                 fuelUnit: "",
-                vehicleType: "",
               },
             })
           );
-        } else {
+        } else if (vehicleNr !== null && fuelUsed !== null) {
           dispatch(
             userFormUpdateStart({
               step: "stepTransportation",
@@ -93,7 +84,6 @@ const StepTransportation = ({ setFormStep, formStep }) => {
                 vehicleNr: vehicleNr ? parseInt(vehicleNr) : null,
                 fuelUsed: fuelUsed ? parseFloat(fuelUsed) : null,
                 fuelUnit,
-                vehicleType,
               },
             })
           );
@@ -149,7 +139,7 @@ const StepTransportation = ({ setFormStep, formStep }) => {
             topLabel="Select a vehicle from the list below:"
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
-            unitList={transportationTypes}
+            unitList={formStatistics.transportationValues}
             unit={unit}
           />
         ))}

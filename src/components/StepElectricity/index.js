@@ -79,7 +79,7 @@ const StepElectricity = ({ userId, formStep, setFormStep }) => {
         InputLabelProps={{ style: { fontSize: 16 } }}
         InputProps={{
           style: { fontSize: 16 },
-          startAdornment: <InputAdornment position="start">Mwh</InputAdornment>,
+          startAdornment: <InputAdornment position="start">kwh</InputAdornment>,
         }}
         onBlur={handleNonRenewableChange}
       />
@@ -97,7 +97,7 @@ const StepElectricity = ({ userId, formStep, setFormStep }) => {
         InputLabelProps={{ style: { fontSize: 16 } }}
         InputProps={{
           style: { fontSize: 16 },
-          startAdornment: <InputAdornment position="start">Mwh</InputAdornment>,
+          startAdornment: <InputAdornment position="start">kwh</InputAdornment>,
         }}
         onBlur={handleRenewableChange}
       />

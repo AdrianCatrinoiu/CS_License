@@ -24,10 +24,10 @@ const ShareForm = () => {
       <div className=" h-[calc(100vh-7rem)] w-full flex flex-row justify-center items-center ">
         <div className=" w-[80%] ">
           <SharedForm
-            year={shareData.year}
-            emissions={shareData.emissions}
-            emissionBadge={shareData.emissionBadge}
-            companyName={shareData.companyName}
+            year={shareData?.year}
+            emissions={shareData?.emissions}
+            emissionBadge={shareData?.emissionBadge}
+            companyName={shareData?.companyName}
           />
         </div>
       </div>

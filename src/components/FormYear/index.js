@@ -8,6 +8,7 @@ import { FacebookIcon, TwitterIcon } from "react-share";
 import { Link } from "react-router-dom";
 import { userFormUpdateStart } from "../../redux/User/user.actions";
 import { useDispatch } from "react-redux";
+import EmissionBadge from "../EmissionBadge";
 
 const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
   const CO2data = [
     ["Element", "kg of CO2", { role: "style" }],
     ["Electricity", emissions.electricity.CO2, "green"],
-    ["Heating", emissions.heating.CO2, "red"],
+    ["Heating", emissions.heating?.CO2, "red"],
     ["Waste", emissions.waste.CO2, "orange"],
     ["Refrigerants", emissions.refrigerants.CO2, "blue"],
     ["Transportation", emissions.transportation.CO2, "brown"],
@@ -28,6 +29,7 @@ const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
       duration: 1000,
     },
   };
+
   return (
     <div className="w-full rounded-3xl bg-green-200 shadow-2xl p-4 flex flex-col items-center justify-between">
       <div className="w-full flex flex-row items-center justify-between">
@@ -49,7 +51,7 @@ const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
           </div>
         </Link>
 
-        <div className="w-1/2 ml-8 flex flex-col h-full bg-white rounded-2xl shadow-2xl animate-fadeIn">
+        <div className="w-1/2 ml-8 flex self-stretch min-h-[450px] flex-col bg-white rounded-2xl shadow-2xl animate-fadeIn">
           <Chart
             chartType="ColumnChart"
             width="100%"
@@ -74,24 +76,10 @@ const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
             </TwitterShareButton>
           </div>
         </div>
-        <div className="w-1/3">
+        <div className="w-1/3 flex flex-col justify-evenly self-stretch">
           <div className="flex flex-col items-center">
             <p className="text-center">Emissions badge:</p>
-            {adminBadge === "verified" && (
-              <div>
-                <img className="h-[100px]" src={Verified} alt="Verified" />
-              </div>
-            )}
-            {adminBadge === "rejected" && (
-              <div>
-                <img className="h-[100px]" src={Denied} alt="Denied" />
-              </div>
-            )}
-            {adminBadge !== "rejected" && adminBadge !== "verified" && (
-              <div>
-                <p className="text-center">Pending approval</p>
-              </div>
-            )}
+            <EmissionBadge emissionBadge={emissionBadge} />
           </div>
           <div className="flex flex-col items-center">
             <p className="text-center">Document status:</p>

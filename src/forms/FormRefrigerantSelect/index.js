@@ -31,15 +31,15 @@ const FormRefrigerantSelect = ({
 
   const handleUnitChange = (event, value) => {
     setLabel(value.label);
-    setKgBegin(null);
-    setKgEnd(null);
+    setKgBegin("");
+    setKgEnd("");
     setFormula(value.formula);
   };
   const handleKgBeginChange = (event, value) => {
     if (event.target.value) {
       setKgBegin(event.target.value);
     } else {
-      setKgBegin(null);
+      setKgBegin("");
     }
   };
 
@@ -47,7 +47,7 @@ const FormRefrigerantSelect = ({
     if (event.target.value) {
       setKgEnd(event.target.value);
     } else {
-      setKgEnd(null);
+      setKgEnd("");
     }
   };
 

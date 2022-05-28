@@ -3,7 +3,6 @@ import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import FormHeatingSelect from "../../forms/FormHeatingSelect";
 import NavigationIcon from "@mui/icons-material/Navigation";
-import heatingUnits from "../../utils/constants/heatingUnits.json";
 import { useDispatch, useSelector } from "react-redux";
 import {
   userFormAddStart,
@@ -14,10 +13,11 @@ import StepButton from "../StepButton";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
+  formStatistics: user.formStatistics,
 });
 
 const StepHeating = ({ userId, formStep, setFormStep }) => {
-  const { userForm } = useSelector(mapState);
+  const { userForm, formStatistics } = useSelector(mapState);
   const [heatingUnitList, setHeatingUnitList] = useState(userForm.stepHeating);
   const dispatch = useDispatch();
 
@@ -106,7 +106,7 @@ const StepHeating = ({ userId, formStep, setFormStep }) => {
             topLabel="Select a heating material from the list below:"
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
-            unitList={heatingUnits}
+            unitList={formStatistics.burningValues}
             heatingUnit={unit}
           />
         ))}

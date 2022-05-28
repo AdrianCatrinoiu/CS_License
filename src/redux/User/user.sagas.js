@@ -3,6 +3,7 @@ import { takeLatest, call, all, put } from "redux-saga/effects";
 import {
   adminGetAllFormsSuccess,
   adminSubmitDocumentVerdicSuccess,
+  getFormStatisticsSuccess,
   shareFormSuccess,
   signInSuccessAction,
   signOutUserSuccess,
@@ -349,6 +350,26 @@ export function* shareFormStart() {
   yield takeLatest(userTypes.SHARE_FORM_START, shareForm);
 }
 
+export function* getStatistics() {
+  try {
+    const token = localStorage.getItem("accessToken");
+
+    const data = yield call(axiosCall, {
+      method: "GET",
+      path: "/formStatistics",
+      token: token,
+    });
+    console.log("data", data.data);
+    if (data.status === 200) {
+      yield put(getFormStatisticsSuccess(data.data));
+    }
+  } catch (e) {}
+}
+
+export function* getFormStatisticsStart() {
+  yield takeLatest(userTypes.GET_FORM_STATISTICS_START, getStatistics);
+}
+
 export default function* userSagas() {
   yield all([
     call(onEmailSignInStart),
@@ -365,5 +386,6 @@ export default function* userSagas() {
     call(adminSubmitDocumentVerdictStart),
     call(userGetEmissionsListStart),
     call(shareFormStart),
+    call(getFormStatisticsStart),
   ]);
 }

@@ -11,7 +11,10 @@ import Rankings from "./pages/Rankings";
 import Admin from "./pages/Admin";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { checkUserSession } from "./redux/User/user.actions";
+import {
+  checkUserSession,
+  getFormStatisticsStart,
+} from "./redux/User/user.actions";
 import Verify from "./pages/Verify";
 import ShareForm from "./pages/ShareForm";
 import KommunicateChat from "./components/Chat";
@@ -37,6 +40,7 @@ function App() {
 
   useEffect(() => {
     dispatch(checkUserSession());
+    dispatch(getFormStatisticsStart());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

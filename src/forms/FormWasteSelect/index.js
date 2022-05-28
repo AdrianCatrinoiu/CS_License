@@ -40,7 +40,7 @@ const FormWasteSelect = ({
 
   const handleMaterialChange = (event, value) => {
     setLabel(value.label);
-    setValue(null);
+    setValue("");
     setType(value.type);
   };
   const handleTypeChange = (event, value) => {
@@ -50,7 +50,7 @@ const FormWasteSelect = ({
     if (event.target.value) {
       setValue(event.target.value);
     } else {
-      setValue(null);
+      setValue("");
     }
   };
   return (

@@ -17,8 +17,18 @@ const PollutantPieChart = ({ emission, title, emissions }) => {
 
     emissionArrayPieData = [
       ["Emission", "Kg of CO2"],
-      ["Renewable", (emission.renewableAmount / emissionTotal) * 100],
-      ["Nonrenewable", (emission.nonRenewableAmount / emissionTotal) * 100],
+      [
+        "Renewable",
+        (emission.renewableAmount /
+          (emission.renewableAmount + emission.nonRenewableAmount)) *
+          100,
+      ],
+      [
+        "Nonrenewable",
+        (emission.nonRenewableAmount /
+          (emission.renewableAmount + emission.nonRenewableAmount)) *
+          100,
+      ],
     ];
   }
   if (title === "Burning") {

@@ -40,6 +40,7 @@ const INITIAL_STATE = {
   emissionsList: [],
   rankings: rankingsInitialState,
   formsList: [],
+  formStatistics: {},
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -167,14 +168,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
         (item) => item.formId === action.payload.formId
       );
       if (isEmissionFound) {
-        console.log("here");
         return {
           ...state,
-          emissions: action.payload.emissions,
           emissionsList: [
             ...state.emissionsList.map((item) => {
               if (item.formId === action.payload.formId) {
-                console.log(action.payload.emissions);
                 return {
                   formId: item.formId,
                   year: item.year,
@@ -188,10 +186,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
           ],
         };
       } else {
-        console.log("there");
         return {
           ...state,
-          emissions: action.payload.emissions,
           emissionsList: [
             ...state.emissionsList,
             {
@@ -215,7 +211,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
       };
 
     case userTypes.USER_FORM_UPLOAD_DOCUMENTS_SUCCESS:
-      console.log(" uploaddata2", action.payload.uploadData);
       return {
         ...state,
         user: {
@@ -269,7 +264,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         shareData: action.payload.formData,
       };
-
+    case userTypes.GET_FORM_STATISTICS_SUCCESS:
+      return {
+        ...state,
+        formStatistics: action.payload.formStatistics,
+      };
     default:
       return state;
   }

@@ -5,7 +5,7 @@ import StepElectricity from "../StepElectricity";
 import StepHeating from "../StepHeating";
 import StepRefrigerants from "../StepRefrigerants";
 import StepTransportation from "../StepTransportation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Summary from "../Summary";
 import StepButton from "../StepButton";
 import StepWaste from "../StepWaste";
@@ -13,6 +13,7 @@ import FormStepper from "../../forms/FormStepper";
 import StepUploadDocuments from "../StepUploadDocuments";
 import { checkUserIsAdmin } from "../../customHooks/useAdminAuth";
 import { useNavigate } from "react-router-dom";
+import { userGetEmissionsListStart } from "../../redux/User/user.actions";
 
 const mapState = ({ user }) => ({
   user: user.user,
@@ -21,6 +22,7 @@ const mapState = ({ user }) => ({
 const FormType = ({ formStep, setFormStep }) => {
   const { user } = useSelector(mapState);
   const isAdmin = checkUserIsAdmin(user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     console.log("isAdmin", isAdmin);
@@ -29,6 +31,11 @@ const FormType = ({ formStep, setFormStep }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+  useEffect(() => {
+    dispatch(userGetEmissionsListStart());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className=" h-full w-full">
       <div className="h-full flex flex-col">
