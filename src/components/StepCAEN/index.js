@@ -7,12 +7,13 @@ import BounceDownFadeOut from "../BounceDownFadeOut";
 import CAENList from "../../utils/constants/CAENList.json";
 import { useDispatch, useSelector } from "react-redux";
 import { userFormUpdateStart } from "../../redux/User/user.actions";
+import StepButton from "../StepButton";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
 });
 
-const StepCAEN = ({ userId }) => {
+const StepCAEN = ({ userId, formStep, setFormStep }) => {
   const { userForm } = useSelector(mapState);
   const [CAEN, setCAEN] = useState(userForm.stepCAEN);
 
@@ -29,6 +30,14 @@ const StepCAEN = ({ userId }) => {
   };
   return (
     <div className="flex flex-col max-w-[600px] items-center h-2/3 animate-fadeIn pb-24 pt-8 bg-white rounded-3xl min-h-[600px]">
+      {formStep < 7 && (
+        <StepButton
+          orientation="right"
+          setFormStep={setFormStep}
+          formStep={formStep}
+          isDisabled={!CAEN}
+        />
+      )}
       <p className="mb-12 text-[24px] text-center">
         Choose your company's field of activity:
       </p>

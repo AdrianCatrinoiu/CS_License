@@ -1,0 +1,14 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830 830" width="200" height="200">
+	<title>verified</title>
+	<style>
+		.s0 { fill: none;stroke: #c0ca32;stroke-linecap: round;stroke-linejoin: round;stroke-width: 30 } 
+		.s1 { fill: none;stroke: #c0ca32;stroke-linecap: round;stroke-linejoin: round;stroke-width: 50 } 
+	</style>
+	<g id="&lt;Group&gt;">
+		<circle id="&lt;Path&gt;" class="s0" cx="415.4" cy="414.7" r="400"/>
+		<g id="&lt;Group&gt;">
+			<path id="&lt;Path&gt;" class="s0" d="m593.3 439.4v172.2h-350.6v-350.6h175.3"/>
+			<path id="&lt;Path&gt;" class="s1" d="m593.3 258.6l-178.6 248.3-88.5-125.5"/>
+		</g>
+	</g>
+</svg>

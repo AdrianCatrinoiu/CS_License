@@ -14,7 +14,9 @@ const mapState = ({ user }) => ({
 const RankingLayout = (props) => {
   const { rankings } = useSelector(mapState);
 
-  const [sortType, setSortType] = useState(rankings.filters.sortType);
+  const [sortType, setSortType] = useState(
+    rankings.filters.sortType ? rankings.filters.sortType : sortList[0]
+  );
   const [CAEN, setCAEN] = useState(rankings.filters.CAEN);
   const [year, setYear] = useState(rankings.filters.year);
   const yearList = Array.from({ length: 21 }, (_, i) => (i + 2002).toString());
@@ -33,7 +35,6 @@ const RankingLayout = (props) => {
     setSortType(value);
   };
   const handleCAENChange = (event, value) => {
-    console.log("value", value);
     setCAEN(value);
   };
   const handleYearChange = (event, value) => {

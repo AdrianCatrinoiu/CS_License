@@ -35,7 +35,7 @@ const FormWasteSelect = ({
   ];
 
   const handleUpdate = () => {
-    updateUnit(id, label, parseFloat(value), type);
+    updateUnit(id, label, value ? parseFloat(value) : null, type);
   };
 
   const handleMaterialChange = (event, value) => {

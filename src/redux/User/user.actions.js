@@ -75,3 +75,41 @@ export const userFormRankingsSuccess = (filters, rankings) => ({
   type: userTypes.USER_FORM_RANKINGS_SUCCESS,
   payload: { filters, rankings },
 });
+export const userFormUploadDocumentStart = (uploadData) => ({
+  type: userTypes.USER_FORM_UPLOAD_DOCUMENTS_START,
+  payload: { uploadData },
+});
+export const userFormUploadDocumentSuccess = (uploadData) => ({
+  type: userTypes.USER_FORM_UPLOAD_DOCUMENTS_SUCCESS,
+  payload: { uploadData },
+});
+export const adminGetAllFormsStart = () => ({
+  type: userTypes.ADMIN_GET_ALL_FORMS_START,
+});
+export const adminGetAllFormsSuccess = (allFormsData) => ({
+  type: userTypes.ADMIN_GET_ALL_FORMS_SUCCESS,
+  payload: { allFormsData },
+});
+export const adminSubmitDocumentVerdictStart = (verdict) => ({
+  type: userTypes.ADMIN_SUBMIT_DOCUMENT_VERDICT_START,
+  payload: { verdict },
+});
+export const adminSubmitDocumentVerdicSuccess = (verdict) => ({
+  type: userTypes.ADMIN_SUBMIT_DOCUMENT_VERDICT_SUCCESS,
+  payload: { verdict },
+});
+export const userGetEmissionsListStart = () => ({
+  type: userTypes.USER_GET_EMISSIONS_LIST_START,
+});
+export const userGetEmissionsListSuccess = (emissionsList) => ({
+  type: userTypes.USER_GET_EMISSIONS_LIST_SUCCESS,
+  payload: { emissionsList },
+});
+export const shareFormStart = (params) => ({
+  type: userTypes.SHARE_FORM_START,
+  payload: { params },
+});
+export const shareFormSuccess = (formData) => ({
+  type: userTypes.SHARE_FORM_SUCCESS,
+  payload: { formData },
+});

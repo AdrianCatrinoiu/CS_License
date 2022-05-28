@@ -10,12 +10,13 @@ import {
   userFormUpdateStart,
 } from "../../redux/User/user.actions";
 import FormRefrigerantSelect from "../../forms/FormRefrigerantSelect";
+import StepButton from "../StepButton";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
 });
 
-const StepRefrigerants = ({ userId }) => {
+const StepRefrigerants = ({ userId, formStep, setFormStep }) => {
   const { userForm } = useSelector(mapState);
   const [refrigerantsList, setRefrigerantsList] = useState(
     userForm.stepRefrigerants
@@ -61,8 +62,8 @@ const StepRefrigerants = ({ userId }) => {
         data: {
           id,
           label,
-          kgBegin: parseFloat(kgBegin),
-          kgEnd: parseFloat(kgEnd),
+          kgBegin: kgBegin ? parseFloat(kgBegin) : null,
+          kgEnd: kgEnd ? parseFloat(kgEnd) : null,
           formula,
         },
       })
@@ -83,6 +84,13 @@ const StepRefrigerants = ({ userId }) => {
   };
   return (
     <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[601px]">
+      {formStep < 7 && (
+        <StepButton
+          orientation="right"
+          setFormStep={setFormStep}
+          formStep={formStep}
+        />
+      )}
       <p className="mb-16 text-[24px] text-center">
         Does your company use refrigerants?
       </p>

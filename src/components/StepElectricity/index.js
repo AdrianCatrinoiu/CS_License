@@ -4,12 +4,13 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { CountryDropdown } from "react-country-region-selector";
 import { useDispatch, useSelector } from "react-redux";
 import { userFormUpdateStart } from "../../redux/User/user.actions";
+import StepButton from "../StepButton";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
 });
 
-const StepElectricity = ({ userId }) => {
+const StepElectricity = ({ userId, formStep, setFormStep }) => {
   const { userForm } = useSelector(mapState);
   const [renewableAmount, setRenewableAmount] = useState(
     userForm.stepElectricity.renewableAmount
@@ -33,8 +34,10 @@ const StepElectricity = ({ userId }) => {
         step: "stepElectricity",
         formId: userForm.formId,
         data: {
-          renewableAmount: parseFloat(renewableAmount),
-          nonRenewableAmount: parseFloat(nonRenewableAmount),
+          renewableAmount: renewableAmount ? parseFloat(renewableAmount) : null,
+          nonRenewableAmount: nonRenewableAmount
+            ? parseFloat(nonRenewableAmount)
+            : null,
           country: country,
         },
       })
@@ -44,6 +47,14 @@ const StepElectricity = ({ userId }) => {
 
   return (
     <div className="flex flex-col  items-center h-2/3 animate-fadeIn max-w-[600px] pb-24 pt-8 bg-white rounded-3xl min-h-[600px]">
+      {formStep < 7 && (
+        <StepButton
+          orientation="right"
+          setFormStep={setFormStep}
+          formStep={formStep}
+          isDisabled={!renewableAmount && !nonRenewableAmount}
+        />
+      )}
       <p className="mb-16 text-[24px] text-center">
         Choose how much electricity your company used during the selected year:
       </p>

@@ -20,7 +20,13 @@ const FormRefrigerantSelect = ({
   const [formula, setFormula] = useState(refrigerant.formula);
 
   const handleUpdate = () => {
-    updateUnit(id, label, parseFloat(kgBegin), parseFloat(kgEnd), formula);
+    updateUnit(
+      id,
+      label,
+      kgBegin ? parseFloat(kgBegin) : null,
+      kgEnd ? parseFloat(kgEnd) : null,
+      formula
+    );
   };
 
   const handleUnitChange = (event, value) => {

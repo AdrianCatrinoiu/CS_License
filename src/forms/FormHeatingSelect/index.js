@@ -20,7 +20,7 @@ const FormHeatingSelect = ({
   const [unit, setUnit] = useState(heatingUnit.unit);
 
   const handleUpdate = () => {
-    updateUnit(id, label, parseFloat(value), unit);
+    updateUnit(id, label, value ? parseFloat(value) : null, unit);
   };
 
   const handleUnitChange = (event, value) => {

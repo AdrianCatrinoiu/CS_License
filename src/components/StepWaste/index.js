@@ -10,12 +10,13 @@ import {
   userFormUpdateStart,
 } from "../../redux/User/user.actions";
 import FormWasteSelect from "../../forms/FormWasteSelect";
+import StepButton from "../StepButton";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
 });
 
-const StepWaste = ({ userId }) => {
+const StepWaste = ({ userId, formStep, setFormStep }) => {
   const { userForm } = useSelector(mapState);
   const [wasteUnitList, setWasteUnitList] = useState(userForm.stepWaste);
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const StepWaste = ({ userId }) => {
           userFormUpdateStart({
             step: "stepWaste",
             formId: userForm.formId,
-            data: { id, label, value: parseFloat(value), type },
+            data: { id, label, value: value ? parseFloat(value) : null, type },
           })
         );
       }
@@ -79,6 +80,13 @@ const StepWaste = ({ userId }) => {
 
   return (
     <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[601px]">
+      {formStep < 7 && (
+        <StepButton
+          orientation="right"
+          setFormStep={setFormStep}
+          formStep={formStep}
+        />
+      )}
       <p className="mb-16 text-[24px] text-center">
         Does your company generate waste?
       </p>

@@ -14,6 +14,9 @@ const userFormInitialState = {
   stepWaste: [],
   stepRefrigerants: [],
   stepTransportation: [],
+  stepUploadDocuments: [],
+  adminBadge: "",
+  emissionBadge: "",
 };
 
 const userEmissionsInitialState = {
@@ -36,6 +39,7 @@ const INITIAL_STATE = {
   emissions: userEmissionsInitialState,
   emissionsList: [],
   rankings: rankingsInitialState,
+  formsList: [],
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {
@@ -50,7 +54,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
       };
     case userTypes.SIGN_OUT_USER_SUCCESS:
       return {
-        ...state,
         ...INITIAL_STATE,
       };
     case userTypes.USER_ERROR:
@@ -136,7 +139,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             ...state.userForm,
             [action.payload.deleteData.step]: state.userForm[
               action.payload.deleteData.step
-            ].filters((item) => item.id !== action.payload.deleteData.data.id),
+            ].filter((item) => item.id !== action.payload.deleteData.data.id),
           },
         };
       }
@@ -175,6 +178,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 return {
                   formId: item.formId,
                   year: item.year,
+                  adminBadge: action.payload.adminBadge,
+                  emissionBadge: action.payload.emissionBadge,
                   emissions: action.payload.emissions,
                 };
               }
@@ -192,6 +197,8 @@ const userReducer = (state = INITIAL_STATE, action) => {
             {
               formId: action.payload.formId,
               year: action.payload.year,
+              adminBadge: action.payload.adminBadge,
+              emissionBadge: action.payload.emissionBadge,
               emissions: action.payload.emissions,
             },
           ],
@@ -205,6 +212,62 @@ const userReducer = (state = INITIAL_STATE, action) => {
           filters: action.payload.filters,
           rankings: action.payload.rankings,
         },
+      };
+
+    case userTypes.USER_FORM_UPLOAD_DOCUMENTS_SUCCESS:
+      console.log(" uploaddata2", action.payload.uploadData);
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          userForm: {
+            ...state.user.userForm,
+            stepUploadDocuments: [
+              ...state.userForm.stepUploadDocuments.map((unit) => {
+                if (unit.id === action.payload.uploadData.id) {
+                  console.log("id", unit.id, action.payload.uploadData.id);
+                  return {
+                    ...unit,
+                    step: action.payload.uploadData.step,
+                    file: action.payload.uploadData.file.name,
+                  };
+                }
+                return unit;
+              }),
+            ],
+          },
+        },
+      };
+    case userTypes.ADMIN_GET_ALL_FORMS_SUCCESS:
+      return {
+        ...state,
+        formsList: action.payload.allFormsData,
+      };
+
+    case userTypes.ADMIN_SUBMIT_DOCUMENT_VERDICT_SUCCESS:
+      return {
+        ...state,
+        formsList: state.formsList.map((item) => {
+          if (item.id === action.payload.formId) {
+            return {
+              ...item,
+              documentVerdict: action.payload.verdict,
+            };
+          }
+          return item;
+        }),
+      };
+
+    case userTypes.USER_GET_EMISSIONS_LIST_SUCCESS:
+      return {
+        ...state,
+        emissionsList: action.payload.emissionsList,
+      };
+
+    case userTypes.SHARE_FORM_SUCCESS:
+      return {
+        ...state,
+        shareData: action.payload.formData,
       };
 
     default:

@@ -1,6 +1,9 @@
 import userTypes from "./user.types";
 import { takeLatest, call, all, put } from "redux-saga/effects";
 import {
+  adminGetAllFormsSuccess,
+  adminSubmitDocumentVerdicSuccess,
+  shareFormSuccess,
   signInSuccessAction,
   signOutUserSuccess,
   userError,
@@ -10,8 +13,10 @@ import {
   userFormDeleteSuccess,
   userFormRankingsSuccess,
   userFormUpdateSuccess,
+  userFormUploadDocumentSuccess,
+  userGetEmissionsListSuccess,
 } from "./user.actions";
-import { axiosCall } from "../../api-routes/utils";
+import { axiosCall, axiosCallUpload } from "../../api-routes/utils";
 
 export function* emailSignIn({ payload: { email, password } }) {
   try {
@@ -56,10 +61,12 @@ export function* onCheckUserSession() {
 
 export function* signOutUser() {
   try {
+    console.log("1");
     yield put(signOutUserSuccess());
+    console.log("2");
     localStorage.setItem("accessToken", null);
   } catch (err) {
-    console.error(err);
+    console.log(err);
   }
 }
 
@@ -211,25 +218,135 @@ export function* userFormCalculateStart() {
 export function* userFormRankings({ payload: { filters } }) {
   try {
     const token = localStorage.getItem("accessToken");
-    console.log("filters", filters);
     const data = yield call(axiosCall, {
       method: "POST",
       path: "/form/rankings",
       token: token,
       data: { filters },
     });
-    console.log("data", data);
 
     if (data.status === 200) {
       yield put(userFormRankingsSuccess(filters, data.data));
     }
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 }
 
 export function* userFormRankingsStart() {
   yield takeLatest(userTypes.USER_FORM_RANKINGS_START, userFormRankings);
+}
+
+export function* userUploadDocuments({ payload: { uploadData } }) {
+  try {
+    const token = localStorage.getItem("accessToken");
+    const data = yield call(axiosCallUpload, {
+      method: "POST",
+      path: "/form/uploadDocuments",
+      token: token,
+      data: uploadData,
+    });
+
+    if (data.status === 200) {
+      yield put(
+        userFormUploadDocumentSuccess({
+          ...data.data,
+          step: uploadData.get("step"),
+          file: uploadData.get("file"),
+        })
+      );
+    }
+  } catch (e) {}
+}
+
+export function* userFormUploadDocumentStart() {
+  yield takeLatest(
+    userTypes.USER_FORM_UPLOAD_DOCUMENTS_START,
+    userUploadDocuments
+  );
+}
+
+export function* adminGetAllForms() {
+  try {
+    const token = localStorage.getItem("accessToken");
+    const data = yield call(axiosCall, {
+      method: "GET",
+      path: "/form/getForms",
+      token: token,
+    });
+
+    if (data.status === 200) {
+      yield put(adminGetAllFormsSuccess(data.data));
+    }
+  } catch (e) {}
+}
+
+export function* adminGetAllFormsStart() {
+  yield takeLatest(userTypes.ADMIN_GET_ALL_FORMS_START, adminGetAllForms);
+}
+
+export function* adminSubmitDocumentVerdict({ payload: { verdict } }) {
+  try {
+    const token = localStorage.getItem("accessToken");
+    const data = yield call(axiosCall, {
+      method: "POST",
+      path: "/form/verifyDocuments",
+      token: token,
+      data: { verdict },
+    });
+
+    if (data.status === 200) {
+      yield put(adminSubmitDocumentVerdicSuccess(data.data));
+    }
+  } catch (e) {}
+}
+
+export function* adminSubmitDocumentVerdictStart() {
+  yield takeLatest(
+    userTypes.ADMIN_SUBMIT_DOCUMENT_VERDICT_START,
+    adminSubmitDocumentVerdict
+  );
+}
+
+export function* userGetAllEmissionsList() {
+  try {
+    const token = localStorage.getItem("accessToken");
+    const data = yield call(axiosCall, {
+      method: "GET",
+      path: "/form/getEmissionsList",
+      token: token,
+    });
+
+    if (data.status === 200) {
+      yield put(userGetEmissionsListSuccess(data.data));
+    }
+  } catch (e) {}
+}
+
+export function* userGetEmissionsListStart() {
+  yield takeLatest(
+    userTypes.USER_GET_EMISSIONS_LIST_START,
+    userGetAllEmissionsList
+  );
+}
+
+export function* shareForm({ payload: { params } }) {
+  try {
+    const token = localStorage.getItem("accessToken");
+    console.log("params", params);
+
+    const data = yield call(axiosCall, {
+      method: "GET",
+      path: `/form/share/${params.formUuid}`,
+      token: token,
+    });
+    console.log("Data", data);
+    if (data.status === 200) {
+      yield put(shareFormSuccess(data.data));
+    }
+  } catch (e) {}
+}
+
+export function* shareFormStart() {
+  yield takeLatest(userTypes.SHARE_FORM_START, shareForm);
 }
 
 export default function* userSagas() {
@@ -243,5 +360,10 @@ export default function* userSagas() {
     call(userFormDeleteStart),
     call(userFormCalculateStart),
     call(userFormRankingsStart),
+    call(userFormUploadDocumentStart),
+    call(adminGetAllFormsStart),
+    call(adminSubmitDocumentVerdictStart),
+    call(userGetEmissionsListStart),
+    call(shareFormStart),
   ]);
 }

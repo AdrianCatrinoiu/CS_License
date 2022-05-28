@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  adminGetAllFormsStart,
   emailSignInStartAction,
   userError,
 } from "../../redux/User/user.actions";
@@ -16,6 +17,7 @@ import Email from "@mui/icons-material/AlternateEmail";
 import Password from "@mui/icons-material/Https";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Link } from "react-router-dom";
+import { checkUserIsAdmin } from "../../customHooks/useAdminAuth";
 
 const mapState = ({ user }) => ({
   user: user.user,
@@ -30,6 +32,7 @@ const SignIn = (props) => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState();
+  const isAdmin = checkUserIsAdmin(user);
 
   const resetForm = () => {
     setEmail("");
@@ -40,7 +43,11 @@ const SignIn = (props) => {
   }, [userErr]);
   //at sign-in
   useEffect(() => {
-    if (user) {
+    console.log("isAdmin", isAdmin);
+    if (isAdmin) {
+      resetForm();
+      navigate("/admin");
+    } else if (user) {
       resetForm();
       navigate("/form");
     }

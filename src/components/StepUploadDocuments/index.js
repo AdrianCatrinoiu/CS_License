@@ -1,24 +1,26 @@
 import React, { useEffect, useRef, useState } from "react";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import FormHeatingSelect from "../../forms/FormHeatingSelect";
 import NavigationIcon from "@mui/icons-material/Navigation";
-import heatingUnits from "../../utils/constants/heatingUnits.json";
 import { useDispatch, useSelector } from "react-redux";
 import {
   userFormAddStart,
+  userFormCalculateStart,
   userFormDeleteStart,
-  userFormUpdateStart,
+  userFormUploadDocumentStart,
 } from "../../redux/User/user.actions";
-import StepButton from "../StepButton";
+import Button from "@mui/material/Button";
+import FormDocumentSelect from "../../forms/formDocumentSelect";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
 });
 
-const StepHeating = ({ userId, formStep, setFormStep }) => {
+const StepUploadDocuments = ({ setFormStep }) => {
   const { userForm } = useSelector(mapState);
-  const [heatingUnitList, setHeatingUnitList] = useState(userForm.stepHeating);
+  const [uploadedDocumentsList, setUploadedDocumentsList] = useState(
+    userForm.stepUploadDocuments
+  );
   const dispatch = useDispatch();
 
   const messagesEndRef = useRef(null);
@@ -31,15 +33,18 @@ const StepHeating = ({ userId, formStep, setFormStep }) => {
   };
 
   useEffect(() => {
-    setHeatingUnitList(userForm.stepHeating);
-  }, [userForm.stepHeating]);
+    setUploadedDocumentsList(userForm.stepUploadDocuments);
+  }, [userForm.stepUploadDocuments]);
 
   const addUnit = () => {
     dispatch(
       userFormAddStart({
-        step: "stepHeating",
+        step: "stepUploadDocuments",
         formId: userForm.formId,
-        data: { id: new Date().getTime(), label: "", value: null, unit: "" },
+        data: {
+          step: "",
+          file: "",
+        },
       })
     );
     setTimeout(() => {
@@ -47,27 +52,32 @@ const StepHeating = ({ userId, formStep, setFormStep }) => {
     }, 300);
   };
 
-  const updateUnit = (id, label, value, unit) => {
-    heatingUnitList.map((heatingUnit) => {
-      if (heatingUnit.id === id) {
-        dispatch(
-          userFormUpdateStart({
-            step: "stepHeating",
-            formId: userForm.formId,
-            data: { id, label, value, unit },
-          })
-        );
+  const updateUnit = (id, step, file) => {
+    const formData = new FormData();
+    if (file) {
+      console.log("file", file);
+      formData.append("file", file);
+    }
+    if (step) {
+      formData.append("step", step);
+    }
+    formData.append("formId", userForm.formId);
+
+    formData.append("id", id);
+    uploadedDocumentsList.map((document) => {
+      if (document.id === id && file) {
+        dispatch(userFormUploadDocumentStart(formData));
       }
-      return heatingUnit;
+      return document;
     });
   };
 
   const deleteUnit = (id) => {
-    heatingUnitList.forEach((heatingUnit) => {
-      if (heatingUnit.id === id) {
+    uploadedDocumentsList.forEach((document) => {
+      if (document.id === id) {
         dispatch(
           userFormDeleteStart({
-            step: "stepHeating",
+            step: "stepUploadDocuments",
             formId: userForm.formId,
             data: { id },
           })
@@ -78,17 +88,23 @@ const StepHeating = ({ userId, formStep, setFormStep }) => {
 
   return (
     <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[600px]">
-      {formStep < 7 && (
-        <StepButton
-          orientation="right"
-          setFormStep={setFormStep}
-          formStep={formStep}
-        />
-      )}
+      <div className="absolute  flex justify-center items-center  top-1/2 right-[10%] rounded-full bg-gray-200  cursor-pointer  hover:bg-lime-500  duration-300">
+        <Button
+          variant="contained"
+          color="success"
+          className="h-[48px] w-[96px]"
+          onClick={() => {
+            setFormStep(8);
+            dispatch(userFormCalculateStart(userForm));
+          }}
+        >
+          Calculate
+        </Button>
+      </div>
       <p className="mb-16 text-[24px] text-center">
-        Does your company burn fuels?
+        Upload relevant documents for each step
       </p>
-      {heatingUnitList.length === 0 && (
+      {uploadedDocumentsList.length === 0 && (
         <>
           <p className="mb-16 text-[24px]">If so, add them below</p>
           <div className="animate-bounce flex justify-center items-center">
@@ -97,17 +113,15 @@ const StepHeating = ({ userId, formStep, setFormStep }) => {
         </>
       )}
       <div className=" overflow-y-auto flex flex-col w-full items-center">
-        {heatingUnitList.map((unit, index) => (
-          <FormHeatingSelect
-            key={unit.id}
-            id={unit.id}
-            selectLabel="Material"
-            unitLabel="Amount"
-            topLabel="Select a heating material from the list below:"
+        {uploadedDocumentsList.map((document, index) => (
+          <FormDocumentSelect
+            key={document.id}
+            id={document.id}
+            selectLabel="Step"
+            topLabel="Select a step for which to upload documents:"
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
-            unitList={heatingUnits}
-            heatingUnit={unit}
+            uploadDocument={document}
           />
         ))}
         <div ref={messagesEndRef} />
@@ -127,4 +141,4 @@ const StepHeating = ({ userId, formStep, setFormStep }) => {
   );
 };
 
-export default StepHeating;
+export default StepUploadDocuments;

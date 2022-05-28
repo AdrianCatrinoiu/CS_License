@@ -92,7 +92,7 @@ const PollutantPieChart = ({ emission, title, emissions }) => {
         />
       </div>
 
-      <div className="flex flex-col w-full h-full px-32 py-12 justify-center items-center bg-[#7bee64] rounded-3xl shadow-2xl animate-fadeIn xl:mr-[80px] ">
+      <div className="flex flex-col w-full h-full px-32 py-12 justify-center items-center bg-green-200 rounded-3xl shadow-2xl animate-fadeIn xl:mr-[80px] ">
         <div>
           <p className=" font-MontserratBold text-gray-500">{title}</p>
         </div>

@@ -7,17 +7,16 @@ import FormTransportationSelect from "../../forms/FormTransportationSelect";
 import { useDispatch, useSelector } from "react-redux";
 import {
   userFormAddStart,
-  userFormCalculateStart,
   userFormDeleteStart,
   userFormUpdateStart,
 } from "../../redux/User/user.actions";
-import Button from "@mui/material/Button";
+import StepButton from "../StepButton";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
 });
 
-const StepTransportation = ({ setFormStep }) => {
+const StepTransportation = ({ setFormStep, formStep }) => {
   const { userForm } = useSelector(mapState);
   const [transportationList, setTransportationList] = useState(
     userForm.stepTransportation
@@ -91,8 +90,8 @@ const StepTransportation = ({ setFormStep }) => {
               data: {
                 id,
                 label,
-                vehicleNr: parseFloat(vehicleNr),
-                fuelUsed: parseFloat(fuelUsed),
+                vehicleNr: vehicleNr ? parseInt(vehicleNr) : null,
+                fuelUsed: fuelUsed ? parseFloat(fuelUsed) : null,
                 fuelUnit,
                 vehicleType,
               },
@@ -121,22 +120,16 @@ const StepTransportation = ({ setFormStep }) => {
 
   return (
     <div className="flex flex-col w-[80%] items-center h-2/3  animate-fadeIn  max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[615px]">
+      {formStep < 7 && (
+        <StepButton
+          orientation="right"
+          setFormStep={setFormStep}
+          formStep={formStep}
+        />
+      )}
       <p className="mb-12 text-[24px] text-center">
         Choose the transportation types that your company and employees use:
       </p>
-      <div className="absolute  flex justify-center items-center  top-1/2 right-[10%] rounded-full bg-gray-200  cursor-pointer  hover:bg-lime-500  duration-300">
-        <Button
-          variant="contained"
-          color="success"
-          className="h-[48px] w-[96px]"
-          onClick={() => {
-            setFormStep(7);
-            dispatch(userFormCalculateStart(userForm));
-          }}
-        >
-          Calculate
-        </Button>
-      </div>
 
       {transportationList.length === 0 && (
         <>

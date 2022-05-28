@@ -41,7 +41,7 @@ const SummaryStatistics = ({
     <div className="flex flex-col w-[80%] items-center">
       <p className="mb-24 text-[24px]">Your emissions in {year}:</p>
       <div className="flex md:flex-row flex-col justify-between w-full md:max-h-[600px] mb-24">
-        <div className="flex flex-col px-32 py-12 justify-center items-center rounded-3xl bg-[#7bee64] shadow-2xl animate-fadeIn md:mr-[80px] md:mb-0 mb-8 ">
+        <div className="flex flex-col px-32 py-12 justify-center items-center rounded-3xl bg-green-200 shadow-2xl animate-fadeIn md:mr-[80px] md:mb-0 mb-8 ">
           <div className="flex flex-col items-center justify-center my-8">
             <p className="font-MontserratBold text-[32px] text-blue-400">
               {totalCO2.toFixed(2)}

@@ -12,8 +12,6 @@ const RankingsList = () => {
   useEffect(() => {
     setFilteredRankings(rankings);
   }, [rankings]);
-  console.log("rankings", rankings);
-  console.log("filteredRankigns", filteredRankigns);
 
   return (
     <div className="h-full w-full flex flex-col justify-center items-center mb-24">
@@ -25,6 +23,8 @@ const RankingsList = () => {
               companyName={company.companyName}
               year={company.year}
               emissions={company.emissions}
+              adminBadge={company.adminBadge}
+              emissionBadge={company.emissionBadge}
             />
           </div>
         ))}

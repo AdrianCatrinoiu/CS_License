@@ -10,14 +10,19 @@ import Transportation from "../../assets/transportation.svg";
 import Waste from "../../assets/waste.svg";
 import CAEN from "../../assets/CAEN.svg";
 import Year from "../../assets/year.svg";
+import uploadDocuments from "../../assets/uploadDocuments.svg";
+
 import { styled } from "@mui/material/styles";
 import StepConnector, {
   stepConnectorClasses,
 } from "@mui/material/StepConnector";
-
+import { useSelector } from "react-redux";
+const mapState = ({ user }) => ({
+  userForm: user.userForm,
+});
 const FormStepper = ({ formStep, setFormStep }) => {
   const { width } = useWindowDimensions();
-
+  const { userForm } = useSelector(mapState);
   const steps = [
     { label: "Year", step: 0 },
     { label: "Field of activity", step: 1 },
@@ -26,6 +31,7 @@ const FormStepper = ({ formStep, setFormStep }) => {
     { label: "Waste emissions", step: 4 },
     { label: "Refrigerants emissions", step: 5 },
     { label: "Transportation emissions", step: 6 },
+    { label: "Upload documents", step: 7 },
   ];
 
   const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
@@ -99,6 +105,7 @@ const FormStepper = ({ formStep, setFormStep }) => {
           alt="Transportation emissions"
         />
       ),
+      8: <img className="h-full" src={uploadDocuments} alt="CAEN" />,
     };
 
     return (
@@ -123,6 +130,19 @@ const FormStepper = ({ formStep, setFormStep }) => {
             <StepLabel
               StepIconComponent={ColorlibStepIcon}
               onClick={() => {
+                if (label === "Year" && userForm.stepYear) {
+                  setFormStep(label.step);
+                }
+                if (label === "Field of activity" && userForm.stepCAEN) {
+                  setFormStep(label.step);
+                }
+                if (
+                  label === "Electricity emissions" &&
+                  (userForm.stepElectricity.renewableAmount ||
+                    userForm.stepElectricity.nonRenewableAmount)
+                ) {
+                  setFormStep(label.step);
+                }
                 setFormStep(label.step);
               }}
               className="cursor-pointer"

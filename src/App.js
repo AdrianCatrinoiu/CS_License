@@ -8,6 +8,12 @@ import FormPage from "./pages/FormPage";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import MontserratLight from "./assets/fonts/Montserrat/static/Montserrat-Light.ttf";
 import Rankings from "./pages/Rankings";
+import Admin from "./pages/Admin";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { checkUserSession } from "./redux/User/user.actions";
+import Verify from "./pages/Verify";
+import ShareForm from "./pages/ShareForm";
 
 const theme = createTheme({
   typography: {
@@ -26,6 +32,12 @@ const theme = createTheme({
   },
 });
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkUserSession());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <ThemeProvider theme={theme}>
       <div className="App font-MontserratLight bg-[#F9F5F2]">
@@ -36,6 +48,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/form" element={<FormPage />} />
           <Route path="/rankings" element={<Rankings />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/form/verify/:id" element={<Verify />} />
+          <Route path="/form/share/:formUuid" element={<ShareForm />} />
         </Routes>
       </div>
     </ThemeProvider>

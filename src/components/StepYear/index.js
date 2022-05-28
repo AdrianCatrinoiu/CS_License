@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { userFormUpdateStart } from "../../redux/User/user.actions";
 import { YearPicker } from "@mui/x-date-pickers/YearPicker";
 import Grid from "@mui/material/Grid";
+import StepButton from "../StepButton";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
 });
 
-const StepYear = ({ userId }) => {
+const StepYear = ({ userId, formStep, setFormStep }) => {
   const { userForm } = useSelector(mapState);
   const [year, setYear] = useState(userForm.stepYear);
   const minDate = moment().subtract(20, "years");
@@ -25,6 +26,14 @@ const StepYear = ({ userId }) => {
 
   return (
     <div className="flex flex-col max-w-[600px] items-center h-2/3 animate-fadeIn bg-white shadow-2xl pt-8 rounded-3xl min-h-[600px]">
+      {formStep < 7 && (
+        <StepButton
+          orientation="right"
+          setFormStep={setFormStep}
+          formStep={formStep}
+          isDisabled={!year}
+        />
+      )}
       <p className="mb-24 text-[24px] text-center">
         Choose the year for your estimation:
       </p>

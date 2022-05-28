@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import StepYear from "../StepYear";
 import StepCAEN from "../StepCAEN";
 import StepElectricity from "../StepElectricity";
@@ -10,6 +10,9 @@ import Summary from "../Summary";
 import StepButton from "../StepButton";
 import StepWaste from "../StepWaste";
 import FormStepper from "../../forms/FormStepper";
+import StepUploadDocuments from "../StepUploadDocuments";
+import { checkUserIsAdmin } from "../../customHooks/useAdminAuth";
+import { useNavigate } from "react-router-dom";
 
 const mapState = ({ user }) => ({
   user: user.user,
@@ -17,7 +20,15 @@ const mapState = ({ user }) => ({
 
 const FormType = ({ formStep, setFormStep }) => {
   const { user } = useSelector(mapState);
-
+  const isAdmin = checkUserIsAdmin(user);
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log("isAdmin", isAdmin);
+    if (isAdmin) {
+      navigate("/admin");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
   return (
     <div className=" h-full w-full">
       <div className="h-full flex flex-col">
@@ -28,26 +39,72 @@ const FormType = ({ formStep, setFormStep }) => {
             formStep={formStep}
           />
         )}
-        {formStep < 6 && (
-          <StepButton
-            orientation="right"
-            setFormStep={setFormStep}
-            formStep={formStep}
-          />
-        )}
 
         <FormStepper formStep={formStep} setFormStep={setFormStep} />
         <div className="flex flex-col items-center w-full h-full max-h-[70%] mt-[50px]">
-          {formStep === 0 && <StepYear userId={user.id} />}
-          {formStep === 1 && <StepCAEN userId={user.id} />}
-          {formStep === 2 && <StepElectricity userId={user.id} />}
-          {formStep === 3 && <StepHeating userId={user.id} />}
-          {formStep === 4 && <StepWaste userId={user.id} />}
-          {formStep === 5 && <StepRefrigerants userId={user.id} />}
-          {formStep === 6 && (
-            <StepTransportation userId={user.id} setFormStep={setFormStep} />
+          {formStep === 0 && (
+            <StepYear
+              userId={user.id}
+              formStep={formStep}
+              setFormStep={setFormStep}
+            />
           )}
-          {formStep === 7 && <Summary userId={user.id} />}
+          {formStep === 1 && (
+            <StepCAEN
+              userId={user.id}
+              formStep={formStep}
+              setFormStep={setFormStep}
+            />
+          )}
+          {formStep === 2 && (
+            <StepElectricity
+              userId={user.id}
+              formStep={formStep}
+              setFormStep={setFormStep}
+            />
+          )}
+          {formStep === 3 && (
+            <StepHeating
+              userId={user.id}
+              formStep={formStep}
+              setFormStep={setFormStep}
+            />
+          )}
+          {formStep === 4 && (
+            <StepWaste
+              userId={user.id}
+              formStep={formStep}
+              setFormStep={setFormStep}
+            />
+          )}
+          {formStep === 5 && (
+            <StepRefrigerants
+              userId={user.id}
+              formStep={formStep}
+              setFormStep={setFormStep}
+            />
+          )}
+          {formStep === 6 && (
+            <StepTransportation
+              userId={user.id}
+              formStep={formStep}
+              setFormStep={setFormStep}
+            />
+          )}
+          {formStep === 7 && (
+            <StepUploadDocuments
+              userId={user.id}
+              formStep={formStep}
+              setFormStep={setFormStep}
+            />
+          )}
+          {formStep === 8 && (
+            <Summary
+              userId={user.id}
+              formStep={formStep}
+              setFormStep={setFormStep}
+            />
+          )}
         </div>
       </div>
     </div>

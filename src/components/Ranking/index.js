@@ -1,6 +1,15 @@
 import React from "react";
 import { Chart } from "react-google-charts";
-const Ranking = ({ place, companyName, year, emissions }) => {
+import Denied from "../../assets/denied.svg";
+import Verified from "../../assets/verified.svg";
+const Ranking = ({
+  place,
+  companyName,
+  year,
+  emissions,
+  adminBadge,
+  emissionBadge,
+}) => {
   const CO2data = [
     ["Element", "kg of CO2", { role: "style" }],
     ["Electricity", emissions.electricity.CO2, "green"],
@@ -20,7 +29,7 @@ const Ranking = ({ place, companyName, year, emissions }) => {
   return (
     <div className="flex flex-row items-center">
       <p className="mr-8">{place}</p>
-      <div className="w-full rounded-3xl bg-[#7bee64] shadow-2xl p-4 flex flex-row items-center justify-between">
+      <div className="w-full rounded-3xl bg-green-200 shadow-2xl p-4 flex flex-row items-center justify-between">
         <div className="flex flex-col items-center text-center justify-between my-8  w-[10%] min-w-[70px] ">
           <p>{year}</p>
           <p>{companyName}</p>
@@ -35,8 +44,25 @@ const Ranking = ({ place, companyName, year, emissions }) => {
           />
         </div>
         <div>Emission Badge</div>
-        <div>Admin badge</div>
-      </div>{" "}
+        <div className="flex flex-col items-center">
+          <p className="text-center">Document status:</p>
+          {adminBadge === "verified" && (
+            <div>
+              <img className="h-[100px]" src={Verified} alt="Verified" />
+            </div>
+          )}
+          {adminBadge === "rejected" && (
+            <div>
+              <img className="h-[100px]" src={Denied} alt="Denied" />
+            </div>
+          )}
+          {adminBadge !== "rejected" && adminBadge !== "verified" && (
+            <div>
+              <p className="text-center">Pending approval</p>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

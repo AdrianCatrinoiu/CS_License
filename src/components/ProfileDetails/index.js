@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { userGetEmissionsListStart } from "../../redux/User/user.actions";
 import FormYear from "../FormYear";
 
 const mapState = ({ user }) => ({
@@ -8,15 +9,25 @@ const mapState = ({ user }) => ({
 
 const ProfileDetails = () => {
   const { emissionsList } = useSelector(mapState);
-
-  useEffect(() => {}, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log("emissionsList", emissionsList);
+    dispatch(userGetEmissionsListStart());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="flex flex-col justify-between">
       {emissionsList &&
         emissionsList.map((emission) => (
-          <div key={emission.year} className="my-4">
-            <FormYear year={emission.year} emissions={emission.emissions} />
+          <div key={emission.formId} className="my-4">
+            <FormYear
+              year={emission.year}
+              emissions={emission.emissions}
+              adminBadge={emission.adminBadge}
+              emissionBadge={emission.emissionBadge}
+              uuid={emission.uuid}
+            />
           </div>
         ))}
     </div>
