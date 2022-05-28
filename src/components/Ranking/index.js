@@ -1,7 +1,6 @@
 import React from "react";
 import { Chart } from "react-google-charts";
-import Denied from "../../assets/denied.svg";
-import Verified from "../../assets/verified.svg";
+import EmissionBadge from "../EmissionBadge";
 const Ranking = ({
   place,
   companyName,
@@ -34,7 +33,7 @@ const Ranking = ({
           <p>{year}</p>
           <p>{companyName}</p>
         </div>
-        <div className="w-[50%] ml-8 h-full bg-[#dddddd] rounded-2xl shadow-2xl animate-fadeIn">
+        <div className="w-[50%] ml-8 h-full bg-white rounded-2xl shadow-2xl animate-fadeIn">
           <Chart
             chartType="ColumnChart"
             width="100%"
@@ -43,24 +42,9 @@ const Ranking = ({
             options={optionsAnimateOnStart}
           />
         </div>
-        <div>Emission Badge</div>
         <div className="flex flex-col items-center">
-          <p className="text-center">Document status:</p>
-          {adminBadge === "verified" && (
-            <div>
-              <img className="h-[100px]" src={Verified} alt="Verified" />
-            </div>
-          )}
-          {adminBadge === "rejected" && (
-            <div>
-              <img className="h-[100px]" src={Denied} alt="Denied" />
-            </div>
-          )}
-          {adminBadge !== "rejected" && adminBadge !== "verified" && (
-            <div>
-              <p className="text-center">Pending approval</p>
-            </div>
-          )}
+          <p className="text-center">Emissions badge:</p>
+          <EmissionBadge emissionBadge={emissionBadge} />
         </div>
       </div>
     </div>

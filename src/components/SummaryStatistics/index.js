@@ -61,7 +61,7 @@ const SummaryStatistics = ({
             <p className="text-[24px] text-center">g equivalent of N2O</p>
           </div>
         </div>
-        <div className="w-full h-full  bg-[#dddddd] rounded-2xl shadow-2xl animate-fadeIn">
+        <div className="w-full h-full  bg-white rounded-2xl shadow-2xl animate-fadeIn">
           <Chart
             chartType="ColumnChart"
             width="100%"
@@ -72,7 +72,7 @@ const SummaryStatistics = ({
         </div>
       </div>
       <div className="flex md:flex-row flex-col justify-between w-full md:max-h-[500px] mb-24">
-        <div className="w-full h-full  bg-[#dddddd] rounded-2xl shadow-2xl animate-fadeIn mr-[80px] md:mb-0 mb-8">
+        <div className="w-full h-full  bg-white rounded-2xl shadow-2xl animate-fadeIn mr-[80px] md:mb-0 mb-8">
           <Chart
             chartType="ColumnChart"
             width="100%"
@@ -81,7 +81,7 @@ const SummaryStatistics = ({
             options={optionsAnimateOnStart}
           />
         </div>
-        <div className="w-full h-full  bg-[#dddddd] rounded-2xl shadow-2xl animate-fadeIn">
+        <div className="w-full h-full  bg-white rounded-2xl shadow-2xl animate-fadeIn">
           <Chart
             chartType="ColumnChart"
             width="100%"

@@ -20,7 +20,7 @@ const FormVerify = ({ form }) => {
           <ArrowForwardIcon />
         </div>
         <p>{form.user.companyName}</p>
-        {/* <div className="w-1/2 ml-8 h-full bg-[#dddddd] rounded-2xl shadow-2xl animate-fadeIn"></div> */}
+        {/* <div className="w-1/2 ml-8 h-full bg-white rounded-2xl shadow-2xl animate-fadeIn"></div> */}
         <div className="flex flex-col items-center">
           <p className="text-center">Document status:</p>
 
