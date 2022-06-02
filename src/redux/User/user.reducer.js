@@ -56,6 +56,9 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case userTypes.SIGN_OUT_USER_SUCCESS:
       return {
         ...INITIAL_STATE,
+        formStatistics: {
+          ...state.formStatistics,
+        },
       };
     case userTypes.USER_ERROR:
       return {

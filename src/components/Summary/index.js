@@ -40,9 +40,9 @@ const Summary = ({ userId }) => {
     <div className="flex flex-col w-[90%] items-center h-2/3 animate-fadeIn">
       <div className="mb-[50px]">
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="Statistics" />
-          <Tab label="Facts" />
-          <Tab label="Solutions" />
+          <Tab style={{ fontSize: "20px" }} label="Statistics" />
+          <Tab style={{ fontSize: "20px" }} label="Facts" />
+          <Tab style={{ fontSize: "20px" }} label="Solutions" />
         </Tabs>
       </div>
       {value === 0 && (

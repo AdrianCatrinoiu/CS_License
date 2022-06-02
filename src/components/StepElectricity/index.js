@@ -66,7 +66,7 @@ const StepElectricity = ({ userId, formStep, setFormStep }) => {
         />
       </div>
       <TextField
-        label="Non-renewableAmount"
+        label="Non-renewable"
         id="outlined-start-adornment"
         disabled={country === ""}
         sx={{

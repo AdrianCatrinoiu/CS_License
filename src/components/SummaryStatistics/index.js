@@ -11,7 +11,7 @@ const SummaryStatistics = ({
   const CO2data = [
     ["Element", "kg of CO2", { role: "style" }],
     ["Electricity", emissions.electricity.CO2, "green"],
-    ["Heating", emissions.heating.CO2, "red"],
+    ["Burning", emissions.heating.CO2, "red"],
     ["Waste", emissions.waste.CO2, "orange"],
     ["Refrigerants", emissions.refrigerants.CO2, "blue"],
     ["Transportation", emissions.transportation.CO2, "brown"],
@@ -19,13 +19,13 @@ const SummaryStatistics = ({
 
   const CH4data = [
     ["Element", "g of CH4", { role: "style" }],
-    ["Heating", emissions.heating.CH4, "red"],
+    ["Burning", emissions.heating.CH4, "red"],
     ["Transportation", emissions.transportation.CH4, "brown"],
   ];
 
   const N2Odata = [
     ["Element", "g of N2O", { role: "style" }],
-    ["Heating", emissions.heating.N2O, "red"],
+    ["Burning", emissions.heating.N2O, "red"],
     ["Transportation", emissions.transportation.N2O, "brown"],
   ];
 

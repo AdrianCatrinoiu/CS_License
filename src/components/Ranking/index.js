@@ -12,7 +12,7 @@ const Ranking = ({
   const CO2data = [
     ["Element", "kg of CO2", { role: "style" }],
     ["Electricity", emissions.electricity.CO2, "green"],
-    ["Heating", emissions.heating.CO2, "red"],
+    ["Burning", emissions.heating.CO2, "red"],
     ["Waste", emissions.waste.CO2, "orange"],
     ["Refrigerants", emissions.refrigerants.CO2, "blue"],
     ["Transportation", emissions.transportation.CO2, "brown"],
@@ -42,7 +42,7 @@ const Ranking = ({
             options={optionsAnimateOnStart}
           />
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center w-1/5 mr-8">
           <p className="text-center">Emissions badge:</p>
           <EmissionBadge emissionBadge={emissionBadge} />
         </div>

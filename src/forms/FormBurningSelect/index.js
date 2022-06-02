@@ -5,7 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import IconButton from "@mui/material/IconButton";
 import ClearIcon from "@mui/icons-material/Clear";
 
-const FormHeatingSelect = ({
+const FormBurningSelect = ({
   id,
   topLabel,
   selectLabel,
@@ -107,4 +107,4 @@ const FormHeatingSelect = ({
   );
 };
 
-export default FormHeatingSelect;
+export default FormBurningSelect;

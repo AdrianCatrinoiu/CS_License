@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
-import FormHeatingSelect from "../../forms/FormHeatingSelect";
+import FormBurningSelect from "../../forms/FormBurningSelect";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,7 +16,7 @@ const mapState = ({ user }) => ({
   formStatistics: user.formStatistics,
 });
 
-const StepHeating = ({ userId, formStep, setFormStep }) => {
+const StepBurning = ({ userId, formStep, setFormStep }) => {
   const { userForm, formStatistics } = useSelector(mapState);
   const [heatingUnitList, setHeatingUnitList] = useState(userForm.stepHeating);
   const dispatch = useDispatch();
@@ -86,7 +86,7 @@ const StepHeating = ({ userId, formStep, setFormStep }) => {
         />
       )}
       <p className="mb-16 text-[24px] text-center">
-        Does your company burn fuels?
+        Does your company burn materials?
       </p>
       {heatingUnitList.length === 0 && (
         <>
@@ -98,7 +98,7 @@ const StepHeating = ({ userId, formStep, setFormStep }) => {
       )}
       <div className=" overflow-y-auto flex flex-col w-full items-center">
         {heatingUnitList.map((unit, index) => (
-          <FormHeatingSelect
+          <FormBurningSelect
             key={unit.id}
             id={unit.id}
             selectLabel="Material"
@@ -127,4 +127,4 @@ const StepHeating = ({ userId, formStep, setFormStep }) => {
   );
 };
 
-export default StepHeating;
+export default StepBurning;

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import StepYear from "../StepYear";
 import StepCAEN from "../StepCAEN";
 import StepElectricity from "../StepElectricity";
-import StepHeating from "../StepHeating";
+import StepBurning from "../StepBurning";
 import StepRefrigerants from "../StepRefrigerants";
 import StepTransportation from "../StepTransportation";
 import { useDispatch, useSelector } from "react-redux";
@@ -71,7 +71,7 @@ const FormType = ({ formStep, setFormStep }) => {
             />
           )}
           {formStep === 3 && (
-            <StepHeating
+            <StepBurning
               userId={user.id}
               formStep={formStep}
               setFormStep={setFormStep}
