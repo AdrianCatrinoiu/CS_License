@@ -15,6 +15,7 @@ const ShareForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("params", params);
     dispatch(shareFormStart(params));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

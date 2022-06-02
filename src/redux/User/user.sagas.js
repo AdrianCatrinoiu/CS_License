@@ -352,12 +352,9 @@ export function* shareFormStart() {
 
 export function* getStatistics() {
   try {
-    const token = localStorage.getItem("accessToken");
-
     const data = yield call(axiosCall, {
       method: "GET",
       path: "/formStatistics",
-      token: token,
     });
     console.log("data", data.data);
     if (data.status === 200) {
