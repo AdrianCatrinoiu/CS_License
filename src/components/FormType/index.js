@@ -14,6 +14,7 @@ import StepUploadDocuments from "../StepUploadDocuments";
 import { checkUserIsAdmin } from "../../customHooks/useAdminAuth";
 import { useNavigate } from "react-router-dom";
 import { userGetEmissionsListStart } from "../../redux/User/user.actions";
+import KommunicateChat from "../Chat";
 
 const mapState = ({ user }) => ({
   user: user.user,
@@ -38,6 +39,8 @@ const FormType = ({ formStep, setFormStep }) => {
 
   return (
     <div className=" h-full w-full">
+      <KommunicateChat />
+
       <div className="h-full flex flex-col">
         {formStep > 0 && (
           <StepButton

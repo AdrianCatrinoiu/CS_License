@@ -54,6 +54,7 @@ const StepUploadDocuments = ({ setFormStep }) => {
 
   const updateUnit = (id, step, file) => {
     const formData = new FormData();
+    console.log("id,step,file", id, step, file);
     if (file) {
       console.log("file", file);
       formData.append("file", file);

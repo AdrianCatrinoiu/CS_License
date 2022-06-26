@@ -76,8 +76,8 @@ const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
             </TwitterShareButton>
           </div>
         </div>
-        <div className="w-1/3 flex flex-col justify-evenly self-stretch">
-          <div className="flex flex-col items-center">
+        <div className="w-1/3 flex flex-col justify-center self-stretch max-w-[400px] mr-8">
+          <div className="flex flex-col items-center justify-center ">
             <p className="text-center">Emissions badge:</p>
             <EmissionBadge emissionBadge={emissionBadge} />
           </div>

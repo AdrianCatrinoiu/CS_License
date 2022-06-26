@@ -106,14 +106,16 @@ const Navbar = (props) => {
             >
               {user ? (
                 <div>
-                  <Link
-                    className="w-full h-full flex items-center"
-                    to="/dashboard"
-                  >
-                    <MenuItem className="w-full">
-                      <Avatar /> My account
-                    </MenuItem>
-                  </Link>
+                  {user.role !== "admin" && (
+                    <Link
+                      className="w-full h-full flex items-center"
+                      to="/dashboard"
+                    >
+                      <MenuItem className="w-full">
+                        <Avatar /> My account
+                      </MenuItem>
+                    </Link>
+                  )}
                   <Link
                     className="w-full h-full flex items-center"
                     to="/rankings"

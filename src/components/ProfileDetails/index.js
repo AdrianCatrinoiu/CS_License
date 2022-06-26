@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userGetEmissionsListStart } from "../../redux/User/user.actions";
+import KommunicateChat from "../Chat";
 import FormYear from "../FormYear";
 
 const mapState = ({ user }) => ({
@@ -17,6 +18,8 @@ const ProfileDetails = () => {
 
   return (
     <div className="flex flex-col justify-between">
+      <KommunicateChat />
+
       {emissionsList &&
         emissionsList.map((emission) => {
           console.log("emission", emission);
