@@ -108,7 +108,7 @@ const FormRefrigerantSelect = ({
           </div>
           <div className="w-1/2 flex flex-col ">
             <TextField
-              label="Beginning"
+              label="Total"
               id="outlined-start-adornment"
               sx={{
                 width: "100%",

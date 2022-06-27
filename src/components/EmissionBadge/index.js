@@ -236,7 +236,7 @@ const EmissionBadge = (emissionBadge) => {
       );
 
     default:
-      return <p className="mt-8">Finalize your form</p>;
+      return <p className=" my-8">Finalize your form</p>;
   }
 };
 

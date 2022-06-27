@@ -11,6 +11,7 @@ import {
 } from "../../redux/User/user.actions";
 import Button from "@mui/material/Button";
 import FormDocumentSelect from "../../forms/formDocumentSelect";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const mapState = ({ user }) => ({
   userForm: user.userForm,
@@ -21,6 +22,7 @@ const StepUploadDocuments = ({ setFormStep }) => {
   const [uploadedDocumentsList, setUploadedDocumentsList] = useState(
     userForm.stepUploadDocuments
   );
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const messagesEndRef = useRef(null);
@@ -90,17 +92,25 @@ const StepUploadDocuments = ({ setFormStep }) => {
   return (
     <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[600px]">
       <div className="absolute  flex justify-center items-center  top-1/2 right-[10%] rounded-full bg-gray-200  cursor-pointer  hover:bg-lime-500  duration-300">
-        <Button
-          variant="contained"
-          color="success"
-          className="h-[48px] w-[96px]"
-          onClick={() => {
-            setFormStep(8);
-            dispatch(userFormCalculateStart(userForm));
-          }}
-        >
-          Calculate
-        </Button>
+        {loading ? (
+          <CircularProgress color="success" />
+        ) : (
+          <Button
+            variant="contained"
+            color="success"
+            className="h-[48px] w-[96px]"
+            onClick={() => {
+              dispatch(userFormCalculateStart(userForm));
+              setLoading(true);
+              setTimeout(() => {
+                setLoading(false);
+                setFormStep(8);
+              }, 1000);
+            }}
+          >
+            Calculate
+          </Button>
+        )}
       </div>
       <p className="mb-16 text-[24px] text-center">
         Upload relevant documents for each step

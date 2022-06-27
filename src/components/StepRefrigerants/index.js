@@ -95,8 +95,8 @@ const StepRefrigerants = ({ userId, formStep, setFormStep }) => {
         Does your company use refrigerants?
       </p>
       <p className="mb-12 text-[24px] text-center">
-        Input the amount of refrigerant in all storage/devices at the begining
-        and at the end of the year accordingly.
+        Input the total amount of refrigerant in all storage/devices and the
+        remaining amount at the end of the year accordingly.
       </p>
 
       {refrigerantsList.length === 0 && (
