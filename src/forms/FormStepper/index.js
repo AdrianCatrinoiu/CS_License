@@ -147,7 +147,7 @@ const FormStepper = ({ formStep, setFormStep }) => {
               }}
               className="cursor-pointer"
             >
-              {label.label}
+              <p className=" text-2xl">{label.label}</p>
             </StepLabel>
           </Step>
         ))}

@@ -86,7 +86,7 @@ const SignUp = (props) => {
   };
 
   return (
-    <div className="h-full bg-white w-full sm:bg-[url('./assets/background.svg')]  sm:bg-[length:1500px] md:bg-[length:1800px] lg:bg-[length:1900px] xl:bg-[length:2000px] 2xl:bg-[length:2100px] bg-[length:800px] bg-no-repeat bg-bottom">
+    <div className="h-full bg-white w-full sm:bg-[url('./assets/background.svg')]  sm:bg-[length:1500px] md:bg-[length:1800px] lg:bg-[length:2000px] xl:bg-[length:100%] bg-[length:800px] bg-no-repeat bg-bottom">
       <div className="absolute sm:top-[10%] top-[90%] mt-[46px] left-[100px] ">
         <Link to="/">
           <Fab

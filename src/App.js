@@ -46,6 +46,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App font-MontserratLight bg-[#F9F5F2]">
         <Routes>
+          <Route path="/form/share/:formUuid" element={<ShareForm />} />
           <Route exact path="/" element={<Homepage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -54,7 +55,6 @@ function App() {
           <Route path="/rankings" element={<Rankings />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/form/verify/:id" element={<Verify />} />
-          <Route path="/form/share/:formUuid" element={<ShareForm />} />
         </Routes>
       </div>
     </ThemeProvider>
