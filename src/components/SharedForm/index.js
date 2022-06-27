@@ -3,6 +3,7 @@ import { Chart } from "react-google-charts";
 import EmissionBadge from "../EmissionBadge";
 
 const SharedForm = ({ year, emissions, emissionBadge, companyName }) => {
+  console.log("a intrat in sharedform");
   const CO2data = [
     ["Element", "kg of CO2", { role: "style" }],
     ["Electricity", emissions?.electricity.CO2, "green"],
