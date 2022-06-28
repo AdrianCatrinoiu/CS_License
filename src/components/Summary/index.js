@@ -14,14 +14,11 @@ const mapState = ({ user }) => ({
 
 const Summary = ({ userId }) => {
   const { userForm, emissionsList } = useSelector(mapState);
-  console.log("emissionsList", emissionsList);
   const [value, setValue] = useState(0);
   const emissionYear = emissionsList.filter(
     (e) => e.formId === userForm.formId
   );
-  console.log(emissionYear);
   const emissions = emissionYear[0] ? emissionYear[0].emissions : [];
-  console.log("emissions", emissions);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

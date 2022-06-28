@@ -12,7 +12,6 @@ import EmissionBadge from "../EmissionBadge";
 
 const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
   const dispatch = useDispatch();
-
   const CO2data = [
     ["Element", "kg of CO2", { role: "style" }],
     ["Electricity", emissions.electricity.CO2, "green"],

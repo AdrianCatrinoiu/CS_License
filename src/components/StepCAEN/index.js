@@ -75,6 +75,7 @@ const StepCAEN = ({ userId, formStep, setFormStep }) => {
               sx={{
                 "& .MuiFormControlLabel-label": {
                   fontSize: 18,
+                  marginY: "8px",
                 },
               }}
             />
