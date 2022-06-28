@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useWindowDimensions from "../../customHooks/useWindowDimensions";
 import { userGetEmissionsListStart } from "../../redux/User/user.actions";
 import KommunicateChat from "../Chat";
 import FormYear from "../FormYear";
@@ -15,14 +16,14 @@ const ProfileDetails = () => {
     dispatch(userGetEmissionsListStart());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const { width } = useWindowDimensions();
 
   return (
     <div className="flex flex-col justify-between">
-      <KommunicateChat />
+      {width > 768 && <KommunicateChat />}
 
       {emissionsList &&
         emissionsList.map((emission) => {
-          console.log("emission", emission);
           return (
             <div key={emission?.formId} className="my-4">
               <FormYear

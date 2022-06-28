@@ -103,7 +103,7 @@ const StepBurning = ({ userId, formStep, setFormStep }) => {
             id={unit.id}
             selectLabel="Material"
             unitLabel="Amount"
-            topLabel="Select a heating material from the list below:"
+            topLabel="Select the burned material from the list below:"
             updateUnit={updateUnit}
             deleteUnit={deleteUnit}
             unitList={formStatistics.burningValues}

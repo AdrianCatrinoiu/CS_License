@@ -37,13 +37,11 @@ const FormDocumentSelect = ({
   };
 
   const handleUnitChange = (event, value) => {
-    console.log(id);
     setLabel(value.label);
     setValue(value.value);
     setFile(null);
   };
   const onFileChange = (event) => {
-    console.log(id);
     setFile(event.target.files[0]);
     setFileName(event.target.files[0].name);
   };
@@ -86,7 +84,7 @@ const FormDocumentSelect = ({
               )}
             />
           </div>
-          <div className="w-full flex flex-row items-center justify-end mb-8">
+          <div className="sm:w-full w-[95%] flex flex-row items-center justify-center mb-8">
             {fileName ? <p>{fileName}</p> : <p>No file selected</p>}
             <Stack
               direction="row"

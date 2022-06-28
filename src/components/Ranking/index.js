@@ -26,14 +26,14 @@ const Ranking = ({
     },
   };
   return (
-    <div className="flex flex-row items-center">
-      <p className="mr-8">{place}</p>
-      <div className="w-full rounded-3xl bg-green-200 shadow-2xl p-4 flex flex-row items-center justify-between">
-        <div className="flex flex-col items-center text-center justify-between my-8  w-[10%] min-w-[70px] ">
+    <div className="flex sm:flex-row flex-col items-center">
+      <p className="mr-8">{place}.</p>
+      <div className="w-full rounded-3xl bg-green-200 shadow-2xl p-4 flex sm:flex-row flex-col items-center justify-between">
+        <div className="flex flex-col items-center text-center justify-between my-8  sm:w-[10%] w-full min-w-[70px] ">
           <p>{year}</p>
           <p>{companyName}</p>
         </div>
-        <div className="w-[50%] ml-8 h-full bg-white rounded-2xl shadow-2xl animate-fadeIn">
+        <div className="sm:w-[50%] w-[95%] sm:ml-8 h-full bg-white rounded-2xl shadow-2xl animate-fadeIn">
           <Chart
             chartType="ColumnChart"
             width="100%"
@@ -42,7 +42,7 @@ const Ranking = ({
             options={optionsAnimateOnStart}
           />
         </div>
-        <div className="flex flex-col items-center w-1/5 mr-8">
+        <div className="flex flex-col items-center sm:w-1/5 w-[95%] sm:mr-8 sm:mb-0 mt-8">
           <p className="text-center">Emissions badge:</p>
           <EmissionBadge emissionBadge={emissionBadge} />
         </div>

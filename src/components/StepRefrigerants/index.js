@@ -83,7 +83,7 @@ const StepRefrigerants = ({ userId, formStep, setFormStep }) => {
     });
   };
   return (
-    <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[601px]">
+    <div className="flex flex-col w-[80%] items-center h-2/3 animate-fadeIn sm:max-w-[600px] pb-6 pt-8 bg-white rounded-3xl min-h-[601px]">
       {formStep < 7 && (
         <StepButton
           orientation="right"
@@ -104,7 +104,7 @@ const StepRefrigerants = ({ userId, formStep, setFormStep }) => {
           <NavigationIcon sx={{ transform: "rotate(180deg)" }} />
         </div>
       )}
-      <div className="overflow-y-auto flex flex-col w-full items-center mb-1 max-h-[606px]">
+      <div className="overflow-y-auto flex flex-col w-full items-center mb-1 sm:max-h-[606px]">
         {refrigerantsList.map((unit, index) => (
           <FormRefrigerantSelect
             key={unit.id}

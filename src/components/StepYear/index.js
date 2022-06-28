@@ -40,7 +40,7 @@ const StepYear = ({ userId, formStep, setFormStep }) => {
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <Grid item xs={12} md={6} className="flex items-center justify-center">
           <YearPicker
-            className="w-1/3 min-w-[400px] "
+            className="w-1/3 sm:min-w-[400px] min-w-[300px] "
             date={moment(new Date(year.toString()))}
             isDateDisabled={() => false}
             minDate={minDate}

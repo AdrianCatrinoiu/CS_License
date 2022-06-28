@@ -25,8 +25,8 @@ const FormType = ({ formStep, setFormStep }) => {
   const isAdmin = checkUserIsAdmin(user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   useEffect(() => {
-    console.log("isAdmin", isAdmin);
     if (isAdmin) {
       navigate("/admin");
     }
@@ -40,7 +40,6 @@ const FormType = ({ formStep, setFormStep }) => {
   return (
     <div className=" h-full w-full">
       <KommunicateChat />
-
       <div className="h-full flex flex-col">
         {formStep > 0 && (
           <StepButton

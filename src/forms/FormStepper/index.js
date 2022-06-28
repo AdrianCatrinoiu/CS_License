@@ -118,7 +118,7 @@ const FormStepper = ({ formStep, setFormStep }) => {
     );
   }
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col overflow-x-scroll">
       <Stepper
         className=" md:w-[80%] w-full self-center mt-8"
         alternativeLabel

@@ -67,8 +67,8 @@ const FormRefrigerantSelect = ({
           </IconButton>
         </div>
 
-        <div className="w-full flex flex-row justify-center items-center ">
-          <div className="w-1/2 flex flex-col mr-4">
+        <div className="w-full flex sm:flex-row flex-col justify-center items-center ">
+          <div className="sm:w-1/2 w-[90%] flex flex-col sm:mr-4">
             <div className="w-full h-[56px]">
               <Autocomplete
                 disablePortal
@@ -98,7 +98,7 @@ const FormRefrigerantSelect = ({
                 )}
               />
             </div>
-            <div className="w-full min-w-[200px] mb-[24px] mt-[20px] ">
+            <div className="w-full sm:min-w-[200px] mb-[24px] mt-[20px] ">
               <div className="w-full h-[56px] text-24 border-[1px] border-black border-opacity-[0.23] rounded-[4px] flex flex-row items-center justify-begin">
                 <p className="pl-[14px] opacity-[0.6] text-2xl">
                   Formula: {formula}
@@ -106,7 +106,7 @@ const FormRefrigerantSelect = ({
               </div>
             </div>
           </div>
-          <div className="w-1/2 flex flex-col ">
+          <div className="sm:w-1/2 w-[90%] flex flex-col ">
             <TextField
               label="Total"
               id="outlined-start-adornment"

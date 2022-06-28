@@ -223,7 +223,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
             stepUploadDocuments: [
               ...state.userForm.stepUploadDocuments.map((unit) => {
                 if (unit.id === action.payload.uploadData.id) {
-                  console.log("id", unit.id, action.payload.uploadData.id);
                   return {
                     ...unit,
                     step: action.payload.uploadData.step,

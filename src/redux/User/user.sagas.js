@@ -62,12 +62,10 @@ export function* onCheckUserSession() {
 
 export function* signOutUser() {
   try {
-    console.log("1");
     yield put(signOutUserSuccess());
-    console.log("2");
     localStorage.setItem("accessToken", null);
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
@@ -332,14 +330,12 @@ export function* userGetEmissionsListStart() {
 export function* shareForm({ payload: { params } }) {
   try {
     const token = localStorage.getItem("accessToken");
-    console.log("params", params);
 
     const data = yield call(axiosCall, {
       method: "GET",
       path: `/form/share/${params.formUuid}`,
       token: token,
     });
-    console.log("Data", data);
     if (data.status === 200) {
       yield put(shareFormSuccess(data.data));
     }
@@ -356,7 +352,6 @@ export function* getStatistics() {
       method: "GET",
       path: "/formStatistics",
     });
-    console.log("data", data.data);
     if (data.status === 200) {
       yield put(getFormStatisticsSuccess(data.data));
     }

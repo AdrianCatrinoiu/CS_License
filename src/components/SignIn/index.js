@@ -43,7 +43,6 @@ const SignIn = (props) => {
   }, [userErr]);
   //at sign-in
   useEffect(() => {
-    console.log("isAdmin", isAdmin);
     if (isAdmin) {
       resetForm();
       navigate("/admin");

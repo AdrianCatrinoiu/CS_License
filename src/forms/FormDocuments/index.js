@@ -11,7 +11,6 @@ const FormDocuments = () => {
     uri: `${process.env.REACT_APP_BASE_URL}/uploads/${item.file}`,
   }));
 
-  console.log("documents", documents);
   return (
     <div className="w-full h-full flex flex-col justify-evenly">
       {documents.length > 0 ? (

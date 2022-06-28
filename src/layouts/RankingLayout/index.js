@@ -44,8 +44,8 @@ const RankingLayout = (props) => {
   return (
     <div className="h-full">
       <Navbar {...props} />
-      <div className="relative inline-block w-full min-h-full pt-12 pl-[25rem]">
-        <div className="absolute flex flex-col items-center top-0 left-0 w-[25rem] h-full z-[1] border-r border-[#d3d3d3]">
+      <div className="sm:relative sm:inline-block w-full sm:min-h-full pt-12 sm:pl-[25rem]">
+        <div className="sm:absolute flex flex-col items-center top-0 left-0 sm:w-[25rem] w-full h-full z-[1] sm:border-r border-b pb-4 sm:pb-0 border-[#d3d3d3]">
           <div className="w-[80%] mt-24">
             <div>
               <Autocomplete

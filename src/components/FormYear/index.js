@@ -32,7 +32,7 @@ const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
 
   return (
     <div className="w-full rounded-3xl bg-green-200 shadow-2xl p-4 flex flex-col items-center justify-between">
-      <div className="w-full flex flex-row items-center justify-between">
+      <div className="w-full flex md:flex-row flex-col items-center justify-between">
         <Link
           className="self-stretch"
           to="/form"
@@ -45,13 +45,13 @@ const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
             )
           }
         >
-          <div className="flex flex-col items-center justify-center self-stretch h-full  w-[20%] min-w-[70px] hover:bg-gray-500 hover:rounded-3xl">
+          <div className="flex flex-col items-center justify-center self-stretch h-full  md:w-[20%] w-full min-w-[70px] hover:bg-gray-500 hover:rounded-3xl">
             <p>{year}</p>
             <ArrowForwardIcon style={{ fontSize: "36px" }} />
           </div>
         </Link>
 
-        <div className="w-1/2 ml-8 flex self-stretch min-h-[450px] flex-col bg-white rounded-2xl shadow-2xl animate-fadeIn">
+        <div className="md:w-1/2 w-[90%] ml-8 flex self-stretch min-h-[450px] flex-col bg-white rounded-2xl shadow-2xl animate-fadeIn">
           <Chart
             chartType="ColumnChart"
             width="100%"
@@ -59,7 +59,7 @@ const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
             data={CO2data}
             options={optionsAnimateOnStart}
           />
-          <div className="w-full flex flex-row my-8 items-center justify-center">
+          <div className="w-full flex md:flex-row flex-col my-8 items-center justify-center">
             <p>Share your result on social media:</p>
             <FacebookShareButton
               className="mx-4"
@@ -76,7 +76,7 @@ const FormYear = ({ year, emissions, adminBadge, emissionBadge, uuid }) => {
             </TwitterShareButton>
           </div>
         </div>
-        <div className="w-1/3 flex flex-col justify-between self-stretch max-w-[400px] mr-8 ">
+        <div className="md:w-1/3 w-full flex flex-col justify-between self-stretch max-w-[400px] mr-8 ">
           <div className="flex flex-col items-center justify-center ">
             <p className="text-center">Emissions badge:</p>
             <EmissionBadge emissionBadge={emissionBadge} />

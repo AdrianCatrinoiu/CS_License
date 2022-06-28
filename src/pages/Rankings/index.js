@@ -7,7 +7,7 @@ const Rankings = () => {
   return (
     <WithAuth>
       <RankingLayout>
-        <div className="h-full w-full mb-24">
+        <div className="h-full w-full mb-24 sm:mt-0 mt-24">
           <RankingsList />
         </div>
       </RankingLayout>
